@@ -2,62 +2,148 @@
 <html>
 <head>
 <title>Perpustakaan Nadia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff8e1;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FFF9DB; /* Soft Yellow */
 }
 
 /* Navbar */
 .navbar {
-  background-color: #f4c542;
-  padding: 15px;
+  background-color: #FFD966;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .navbar a {
   text-decoration: none;
   color: black;
-  margin: 15px;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.button {
+  background-color: #F4B400;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 25px;
   font-weight: bold;
 }
 
-/* Konten */
-.container {
-  padding: 20px;
+.button:hover {
+  background-color: #e0a800;
 }
 
-/* Sosial media */
-.sosial a {
+/* Section */
+.section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 15px;
+  display: inline-block;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.footer {
+  background-color: #FFD966;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.footer a {
   text-decoration: none;
-  color: #d4a017;
+  color: black;
   font-weight: bold;
 }
 </style>
-
 </head>
 
 <body>
 
 <!-- Navbar -->
 <div class="navbar">
-  <a href="#">Beranda</a>
-  <a href="#">Informasi</a>
-  <a href="#">Bantuan</a>
-  <a href="#">Pustakawan</a>
-  <a href="#">Area Anggota</a>
+  <div class="logo">📚 Perpustakaan Nadia</div>
+  <div>
+    <a href="#">Beranda</a>
+    <a href="#">Informasi</a>
+    <a href="#">Bantuan</a>
+    <a href="#">koleksi</a>
+    <a href="#">Area Anggota</a>
+  </div>
 </div>
 
-<!-- Konten -->
-<div class="container">
+<!-- Hero -->
+<div class="hero">
   <h1>Selamat Datang di Perpustakaan Nadia</h1>
   <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+  <a href="#" class="button">Mulai Membaca</a>
+</div>
 
-  <h3>Ikuti Kami</h3>
-  <div class="sosial">
-    <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">Instagram</a>
+<!-- Informasi Section -->
+<div class="section">
+  <h2>Layanan Kami</h2>
+
+  <div class="card">
+    <h3>Koleksi Digital</h3>
+    <p>Akses ribuan buku dan jurnal online.</p>
   </div>
+
+  <div class="card">
+    <h3>Bantuan Online</h3>
+    <p>Konsultasi dengan pustakawan profesional.</p>
+  </div>
+
+  <div class="card">
+    <h3>Area Anggota</h3>
+    <p>Login untuk mengakses layanan eksklusif.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Ikuti Kami di 
+    <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">Instagram</a>
+  </p>
+  <p>© 2026 Perpustakaan Nadia</p>
 </div>
 
 </body>
