@@ -4,7 +4,6 @@
 <title>Perpustakaan Nadia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -12,82 +11,120 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f6eddc;
-  color: #5a3d1e;
+  background-color: #FFF7DA; /* baby yellow lembut */
+  color: #5a4632;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  padding: 50px 20px 20px;
+/* NAVBAR */
+.navbar {
+  background-color: #FFE08A; 
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.header h1 {
-  margin-bottom: 10px;
-}
-
-.header p {
-  color: #7a5c2e;
-}
-
-/* Foto profil */
-.profile img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 6px solid #e0b84c;
-  margin-top: 20px;
-}
-
-/* Link sosial */
-.links {
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-.links a {
-  text-decoration: none;
-  color: #c48a00;
-  margin: 0 10px;
+.logo {
+  font-size: 20px;
   font-weight: bold;
+  color: #6b4f2a;
 }
 
-.links a:hover {
-  text-decoration: underline;
+.navbar a {
+  text-decoration: none;
+  color: #6b4f2a;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-/* Section umum */
-.section {
-  margin: 50px auto;
+.navbar a:hover {
+  color: white;
+}
+
+/* HERO */
+.hero {
   text-align: center;
-  max-width: 800px;
-  padding: 0 20px;
+  padding: 70px 20px;
 }
 
-.section h2 {
+.hero h1 {
+  font-size: 38px;
   margin-bottom: 15px;
+  color: #6b4f2a;
 }
 
-/* Video box */
+.hero p {
+  font-size: 18px;
+  color: #8a6b3b;
+}
+
+/* PROFIL */
+.profil {
+  margin-top: 30px;
+}
+
+.profil img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  border: 5px solid #FFE08A;
+}
+
+/* LINK */
+.link-profil {
+  margin-top: 15px;
+}
+
+.link-profil a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #c28b00;
+  margin: 0 12px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.link-profil a:hover {
+  color: #ffb300;
+}
+
+/* VIDEO */
+.video-section {
+  margin-top: 40px;
+}
+
+.video-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #6b4f2a;
+}
+
 .video-box {
-  background: #fffaf0;
-  padding: 20px;
+  max-width: 650px;
+  margin: auto;
+  padding: 15px;
+  background: #FFFDF3;
   border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .video-box iframe {
   width: 100%;
   height: 315px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
-/* Footer */
+/* FOOTER */
 .footer {
+  background-color: #FFE08A;
   text-align: center;
   padding: 20px;
-  font-size: 14px;
-  color: #8a6b3b;
+  margin-top: 50px;
+  color: #6b4f2a;
+  font-weight: 500;
 }
 
 </style>
@@ -95,41 +132,54 @@ body {
 
 <body>
 
-<div class="header">
-  <h1>Selamat Datang di Perpustakaan Nadia</h1>
-  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital</p>
-
-  <div class="profile">
-    <img src="foto.jpg" alt="Foto Profil">
-  </div>
-
-  <div class="links">
-    <a href="https://instagram.com" target="_blank">
-      <i class="fa-brands fa-instagram"></i> Instagram
-    </a>
-    |
-    <a href="cv.pdf" target="_blank">
-      <i class="fa-solid fa-file"></i> Lihat CV
-    </a>
+<div class="navbar">
+  <div class="logo">📚 Perpustakaan Nadia</div>
+  <div>
+    <a href="#">Beranda</a>
+    <a href="#">Informasi</a>
+    <a href="#">Bantuan</a>
+    <a href="#">Koleksi</a>
+    <a href="#">Area Anggota</a>
   </div>
 </div>
 
-<!-- Video Section -->
-<div class="section">
-  <h2>Video YouTube</h2>
+<div class="hero">
+  <h1>Selamat Datang di Perpustakaan Nadia</h1>
+  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
 
-  <div class="video-box">
-    <iframe 
-      src="https://www.youtube.com/embed/HYQJUndv6dg"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
+  <div class="profil">
+    <img src="foto.jpg" alt="Foto Profil">
+
+    <div class="link-profil">
+      <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      |
+      <a href="cv-nadia.pdf" target="_blank">
+        <i class="fa-solid fa-file"></i> Lihat CV
+      </a>
+    </div>
   </div>
+
+  <!-- VIDEO -->
+  <div class="video-section">
+    <div class="video-title">Video YouTube</div>
+    <div class="video-box">
+      <iframe 
+        src="https://www.youtube.com/embed/HYQJUndv6dg"
+        title="Video Youtube"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
 </div>
 
 <div class="footer">
-  © 2026 Perpustakaan Nadia
+  <p>© 2026 Perpustakaan Nadia</p>
 </div>
 
 </body>
 </html>
+
