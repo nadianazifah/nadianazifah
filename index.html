@@ -4,19 +4,17 @@
 <title>Perpustakaan Nadia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Font Awesome untuk logo Instagram -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff6dc; /* krem lembut */
+  background-color: #fff6dc;
 }
 
-/* Navbar */
 .navbar {
-  background-color: #f4c542; /* kuning hangat elegan */
+  background-color: #f4c542;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -41,7 +39,6 @@ body {
   color: white;
 }
 
-/* Hero */
 .hero {
   text-align: center;
   padding: 70px 20px;
@@ -58,7 +55,6 @@ body {
   color: #7a5600;
 }
 
-/* Profil */
 .profil {
   margin-top: 30px;
 }
@@ -85,15 +81,23 @@ body {
   transition: 0.3s;
 }
 
-.link-profil a i {
-  margin-right: 6px;
-}
-
 .link-profil a:hover {
   color: #ff8c00;
 }
 
-/* Footer */
+/* VIDEO */
+.video {
+  margin-top: 30px;
+}
+
+.video iframe {
+  width: 700px;
+  height: 400px;
+  max-width: 95%;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
 .footer {
   background-color: #f4c542;
   text-align: center;
@@ -107,7 +111,6 @@ body {
 
 <body>
 
-<!-- Navbar -->
 <div class="navbar">
   <div class="logo">📚 Perpustakaan Nadia</div>
   <div>
@@ -119,7 +122,6 @@ body {
   </div>
 </div>
 
-<!-- Hero -->
 <div class="hero">
   <h1>Selamat Datang di Perpustakaan Nadia</h1>
   <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
@@ -136,9 +138,11 @@ body {
         <i class="fa-solid fa-file"></i> Lihat CV
       </a>
     </div>
-  div class="video">
+
+    <!-- VIDEO YOUTUBE -->
+    <div class="video">
       <iframe 
-        src="https://youtu.be/HYQJUndv6dg?si=uZzOrwHIhKhEtI4e"
+        src="https://www.youtube.com/embed/HYQJUndv6dg"
         title="Video Youtube"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -147,12 +151,11 @@ body {
     </div>
 
   </div>
+</div>
 
-<!-- Footer -->
 <div class="footer">
   <p>© 2026 Perpustakaan Nadia</p>
 </div>
 
 </body>
 </html>
-
