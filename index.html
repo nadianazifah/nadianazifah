@@ -11,13 +11,13 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #ffff47; 
+  background-color: #fff7da; /* kuning krem soft */
   color: #5a4632;
 }
 
 /* NAVBAR */
 .navbar {
-  background-color: #FFE08A; 
+  background-color: #f7d98c; /* kuning soft */
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -39,7 +39,7 @@ body {
 }
 
 .navbar a:hover {
-  color: white;
+  color: #ffffff;
 }
 
 /* HERO */
@@ -70,7 +70,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  border: 5px solid #FFE08A;
+  border: 5px solid #f7d98c;
 }
 
 /* LINK */
@@ -88,25 +88,28 @@ body {
 }
 
 .link-profil a:hover {
-  color: #ffb300;
+  color: #e0a800;
 }
 
-/* VIDEO */
-.video-section {
+/* VIDEO & AUDIO BOX */
+.video-section,
+.audio-section {
   margin-top: 40px;
 }
 
-.video-title {
+.video-title,
+.audio-title {
   font-size: 24px;
   margin-bottom: 15px;
   color: #6b4f2a;
 }
 
-.video-box {
+.video-box,
+.audio-box {
   max-width: 650px;
   margin: auto;
   padding: 15px;
-  background: #FFFDF3;
+  background: #fffdf3;
   border-radius: 15px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
@@ -119,7 +122,7 @@ body {
 
 /* FOOTER */
 .footer {
-  background-color: #FFE08A;
+  background-color: #f7d98c;
   text-align: center;
   padding: 20px;
   margin-top: 50px;
@@ -133,7 +136,7 @@ body {
 <body>
 
 <div class="navbar">
-  <div class="Perpustakaan Nadia"</div>
+  <div class="logo">Perpustakaan Nadia</div>
   <div>
     <a href="#">Beranda</a>
     <a href="#">Informasi</a>
@@ -173,16 +176,16 @@ body {
     </div>
   </div>
 
-  
-<div class="audio-section">
-  <div class="audio-title">Audio</div>
-  <div class="audio-box">
-    <audio controls>
-      <source src="musik.mp3" type="audio/mpeg">
-      Browser Anda tidak mendukung audio.
-    </audio>
+  <div class="audio-section">
+    <div class="audio-title">Audio</div>
+    <div class="audio-box">
+      <audio controls>
+        <source src="musik.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio.
+      </audio>
+    </div>
   </div>
-</div>
+
 </div>
 
 <div class="footer">
@@ -191,4 +194,5 @@ body {
 
 </body>
 </html>
+
 
