@@ -4,155 +4,131 @@
 <title>Perpustakaan Nadia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff6dc;
+  background: #f6eddc;
+  color: #5a3d1e;
 }
 
-.navbar {
-  background-color: #f4c542;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #5c3d00;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #5c3d00;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.navbar a:hover {
-  color: white;
-}
-
-.hero {
+/* Header */
+.header {
   text-align: center;
-  padding: 70px 20px;
+  padding: 50px 20px 20px;
 }
 
-.hero h1 {
-  font-size: 38px;
-  margin-bottom: 15px;
-  color: #5c3d00;
+.header h1 {
+  margin-bottom: 10px;
 }
 
-.hero p {
-  font-size: 18px;
-  color: #7a5600;
+.header p {
+  color: #7a5c2e;
 }
 
-.profil {
-  margin-top: 30px;
-}
-
-.profil img {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
+/* Foto profil */
+.profile img {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  border: 5px solid #f4c542;
+  border: 6px solid #e0b84c;
+  margin-top: 20px;
 }
 
-.link-profil {
-  margin-top: 15px;
+/* Link sosial */
+.links {
+  margin-top: 20px;
+  font-size: 18px;
 }
 
-.link-profil a {
+.links a {
   text-decoration: none;
+  color: #c48a00;
+  margin: 0 10px;
   font-weight: bold;
-  color: #c88a00;
-  margin: 0 12px;
-  font-size: 16px;
-  transition: 0.3s;
 }
 
-.link-profil a:hover {
-  color: #ff8c00;
+.links a:hover {
+  text-decoration: underline;
 }
 
-/* VIDEO */
-.video {
-  margin-top: 30px;
+/* Section umum */
+.section {
+  margin: 50px auto;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
 }
 
-.video iframe {
-  width: 700px;
-  height: 400px;
-  max-width: 95%;
+.section h2 {
+  margin-bottom: 15px;
+}
+
+/* Video box */
+.video-box {
+  background: #fffaf0;
+  padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
+.video-box iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+}
+
+/* Footer */
 .footer {
-  background-color: #f4c542;
   text-align: center;
   padding: 20px;
-  margin-top: 50px;
-  color: #5c3d00;
-  font-weight: 500;
+  font-size: 14px;
+  color: #8a6b3b;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-  <div class="logo">📚 Perpustakaan Nadia</div>
-  <div>
-    <a href="#">Beranda</a>
-    <a href="#">Informasi</a>
-    <a href="#">Bantuan</a>
-    <a href="#">Koleksi</a>
-    <a href="#">Area Anggota</a>
+<div class="header">
+  <h1>Selamat Datang di Perpustakaan Nadia</h1>
+  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital</p>
+
+  <div class="profile">
+    <img src="foto.jpg" alt="Foto Profil">
+  </div>
+
+  <div class="links">
+    <a href="https://instagram.com" target="_blank">
+      <i class="fa-brands fa-instagram"></i> Instagram
+    </a>
+    |
+    <a href="cv.pdf" target="_blank">
+      <i class="fa-solid fa-file"></i> Lihat CV
+    </a>
   </div>
 </div>
 
-<div class="hero">
-  <h1>Selamat Datang di Perpustakaan Nadia</h1>
-  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+<!-- Video Section -->
+<div class="section">
+  <h2>Video YouTube</h2>
 
-  <div class="profil">
-    <img src="foto.jpg" alt="Foto Profil">
-    <title>Profile Saya</title>
-
-    <div class="link-profil">
-      <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">
-        <i class="fa-brands fa-instagram"></i> Instagram
-      </a>
-      |
-      <a href="cv-nadia.pdf" target="_blank">
-        <i class="fa-solid fa-file"></i> Lihat CV
-      </a>
-    </div>
-    <title>Video Youtube</title>
-<h2 style="text-align:center; margin-top:40px;">Video YouTube</h2>
-<div style="max-width:600px; margin:20px auto;">
-  <iframe width="100%" height="315"
-    src="https://www.youtube.com/embed/HYQJUndv6dg"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
-</div>
-
+  <div class="video-box">
+    <iframe 
+      src="https://www.youtube.com/embed/HYQJUndv6dg"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
 </div>
 
 <div class="footer">
-  <p>© 2026 Perpustakaan Nadia</p>
+  © 2026 Perpustakaan Nadia
 </div>
 
 </body>
