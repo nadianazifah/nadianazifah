@@ -11,13 +11,13 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #FFFFF0;
+  background-color: #FFFFF0; /* ivory */
   color: #5a4632;
 }
 
 /* NAVBAR */
 .navbar {
-  background-color: #F3E5C8;
+  background-color: #F3E5C8; /* krem kalem */
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -91,33 +91,6 @@ body {
   color: #6b4f2a;
 }
 
-/* CV SECTION */
-.cv-section {
-  margin-top: 60px;
-}
-
-.cv-title {
-  font-size: 26px;
-  margin-bottom: 20px;
-  color: #6b4f2a;
-}
-
-.cv-box {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background: #FFFDF6;
-  border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-.cv-box iframe {
-  width: 100%;
-  height: 600px;
-  border-radius: 12px;
-  border: none;
-}
-
 /* VIDEO & AUDIO */
 .video-section,
 .audio-section {
@@ -136,7 +109,7 @@ body {
   max-width: 650px;
   margin: auto;
   padding: 15px;
-  background: #FFFDF6;
+  background: #FFFDF6; /* ivory terang */
   border-radius: 15px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
@@ -163,5 +136,61 @@ body {
 <body>
 
 <div class="navbar">
-  <div class="logo">Perpustakaan N
+  <div class="logo">Perpustakaan Nadia</div>
+  <div>
+    <a href="#">Beranda</a>
+    <a href="#">Informasi</a>
+    <a href="#">Bantuan</a>
+    <a href="#">Koleksi</a>
+    <a href="#">Area Anggota</a>
+  </div>
+</div>
 
+<div class="hero">
+  <h1>Selamat Datang di Perpustakaan Nadia</h1>
+  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+
+  <div class="profil">
+    <img src="foto.jpg" alt="Foto Profil">
+
+    <div class="link-profil">
+      <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      |
+      <a href=https://drive.google.com/file/d/1DSA-4pRHGvFAhbZzsTNdVpcE6uNTREP-/view?usp=drivesdktarget="_blank">
+        <i class="fa-solid fa-file"></i> Lihat CV
+      </a>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="video-title">Video YouTube</div>
+    <div class="video-box">
+      <iframe 
+        src="https://www.youtube.com/embed/zhGnuWwpNxI"
+        title="Video Youtube"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <div class="audio-section">
+    <div class="audio-title">Audio</div>
+    <div class="audio-box">
+      <audio controls>
+        <source src="musik.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio.
+      </audio>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>© 2026 Perpustakaan Nadia</p>
+</div>
+
+</body>
+</html>
