@@ -11,13 +11,13 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #FFFFF0; /* ivory */
+  background-color: #FFFFF0;
   color: #5a4632;
 }
 
 /* NAVBAR */
 .navbar {
-  background-color: #F3E5C8; /* krem kalem */
+  background-color: #F3E5C8;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -75,20 +75,28 @@ body {
 
 /* LINK */
 .link-profil {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .link-profil a {
   text-decoration: none;
-  font-weight: bold;
-  color: #a67c52;
-  margin: 0 12px;
-  font-size: 16px;
+  margin: 0 10px;
+}
+
+/* TOMBOL CV */
+.cv-button {
+  display: inline-block;
+  background-color: #a67c52;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
   transition: 0.3s;
 }
 
-.link-profil a:hover {
-  color: #6b4f2a;
+.cv-button:hover {
+  background-color: #6b4f2a;
+  transform: scale(1.05);
 }
 
 /* VIDEO & AUDIO */
@@ -109,7 +117,7 @@ body {
   max-width: 650px;
   margin: auto;
   padding: 15px;
-  background: #FFFDF6; /* ivory terang */
+  background: #FFFDF6;
   border-radius: 15px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
@@ -157,9 +165,9 @@ body {
       <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">
         <i class="fa-brands fa-instagram"></i> Instagram
       </a>
-      |
-      <a href="cv-nadia.pdf" target="_blank">
-        <i class="fa-solid fa-file"></i> Lihat CV
+
+      <a href="cv-nadia.pdf" download class="cv-button">
+        <i class="fa-solid fa-file-arrow-down"></i> Download CV
       </a>
     </div>
   </div>
@@ -194,5 +202,3 @@ body {
 
 </body>
 </html>
-
-
