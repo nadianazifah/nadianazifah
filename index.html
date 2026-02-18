@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <title>Perpustakaan Nadia</title>
@@ -11,13 +11,13 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #FFFFF0; /* ivory */
+  background-color: #FFFFF0;
   color: #5a4632;
 }
 
 /* NAVBAR */
 .navbar {
-  background-color: #F3E5C8; /* krem kalem */
+  background-color: #F3E5C8;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -109,7 +109,7 @@ body {
   max-width: 650px;
   margin: auto;
   padding: 15px;
-  background: #FFFDF6; /* ivory terang */
+  background: #FFFDF6;
   border-radius: 15px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
@@ -120,14 +120,58 @@ body {
   border-radius: 12px;
 }
 
-/* FOOTER */
+/* FOOTER MODERN */
 .footer {
-  background-color: #F3E5C8;
+  background: linear-gradient(180deg, #E9D8B4, #DCC8A0);
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
   margin-top: 50px;
-  color: #6b4f2a;
-  font-weight: 500;
+  color: #5a4632;
+}
+
+.footer h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
+.footer p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* ICON KONTAK */
+.contact-box {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.contact-item {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+
+.contact-item.wa { background: #25D366; }
+
+.contact-item.ig { 
+  background: radial-gradient(circle at 30% 107%, 
+  #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.contact-item.email { background: #EA4335; }
+
+.contact-item:hover {
+  transform: translateY(-6px) scale(1.1);
 }
 
 </style>
@@ -158,7 +202,7 @@ body {
         <i class="fa-brands fa-instagram"></i> Instagram
       </a>
       |
-      <a href=https://drive.google.com/file/d/1UWWMW5H5BF5AOlfgev_5Xvc_61i3mORt/view?usp=drivesdktarget="_blank">
+      <a href="https://drive.google.com/file/d/1UWWMW5H5BF5AOlfgev_5Xvc_61i3mORt/view?usp=drivesdk" target="_blank">
         <i class="fa-solid fa-file"></i> Lihat CV
       </a>
     </div>
@@ -188,11 +232,11 @@ body {
 
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-  </section>
 
-<section id="contact">
-  <h2>Hubungi Saya </h2>
+  <h2>Hubungi Saya</h2>
+  <p>Silakan hubungi saya melalui media berikut</p>
 
   <div class="contact-box">
     <a href="https://wa.me/62811650334" target="_blank" class="contact-item wa">
@@ -207,10 +251,11 @@ body {
       <i class="fas fa-envelope"></i>
     </a>
   </div>
-</section>
 
   <p>© 2026 Perpustakaan Nadia</p>
+
 </div>
 
 </body>
 </html>
+
