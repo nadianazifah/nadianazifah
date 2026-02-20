@@ -49,18 +49,7 @@ body {
   padding: 70px 20px;
 }
 
-.hero h1 {
-  font-size: 38px;
-  margin-bottom: 15px;
-  color: #6b4f2a;
-}
-
-.hero p {
-  font-size: 18px;
-  color: #8a6b3b;
-}
-
-/* FORM LOGIN */
+/* LOGIN SECTION */
 .login-section {
   display: none;
   text-align: center;
@@ -106,10 +95,70 @@ body {
 
 .back-btn {
   margin-top: 15px;
-  display: inline-block;
   cursor: pointer;
   color: #a67c52;
   font-weight: bold;
+}
+
+/* PROFIL */
+.profil {
+  margin-top: 30px;
+}
+
+.profil img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  border: 5px solid #F3E5C8;
+}
+
+/* LINK */
+.link-profil {
+  margin-top: 15px;
+}
+
+.link-profil a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #a67c52;
+  margin: 0 12px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.link-profil a:hover {
+  color: #6b4f2a;
+}
+
+/* VIDEO & AUDIO */
+.video-section,
+.audio-section {
+  margin-top: 40px;
+}
+
+.video-title,
+.audio-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #6b4f2a;
+}
+
+.video-box,
+.audio-box {
+  max-width: 650px;
+  margin: auto;
+  padding: 15px;
+  background: #FFFDF6;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 12px;
 }
 
 /* FOOTER */
@@ -138,26 +187,56 @@ body {
   </div>
 </div>
 
-<!-- HERO -->
-<div class="hero" id="homePage">
+<!-- HALAMAN UTAMA -->
+<div id="homePage" class="hero">
   <h1>Selamat Datang di Perpustakaan Nadia</h1>
   <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+
+  <div class="profil">
+    <img src="foto.jpg" alt="Foto Profil">
+    <div class="link-profil">
+      <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      |
+      <a href="https://drive.google.com/" target="_blank">
+        <i class="fa-solid fa-file"></i> Lihat CV
+      </a>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="video-title">Video YouTube</div>
+    <div class="video-box">
+      <iframe 
+        src="https://www.youtube.com/embed/zhGnuWwpNxI"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <div class="audio-section">
+    <div class="audio-title">Audio</div>
+    <div class="audio-box">
+      <audio controls>
+        <source src="musik.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
 </div>
 
-<!-- LOGIN PAGE -->
-<div class="login-section" id="loginPage">
+<!-- HALAMAN LOGIN -->
+<div id="loginPage" class="login-section">
   <div class="login-box">
     <h2>Formulir Pendaftaran</h2>
-
     <form onsubmit="return daftar()">
       <input type="text" placeholder="First Name" required>
       <input type="text" placeholder="Last Name" required>
       <button type="submit">Daftar</button>
     </form>
-
-    <div class="back-btn" onclick="showHome()">
-      ← Kembali ke Beranda
-    </div>
+    <div class="back-btn" onclick="showHome()">← Kembali ke Beranda</div>
   </div>
 </div>
 
