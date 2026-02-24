@@ -3,9 +3,11 @@
 <head>
 <title>Perpustakaan Nadia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -21,17 +23,22 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .logo {
   font-size: 20px;
   font-weight: bold;
   color: #6b4f2a;
 }
+
 .navbar a {
   text-decoration: none;
   color: #6b4f2a;
   margin-left: 20px;
   font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
 .navbar a:hover {
   color: #a67c52;
 }
@@ -41,14 +48,110 @@ body {
   text-align: center;
   padding: 70px 20px;
 }
-.hero h1 {
-  font-size: 38px;
+
+/* LOGIN & REGISTER */
+.login-section {
+  display: none;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.login-box {
+  max-width: 420px;
+  margin: auto;
+  background: #FFFDF6;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #6b4f2a;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #c9a24d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-box button:hover {
+  background-color: #a88435;
+}
+
+.switch-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch-link span {
+  color: #a67c52;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-btn {
+  margin-top: 15px;
+  cursor: pointer;
+  color: #a67c52;
+  font-weight: bold;
+}
+
+/* PROFIL */
+.profil {
+  margin-top: 30px;
+}
+
+.profil img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  border: 5px solid #F3E5C8;
+}
+
+/* VIDEO & AUDIO */
+.video-section,
+.audio-section {
+  margin-top: 40px;
+}
+
+.video-title,
+.audio-title {
+  font-size: 24px;
   margin-bottom: 15px;
   color: #6b4f2a;
 }
-.hero p {
-  font-size: 18px;
-  color: #8a6b3b;
+
+.video-box,
+.audio-box {
+  max-width: 650px;
+  margin: auto;
+  padding: 15px;
+  background: #FFFDF6;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 12px;
 }
 
 /* FOOTER */
@@ -60,70 +163,83 @@ body {
   color: #5a4632;
 }
 
-/* POPUP LOGIN */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-.popup-box {
-  background: #FFFDF6;
-  padding: 30px;
-  width: 350px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  text-align: center;
-}
-.popup-box input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.popup-box button {
-  width: 100%;
-  padding: 10px;
-  background: #c9a24d;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.close-btn {
-  float: right;
-  cursor: pointer;
-  font-weight: bold;
-  color: #6b4f2a;
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">Perpustakaan Nadia</div>
   <div>
-    <a href="#">Beranda</a>
+    <a onclick="showHome()">Beranda</a>
     <a href="#">Informasi</a>
     <a href="#">Bantuan</a>
     <a href="#">Koleksi</a>
-    <a href="#" onclick="openLogin()">Area Anggota</a>
+    <a onclick="showLogin()">Area Anggota</a>
   </div>
 </div>
 
-<!-- HALAMAN UTAMA TETAP ADA -->
-<div class="hero">
+<!-- HALAMAN UTAMA -->
+<div id="homePage" class="hero">
   <h1>Selamat Datang di Perpustakaan Nadia</h1>
   <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+
+  <div class="profil">
+    <img src="foto.jpg" alt="Foto Profil">
+  </div>
+
+  <div class="video-section">
+    <div class="video-title">Video YouTube</div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/zhGnuWwpNxI" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="audio-section">
+    <div class="audio-title">Audio</div>
+    <div class="audio-box">
+      <audio controls>
+        <source src="musik.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-section">
+  <div class="login-box">
+    <h2>Login Anggota</h2>
+    <form onsubmit="return login()">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <div class="switch-link">
+      Belum punya akun? <span onclick="showRegister()">Daftar</span>
+    </div>
+    <div class="back-btn" onclick="showHome()">← Kembali</div>
+  </div>
+</div>
+
+<!-- REGISTER -->
+<div id="registerPage" class="login-section">
+  <div class="login-box">
+    <h2>Formulir Pendaftaran</h2>
+    <form onsubmit="return daftar()">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" id="regPass" placeholder="Password" required>
+
+      <div style="text-align:left;font-size:14px;">
+        <input type="checkbox" onclick="togglePassword()"> Tampilkan Password
+      </div>
+
+      <button type="submit">Daftar</button>
+    </form>
+    <div class="back-btn" onclick="showLogin()">← Kembali ke Login</div>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -131,24 +247,38 @@ body {
   <p>© 2026 Perpustakaan Nadia</p>
 </div>
 
-<!-- LOGIN POPUP -->
-<div class="popup" id="loginPopup">
-  <div class="popup-box">
-    <span class="close-btn" onclick="closeLogin()">X</span>
-    <h2>Login</h2>
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button>Login</button>
-  </div>
-</div>
-
 <script>
-function openLogin(){
-  document.getElementById("loginPopup").style.display="flex";
+function showLogin(){
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("loginPage").style.display="block";
+  document.getElementById("registerPage").style.display="none";
 }
-function closeLogin(){
-  document.getElementById("loginPopup").style.display="none";
+
+function showRegister(){
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("registerPage").style.display="block";
+}
+
+function showHome(){
+  document.getElementById("homePage").style.display="block";
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("registerPage").style.display="none";
+}
+
+function login(){
+  alert("Login berhasil!");
+  return false;
+}
+
+function daftar(){
+  alert("Pendaftaran berhasil!");
+  return false;
+}
+
+function togglePassword(){
+  var x=document.getElementById("regPass");
+  if(x.type==="password"){ x.type="text"; }
+  else{ x.type="password"; }
 }
 </script>
 
