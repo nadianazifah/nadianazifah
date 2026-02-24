@@ -65,11 +65,6 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.login-box h2 {
-  margin-bottom: 20px;
-  color: #6b4f2a;
-}
-
 .login-box input {
   width: 100%;
   padding: 12px;
@@ -111,20 +106,6 @@ body {
   font-weight: bold;
 }
 
-/* PROFIL */
-.profil {
-  margin-top: 30px;
-}
-
-.profil img {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-  border: 5px solid #F3E5C8;
-}
-
 /* VIDEO & AUDIO */
 .video-section,
 .audio-section {
@@ -135,7 +116,6 @@ body {
 .audio-title {
   font-size: 24px;
   margin-bottom: 15px;
-  color: #6b4f2a;
 }
 
 .video-box,
@@ -158,9 +138,8 @@ body {
 .footer {
   background: linear-gradient(180deg, #E9D8B4, #DCC8A0);
   text-align: center;
-  padding: 40px 20px;
-  margin-top: 50px;
-  color: #5a4632;
+  padding: 50px 20px;
+  margin-top: 60px;
 }
 
 .contact-box{
@@ -200,22 +179,18 @@ body {
 <div class="navbar">
   <div class="logo">Perpustakaan Nadia</div>
   <div>
-    <a href="#" onclick="showHome()">Beranda</a>
+    <a href="#" onclick="showHome(); return false;">Beranda</a>
     <a href="#">Informasi</a>
     <a href="#">Bantuan</a>
     <a href="#">Koleksi</a>
-    <a href="#" onclick="showLogin()">Area Anggota</a>
+    <a href="#" onclick="showLogin(); return false;">Area Anggota</a>
   </div>
 </div>
 
-<!-- HALAMAN UTAMA -->
+<!-- HOME -->
 <div id="homePage" class="hero">
   <h1>Selamat Datang di Perpustakaan Nadia</h1>
   <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
-
-  <div class="profil">
-    <img src="foto.jpg" alt="Foto Profil">
-  </div>
 
   <div class="video-section">
     <div class="video-title">Video YouTube</div>
