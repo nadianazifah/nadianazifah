@@ -163,6 +163,35 @@ body {
   color: #5a4632;
 }
 
+.contact-box{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+}
+
+.contact-item{
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:22px;
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+  box-shadow:0 5px 12px rgba(0,0,0,0.15);
+}
+
+.contact-item:hover{
+  transform:translateY(-5px);
+}
+
+.wa{ background:#25D366; }
+.email{ background:#D44638; }
+.sms{ background:#6b4f2a; }
+
 </style>
 </head>
 
@@ -171,11 +200,11 @@ body {
 <div class="navbar">
   <div class="logo">Perpustakaan Nadia</div>
   <div>
-    <a onclick="showHome()">Beranda</a>
+    <a href="#" onclick="showHome()">Beranda</a>
     <a href="#">Informasi</a>
     <a href="#">Bantuan</a>
     <a href="#">Koleksi</a>
-    <a onclick="showLogin()">Area Anggota</a>
+    <a href="#" onclick="showLogin()">Area Anggota</a>
   </div>
 </div>
 
@@ -244,7 +273,23 @@ body {
 
 <!-- FOOTER -->
 <div class="footer">
-  <p>© 2026 Perpustakaan Nadia</p>
+  <h2>Hubungi Saya</h2>
+
+  <div class="contact-box">
+    <a href="https://wa.me/62811650334" target="_blank" class="contact-item wa">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="mailto:nadianhrmwn02@gmail.com" class="contact-item email">
+      <i class="fas fa-envelope"></i>
+    </a>
+
+    <a href="sms:62811650334" class="contact-item sms">
+      <i class="fas fa-comment"></i>
+    </a>
+  </div>
+
+  <p style="margin-top:25px;">© 2026 Perpustakaan Nadia</p>
 </div>
 
 <script>
