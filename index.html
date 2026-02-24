@@ -1,264 +1,131 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
-<title>Perpustakaan Nadia</title>
+<title>Login - Perpustakaan Nadia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #FFFFF0;
-  color: #5a4632;
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#FFFFF0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
 }
 
-/* NAVBAR */
-.navbar {
-  background-color: #F3E5C8;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.container{
+  width:380px;
+  background:#FFFDF6;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #6b4f2a;
+h2{
+  text-align:center;
+  color:#6b4f2a;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: #6b4f2a;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: 0.3s;
-  cursor: pointer;
+input{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 
-.navbar a:hover {
-  color: #a67c52;
+button{
+  width:100%;
+  padding:12px;
+  background:#c9a24d;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
 }
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 70px 20px;
+button:hover{
+  background:#a88435;
 }
 
-/* LOGIN SECTION */
-.login-section {
-  display: none;
-  text-align: center;
-  padding: 80px 20px;
+.link{
+  text-align:center;
+  margin-top:10px;
+  cursor:pointer;
+  color:#a67c52;
+  font-weight:bold;
 }
 
-.login-box {
-  max-width: 400px;
-  margin: auto;
-  background: #FFFDF6;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.checkbox{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:14px;
 }
 
-.login-box h2 {
-  margin-bottom: 20px;
-  color: #6b4f2a;
+.hidden{
+  display:none;
 }
-
-.login-box input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.login-box button {
-  width: 100%;
-  padding: 12px;
-  background-color: #c9a24d;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.login-box button:hover {
-  background-color: #a88435;
-}
-
-.back-btn {
-  margin-top: 15px;
-  cursor: pointer;
-  color: #a67c52;
-  font-weight: bold;
-}
-
-/* PROFIL */
-.profil {
-  margin-top: 30px;
-}
-
-.profil img {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-  border: 5px solid #F3E5C8;
-}
-
-/* LINK */
-.link-profil {
-  margin-top: 15px;
-}
-
-.link-profil a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #a67c52;
-  margin: 0 12px;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-.link-profil a:hover {
-  color: #6b4f2a;
-}
-
-/* VIDEO & AUDIO */
-.video-section,
-.audio-section {
-  margin-top: 40px;
-}
-
-.video-title,
-.audio-title {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #6b4f2a;
-}
-
-.video-box,
-.audio-box {
-  max-width: 650px;
-  margin: auto;
-  padding: 15px;
-  background: #FFFDF6;
-  border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-.video-box iframe {
-  width: 100%;
-  height: 315px;
-  border-radius: 12px;
-}
-
-/* FOOTER */
-.footer {
-  background: linear-gradient(180deg, #E9D8B4, #DCC8A0);
-  text-align: center;
-  padding: 40px 20px;
-  margin-top: 50px;
-  color: #5a4632;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-  <div class="logo">Perpustakaan Nadia</div>
-  <div>
-    <a onclick="showHome()">Beranda</a>
-    <a href="#">Informasi</a>
-    <a href="#">Bantuan</a>
-    <a href="#">Koleksi</a>
-    <a href="#">Area Anggota</a>
-    <a onclick="showLogin()">Login</a>
+<div class="container">
+
+  <!-- LOGIN FORM -->
+  <div id="loginForm">
+    <h2>Login</h2>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" id="loginPass" placeholder="Password" required>
+    <button>Login</button>
+
+    <div class="link" onclick="showRegister()">Belum punya akun? Daftar</div>
   </div>
-</div>
 
-<!-- HALAMAN UTAMA -->
-<div id="homePage" class="hero">
-  <h1>Selamat Datang di Perpustakaan Nadia</h1>
-  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+  <!-- REGISTER FORM -->
+  <div id="registerForm" class="hidden">
+    <h2>Daftar</h2>
+    <input type="text" placeholder="First Name" required>
+    <input type="text" placeholder="Last Name" required>
+    <input type="tel" placeholder="No HP" required>
+    <input type="password" id="regPass" placeholder="Password" required>
 
-  <div class="profil">
-    <img src="foto.jpg" alt="Foto Profil">
-    <div class="link-profil">
-      <a href="https://www.instagram.com/nadianhrmwn/" target="_blank">
-        <i class="fa-brands fa-instagram"></i> Instagram
-      </a>
-      |
-      <a href="https://drive.google.com/" target="_blank">
-        <i class="fa-solid fa-file"></i> Lihat CV
-      </a>
+    <div class="checkbox">
+      <input type="checkbox" onclick="togglePassword()">
+      <label>Tampilkan Password</label>
     </div>
+
+    <button onclick="alert('Pendaftaran Berhasil!')">Daftar</button>
+
+    <div class="link" onclick="showLogin()">Sudah punya akun? Login</div>
   </div>
 
-  <div class="video-section">
-    <div class="video-title">Video YouTube</div>
-    <div class="video-box">
-      <iframe 
-        src="https://www.youtube.com/embed/zhGnuWwpNxI"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-  <div class="audio-section">
-    <div class="audio-title">Audio</div>
-    <div class="audio-box">
-      <audio controls>
-        <source src="musik.mp3" type="audio/mpeg">
-      </audio>
-    </div>
-  </div>
-
-</div>
-
-<!-- HALAMAN LOGIN -->
-<div id="loginPage" class="login-section">
-  <div class="login-box">
-    <h2>Formulir Pendaftaran</h2>
-    <form onsubmit="return daftar()">
-      <input type="text" placeholder="First Name" required>
-      <input type="text" placeholder="Last Name" required>
-      <button type="submit">Daftar</button>
-    </form>
-    <div class="back-btn" onclick="showHome()">← Kembali ke Beranda</div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <p>© 2026 Perpustakaan Nadia</p>
 </div>
 
 <script>
-function showLogin() {
-  document.getElementById("homePage").style.display = "none";
-  document.getElementById("loginPage").style.display = "block";
+function showRegister(){
+  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("registerForm").classList.remove("hidden");
 }
 
-function showHome() {
-  document.getElementById("homePage").style.display = "block";
-  document.getElementById("loginPage").style.display = "none";
+function showLogin(){
+  document.getElementById("registerForm").classList.add("hidden");
+  document.getElementById("loginForm").classList.remove("hidden");
 }
 
-function daftar() {
-  alert("Pendaftaran berhasil!");
-  return false;
+function togglePassword(){
+  var pass = document.getElementById("regPass");
+  if(pass.type === "password"){
+    pass.type = "text";
+  } else {
+    pass.type = "password";
+  }
 }
 </script>
 
