@@ -1,87 +1,258 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Daftar - Perpustakaan Nadia</title>
+<title>Perpustakaan Nadia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:#FFFFF0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FFFFF0;
+  color: #5a4632;
 }
 
-.box{
-  width:380px;
-  background:#FFFDF6;
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+/* NAVBAR */
+.navbar {
+  background-color: #F3E5C8;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #6b4f2a;
+}
+.navbar a {
+  text-decoration: none;
+  color: #6b4f2a;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.navbar a:hover {
+  color: #a67c52;
 }
 
-h2{
-  text-align:center;
-  color:#6b4f2a;
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+}
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 15px;
+  color: #6b4f2a;
+}
+.hero p {
+  font-size: 18px;
+  color: #8a6b3b;
 }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
+/* PROFIL */
+.profil {
+  margin-top: 30px;
+}
+.profil img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  border: 5px solid #F3E5C8;
 }
 
-button{
-  width:100%;
-  padding:12px;
-  background:#c9a24d;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:10px;
+/* LINK */
+.link-profil {
+  margin-top: 15px;
+}
+.link-profil a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #a67c52;
+  margin: 0 12px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.link-profil a:hover {
+  color: #6b4f2a;
 }
 
-button:hover{
-  background:#a88435;
+/* VIDEO & AUDIO */
+.video-section, .audio-section {
+  margin-top: 40px;
+}
+.video-title, .audio-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #6b4f2a;
+}
+.video-box, .audio-box {
+  max-width: 650px;
+  margin: auto;
+  padding: 15px;
+  background: #FFFDF6;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.video-box iframe {
+  width: 100%;
+  height: 315px;
+  border-radius: 12px;
 }
 
-.link{
-  text-align:center;
-  margin-top:12px;
+/* FOOTER */
+.footer {
+  background: linear-gradient(180deg, #E9D8B4, #DCC8A0);
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 50px;
+  color: #5a4632;
+}
+.footer h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+.footer p {
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
-.link a{
-  text-decoration:none;
-  color:#a67c52;
-  font-weight:bold;
+/* ICON KONTAK */
+.contact-box {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+.contact-item {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+.contact-item.wa { background: #25D366; }
+.contact-item.ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.contact-item.email { background: #EA4335; }
+.contact-item:hover { transform: translateY(-6px) scale(1.1); }
+
+/* POPUP LOGIN & DAFTAR */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+.popup-box {
+  background: #FFFDF6;
+  padding: 30px;
+  width: 380px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.popup-box h2 {
+  color: #6b4f2a;
+}
+.popup-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.popup-box button {
+  width: 100%;
+  padding: 10px;
+  background: #c9a24d;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.popup-box a {
+  color: #a67c52;
+  font-weight: bold;
+  text-decoration: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h2>Formulir Pendaftaran</h2>
-
-  <form>
-    <input type="text" placeholder="First Name" required>
-    <input type="text" placeholder="Last Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
-    <button type="submit">Daftar</button>
-  </form>
-
-  <div class="link">
-    Sudah punya akun? <a href="login.html">Login</a>
+<div class="navbar">
+  <div class="logo">Perpustakaan Nadia</div>
+  <div>
+    <a href="#">Beranda</a>
+    <a href="#">Informasi</a>
+    <a href="#">Bantuan</a>
+    <a href="#">Koleksi</a>
+    <a href="#" onclick="openLogin()">Area Anggota</a>
   </div>
 </div>
+
+<div class="hero">
+  <h1>Selamat Datang di Perpustakaan Nadia</h1>
+  <p>Jelajahi Dunia Tanpa Batas di Perpustakaan Digital.</p>
+</div>
+
+<!-- LOGIN POPUP -->
+<div class="popup" id="loginPopup">
+  <div class="popup-box">
+    <h2>Login</h2>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+    <p>Belum punya akun? <a href="#" onclick="openRegister()">Daftar</a></p>
+  </div>
+</div>
+
+<!-- REGISTER POPUP -->
+<div class="popup" id="registerPopup">
+  <div class="popup-box">
+    <h2>Daftar</h2>
+    <input type="text" placeholder="First Name">
+    <input type="text" placeholder="Last Name">
+    <input type="email" placeholder="Email">
+    <input type="password" id="regPass" placeholder="Password">
+    <label><input type="checkbox" onclick="showPass()"> Tampilkan Password</label>
+    <button>Daftar</button>
+  </div>
+</div>
+
+<script>
+function openLogin(){
+  document.getElementById("loginPopup").style.display="flex";
+}
+function openRegister(){
+  document.getElementById("loginPopup").style.display="none";
+  document.getElementById("registerPopup").style.display="flex";
+}
+function showPass(){
+  var x = document.getElementById("regPass");
+  x.type = x.type === "password" ? "text" : "password";
+}
+window.onclick = function(e){
+  if(e.target.classList.contains("popup")){
+    e.target.style.display="none";
+  }
+}
+</script>
 
 </body>
 </html>
