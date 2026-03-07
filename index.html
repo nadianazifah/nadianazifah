@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,9 +68,10 @@ margin-top:25px;
 
 .search-box input{
 padding:12px;
-width:300px;
+width:320px;
 border-radius:25px;
 border:1px solid #e5d38f;
+outline:none;
 }
 
 /* KOLEKSI */
@@ -137,10 +139,6 @@ border:none;
 border-radius:10px;
 cursor:pointer;
 font-weight:bold;
-}
-
-.login-box button:hover{
-background:#e0b22f;
 }
 
 .back-btn{
@@ -222,10 +220,10 @@ transform:translateY(-5px);
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
 
 <div class="search-box">
-<input type="text" placeholder="🔎 Cari Resep Cake...">
+<input type="text" id="searchInput" onkeyup="searchCake()" placeholder="🔎 Cari Resep Cake...">
 </div>
 
-<div class="collection">
+<div class="collection" id="cakeList">
 
 <div class="card">
 <i class="fas fa-birthday-cake"></i>
@@ -258,9 +256,7 @@ transform:translateY(-5px);
 CakeLib merupakan perpustakaan digital yang menyediakan berbagai
 referensi resep cake dan pastry bagi masyarakat. Website ini dibuat
 untuk membantu pengguna menemukan resep kue secara mudah,
-terstruktur, dan terpercaya. Dengan adanya CakeLib, diharapkan
-masyarakat dapat memperoleh informasi pembuatan kue yang lebih
-sistematis dan praktis melalui satu platform digital.
+terstruktur, dan terpercaya.
 </p>
 
 </div>
@@ -339,7 +335,23 @@ alert("Login berhasil ke CakeLib!");
 return false;
 }
 
+/* FUNGSI PENCARIAN */
+function searchCake(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let cards = document.querySelectorAll("#cakeList .card");
+
+cards.forEach(card => {
+let text = card.innerText.toLowerCase();
+if(text.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+
 </script>
 
 </body>
 </html>
+```
