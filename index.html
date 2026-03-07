@@ -139,8 +139,45 @@ body{
 .footer{
   background:#fff1a8;
   text-align:center;
-  padding:40px 20px;
+  padding:50px 20px;
   margin-top:60px;
+}
+
+.contact-box{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+}
+
+.contact-item{
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:22px;
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+  box-shadow:0 5px 12px rgba(0,0,0,0.15);
+}
+
+.contact-item:hover{
+  transform:translateY(-5px);
+}
+
+.ig{
+  background:#E1306C;
+}
+
+.email{
+  background:#D44638;
+}
+
+.wa{
+  background:#25D366;
 }
 
 .footer p{
@@ -203,6 +240,7 @@ body{
     <div class="back-btn" onclick="showHome()">← Kembali</div>
   </div>
 </div>
+
 <!-- FOOTER -->
 <div class="footer">
 
@@ -227,7 +265,6 @@ body{
 <p>© 2026 CakeLib - Digital Cake Library</p>
 <p>Dibuat oleh Nadia Hermawan</p>
 
-</div>
 </div>
 
 <script>
