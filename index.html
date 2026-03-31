@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,6 +175,14 @@ max-width:700px;
 margin:auto;
 }
 
+/* FOOTER */
+.footer{
+background:#fff1a8;
+text-align:center;
+padding:40px;
+margin-top:50px;
+}
+
 /* POPUP SARAN */
 .popup{
 display:none;
@@ -185,6 +194,7 @@ height:100%;
 background:rgba(0,0,0,0.4);
 justify-content:center;
 align-items:center;
+z-index:2000;
 }
 
 .popup-content{
@@ -204,36 +214,18 @@ border-radius:10px;
 border:1px solid #e5d38f;
 }
 
-/* FOOTER */
-.footer{
-background:#fff1a8;
-text-align:center;
-padding:40px;
-margin-top:50px;
-}
-
-.contact-box{
-margin-top:15px;
-display:flex;
-justify-content:center;
-gap:20px;
-}
-
-.contact-item{
-width:50px;
-height:50px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
+.popup-content button{
+padding:10px 15px;
+background:#f4c542;
+border:none;
 color:white;
-font-size:20px;
-text-decoration:none;
+border-radius:10px;
 }
 
-.ig{background:#E1306C;}
-.email{background:#D44638;}
-.wa{background:#25D366;}
+.close-btn{
+background:#ccc;
+color:black;
+}
 </style>
 </head>
 
@@ -245,8 +237,6 @@ text-decoration:none;
 <div>
 <a onclick="showHome()">Beranda</a>
 <a onclick="showTentang()">Informasi</a>
-<a href="#">Berita</a>
-<a href="#">Librarian</a>
 <a onclick="showAuth()">Login</a>
 </div>
 </div>
@@ -285,7 +275,7 @@ text-decoration:none;
 </div>
 
 <div class="card">
-<img src="cheesecake.jpg">
+<img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
 <p>Cheesecake lembut.</p>
 <button class="btn-card">Lihat Resep</button>
@@ -315,19 +305,6 @@ Kotak Saran
 
 </div>
 
-<!-- POPUP SARAN -->
-<div id="popupSaran" class="popup">
-<div class="popup-content">
-<h2>Kotak Saran</h2>
-<input type="text" placeholder="Nama">
-<input type="email" placeholder="Email">
-<textarea placeholder="Tulis saran..." rows="4"></textarea>
-<button>Kirim</button>
-<br><br>
-<button onclick="closeSaran()">Tutup</button>
-</div>
-</div>
-
 <!-- TENTANG -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
@@ -346,15 +323,6 @@ referensi resep cake dan pastry bagi masyarakat.
 <input type="email" placeholder="Email">
 <input type="password" placeholder="Password">
 <button>Login</button>
-<p>Belum punya akun? <span onclick="showRegister()" style="color:#c79a00; cursor:pointer;">Daftar</span></p>
-</div>
-
-<div id="registerForm" style="display:none;">
-<input type="text" placeholder="Nama Lengkap">
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
-<button>Daftar</button>
-<p>Sudah punya akun? <span onclick="showLoginForm()" style="color:#c79a00; cursor:pointer;">Login</span></p>
 </div>
 
 <div class="back-btn" onclick="showHome()">← Kembali</div>
@@ -364,12 +332,20 @@ referensi resep cake dan pastry bagi masyarakat.
 <!-- FOOTER -->
 <div class="footer">
 <h3>Hubungi CakeLib</h3>
-<div class="contact-box">
-<a href="#" class="contact-item ig"><i class="fab fa-instagram"></i></a>
-<a href="#" class="contact-item email"><i class="fas fa-envelope"></i></a>
-<a href="#" class="contact-item wa"><i class="fab fa-whatsapp"></i></a>
+<p>© 2026 CakeLib - Digital Cake Library</p>
 </div>
-<p>© 2026 CakeLib</p>
+
+<!-- POPUP SARAN -->
+<div id="popupSaran" class="popup">
+<div class="popup-content">
+<h2>Kotak Saran</h2>
+<input type="text" placeholder="Nama">
+<input type="email" placeholder="Email">
+<textarea placeholder="Tulis saran Anda..." rows="4"></textarea>
+<button>Kirim</button>
+<br><br>
+<button onclick="closeSaran()" class="close-btn">Tutup</button>
+</div>
 </div>
 
 <script>
@@ -377,18 +353,6 @@ function showAuth(){
 homePage.style.display="none";
 tentangPage.style.display="none";
 authPage.style.display="block";
-}
-
-function showRegister(){
-document.getElementById("loginForm").style.display="none";
-document.getElementById("registerForm").style.display="block";
-document.getElementById("formTitle").innerText="Daftar CakeLib";
-}
-
-function showLoginForm(){
-document.getElementById("loginForm").style.display="block";
-document.getElementById("registerForm").style.display="none";
-document.getElementById("formTitle").innerText="Login CakeLib";
 }
 
 function showHome(){
@@ -414,3 +378,4 @@ document.getElementById("popupSaran").style.display="none";
 
 </body>
 </html>
+```
