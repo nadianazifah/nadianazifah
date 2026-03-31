@@ -174,6 +174,36 @@ max-width:700px;
 margin:auto;
 }
 
+/* POPUP SARAN */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+justify-content:center;
+align-items:center;
+}
+
+.popup-content{
+background:#fffdf5;
+padding:30px;
+border-radius:20px;
+width:300px;
+text-align:center;
+}
+
+.popup-content input,
+.popup-content textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #e5d38f;
+}
+
 /* FOOTER */
 .footer{
 background:#fff1a8;
@@ -215,8 +245,8 @@ text-decoration:none;
 <div>
 <a onclick="showHome()">Beranda</a>
 <a onclick="showTentang()">Informasi</a>
-<a onclick="()">Berita </a>
-<a onclick=()">Librarian </a>
+<a href="#">Berita</a>
+<a href="#">Librarian</a>
 <a onclick="showAuth()">Login</a>
 </div>
 </div>
@@ -255,7 +285,7 @@ text-decoration:none;
 </div>
 
 <div class="card">
-<img src="cheese cake.jpg">
+<img src="cheesecake.jpg">
 <h3>Cheesecake</h3>
 <p>Cheesecake lembut.</p>
 <button class="btn-card">Lihat Resep</button>
@@ -275,6 +305,27 @@ allowfullscreen>
 </div>
 </div>
 
+<!-- TOMBOL SARAN -->
+<div style="text-align:center; margin:40px;">
+<button onclick="openSaran()" 
+style="padding:12px 20px; background:#f4c542; border:none; border-radius:20px; color:white; cursor:pointer;">
+Kotak Saran
+</button>
+</div>
+
+</div>
+
+<!-- POPUP SARAN -->
+<div id="popupSaran" class="popup">
+<div class="popup-content">
+<h2>Kotak Saran</h2>
+<input type="text" placeholder="Nama">
+<input type="email" placeholder="Email">
+<textarea placeholder="Tulis saran..." rows="4"></textarea>
+<button>Kirim</button>
+<br><br>
+<button onclick="closeSaran()">Tutup</button>
+</div>
 </div>
 
 <!-- TENTANG -->
@@ -282,16 +333,13 @@ allowfullscreen>
 <h2>Tentang CakeLib</h2>
 <p>
 CakeLib merupakan perpustakaan digital yang menyediakan berbagai
-referensi resep cake dan pastry bagi masyarakat. Website ini dibuat
-untuk membantu pengguna menemukan resep kue secara mudah,
-terstruktur, dan terpercaya.
+referensi resep cake dan pastry bagi masyarakat.
 </p>
 </div>
 
-<!-- LOGIN & DAFTAR -->
+<!-- LOGIN -->
 <div id="authPage" class="login-section">
 <div class="login-box">
-
 <h2 id="formTitle">Login CakeLib</h2>
 
 <div id="loginForm">
@@ -310,7 +358,6 @@ terstruktur, dan terpercaya.
 </div>
 
 <div class="back-btn" onclick="showHome()">← Kembali</div>
-
 </div>
 </div>
 
@@ -322,7 +369,7 @@ terstruktur, dan terpercaya.
 <a href="#" class="contact-item email"><i class="fas fa-envelope"></i></a>
 <a href="#" class="contact-item wa"><i class="fab fa-whatsapp"></i></a>
 </div>
-<p>© 2026 CakeLib - Digital Cake Library</p>
+<p>© 2026 CakeLib</p>
 </div>
 
 <script>
@@ -355,8 +402,15 @@ homePage.style.display="none";
 tentangPage.style.display="block";
 authPage.style.display="none";
 }
+
+function openSaran(){
+document.getElementById("popupSaran").style.display="flex";
+}
+
+function closeSaran(){
+document.getElementById("popupSaran").style.display="none";
+}
 </script>
 
 </body>
 </html>
-
