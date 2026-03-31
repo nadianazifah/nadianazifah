@@ -6,40 +6,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:linear-gradient(to right,#fffdf2,#fff3c4);
-color:#6b5b2a;
+background:#fffdf4;
+color:#5c4b1f;
 }
 
 /* NAVBAR */
 .navbar{
 background:#fff1a8;
-padding:18px 40px;
+padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+position:sticky;
+top:0;
 }
 
 .logo{
-display:flex;
-align-items:center;
-font-size:24px;
+font-size:22px;
 font-weight:bold;
-color:#8a6d1d;
-}
-
-.logo i{
-font-size:28px;
-color:#f4b400;
-margin-right:10px;
 }
 
 .navbar a{
 text-decoration:none;
-color:#8a6d1d;
+color:#6b5b2a;
 margin-left:20px;
 font-weight:500;
 }
@@ -47,30 +40,41 @@ font-weight:500;
 /* HERO */
 .hero{
 text-align:center;
-padding:80px 20px;
+padding:120px 20px;
+background:linear-gradient(rgba(255,248,210,0.9), rgba(255,248,210,0.9)),
+url('https://images.unsplash.com/photo-1559628233-100c798642d4');
+background-size:cover;
 }
 
 .hero h1{
-font-size:36px;
+font-size:40px;
 margin-bottom:10px;
 }
 
-/* SEARCH */
 .search-box input{
 padding:12px;
-width:320px;
+width:300px;
 border-radius:25px;
 border:1px solid #e5d38f;
-outline:none;
+margin-top:15px;
+}
+
+.btn-hero{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#f4c542;
+color:white;
+border-radius:25px;
+cursor:pointer;
 }
 
 /* SECTION */
 .section{
+padding:60px 20px;
 text-align:center;
-padding:50px 20px;
 }
 
-/* KOLEKSI */
 .collection{
 display:flex;
 justify-content:center;
@@ -80,13 +84,13 @@ margin-top:30px;
 }
 
 .card{
-width:220px;
-background:#ffffff;
+width:230px;
+background:white;
 border-radius:20px;
 padding:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+text-align:center;
 transition:0.3s;
-text-align:left;
 }
 
 .card:hover{
@@ -98,140 +102,108 @@ width:100%;
 height:150px;
 object-fit:cover;
 border-radius:15px;
-margin-bottom:10px;
 }
 
-/* LOGIN */
-.login-section{
-display:none;
-text-align:center;
-padding:100px 20px;
-}
-
-.login-box{
-max-width:400px;
-margin:auto;
-background:#fffdf5;
-padding:30px;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-
-.login-box input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:1px solid #e5d38f;
-}
-
-.login-box button{
-width:100%;
-padding:12px;
+.btn-card{
+margin-top:10px;
+padding:8px 15px;
+border:none;
 background:#f4c542;
 color:white;
-border:none;
-border-radius:10px;
+border-radius:15px;
 }
 
-.back-btn{
-margin-top:15px;
-cursor:pointer;
-color:#c79a00;
-font-weight:bold;
-}
-
-/* TENTANG */
-.tentang{
-display:none;
-padding:80px 20px;
-text-align:center;
-max-width:700px;
-margin:auto;
+/* VIDEO */
+.video-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
 }
 
 /* FOOTER */
 .footer{
 background:#fff1a8;
 text-align:center;
-padding:50px 20px;
-margin-top:60px;
+padding:40px;
+margin-top:50px;
 }
 
 .contact-box{
-margin-top:20px;
+margin-top:15px;
 display:flex;
 justify-content:center;
-gap:25px;
+gap:20px;
 }
 
 .contact-item{
-width:55px;
-height:55px;
+width:50px;
+height:50px;
 display:flex;
 align-items:center;
 justify-content:center;
 border-radius:50%;
-font-size:22px;
 color:white;
+font-size:20px;
 text-decoration:none;
 }
 
 .ig{background:#E1306C;}
 .email{background:#D44638;}
 .wa{background:#25D366;}
-
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
-<div class="logo">
-<i class="fas fa-cake-candles"></i> CakeLib
-</div>
-
+<div class="logo">CakeLib</div>
 <div>
-<a href="#" onclick="showHome()">Beranda</a>
-<a href="#" onclick="showTentang()">Tentang</a>
-<a href="#" onclick="showLogin()">Login</a>
-<a href="#" onclick="showDaftar()">Daftar</a>
+<a href="#">Beranda</a>
+<a href="#">Event</a>
+<a href="#">Video</a>
+<a href="#">Login</a>
 </div>
 </div>
 
-<!-- HOME -->
-<div id="homePage">
-
+<!-- HERO -->
 <div class="hero">
 <h1>Selamat Datang di CakeLib</h1>
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
 
 <div class="search-box">
-<input type="text" id="searchInput" onkeyup="searchCake()" placeholder="Cari Resep Cake...">
-</div>
+<input type="text" placeholder="Cari Resep Cake...">
 </div>
 
-<!-- KOLEKSI RESEP DENGAN GAMBAR -->
+<button class="btn-hero">Jelajahi Resep</button>
+</div>
+
+<!-- KOLEKSI -->
 <div class="section">
 <h2>Koleksi Resep</h2>
-<div class="collection" id="cakeList">
+<div class="collection">
 
 <div class="card">
 <img src="gambar/birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Koleksi resep kue ulang tahun.</p>
+<p>Resep kue ulang tahun.</p>
+<button class="btn-card">Lihat Resep</button>
 </div>
 
 <div class="card">
-<img src="gambar/cookies.jpg">
+<img src="gambar/cookiess.jpg">
 <h3>Cookies</h3>
 <p>Resep cookies lezat.</p>
+<button class="btn-card">Lihat Resep</button>
 </div>
 
 <div class="card">
-<img src="gambar/cheesecake.jpg">
+<img src="gambar/cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Cheesecake lembut dan creamy.</p>
+<p>Cheesecake lembut.</p>
+<button class="btn-card">Lihat Resep</button>
 </div>
 
 </div>
@@ -244,80 +216,34 @@ text-decoration:none;
 
 <div class="card">
 <h3>Workshop Baking</h3>
-<p>Pelatihan membuat cake dan pastry.</p>
+<p>Pelatihan membuat cake.</p>
 </div>
 
 <div class="card">
 <h3>Lomba Cake</h3>
-<p>Kompetisi menghias dan membuat cake.</p>
+<p>Kompetisi menghias cake.</p>
 </div>
 
 <div class="card">
 <h3>Seminar Pastry</h3>
-<p>Seminar dan edukasi pastry.</p>
+<p>Seminar pastry.</p>
 </div>
 
 </div>
 </div>
 
-<!-- VIDEO EDUKASI -->
+<!-- VIDEO -->
 <div class="section">
-<h2>Video Edukasi Cake & Pastry</h2>
-<p>Pelajari cara membuat cake melalui video berikut</p>
-
-<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px;">
+<h2>Video Edukasi</h2>
+<div class="video-container">
 
 <iframe width="350" height="200"
-src="https://www.youtube.com/embed/6o6fQ0s-X1Y"
+src="https://www.youtube.com/embed/gLEJAx04Vr4?si=gBVqwCXz6ts7FOGL" 
 allowfullscreen>
 </iframe>
 
-<iframe width="350" height="200"
-src="https://www.youtube.com/embed/LJw3e4sZcJQ"
-allowfullscreen>
 </iframe>
 
-</div>
-</div>
-
-</div>
-
-<!-- TENTANG -->
-<div id="tentangPage" class="tentang">
-<h2>Tentang CakeLib</h2>
-<p>
-CakeLib merupakan perpustakaan digital yang menyediakan berbagai
-referensi resep cake dan pastry bagi masyarakat. Website ini dibuat
-untuk membantu pengguna menemukan resep kue secara mudah,
-terstruktur, dan terpercaya.
-</p>
-</div>
-
-<!-- LOGIN -->
-<div id="loginPage" class="login-section">
-<div class="login-box">
-<h2>Login CakeLib</h2>
-<form onsubmit="return login()">
-<input type="text" placeholder="Nama" required>
-<input type="email" placeholder="Email" required>
-<input type="password" placeholder="Password" required>
-<button type="submit">Masuk</button>
-</form>
-<div class="back-btn" onclick="showHome()">← Kembali</div>
-</div>
-</div>
-
-<!-- DAFTAR -->
-<div id="daftarPage" class="login-section">
-<div class="login-box">
-<h2>Daftar CakeLib</h2>
-<form onsubmit="return daftar()">
-<input type="text" placeholder="Nama Lengkap" required>
-<input type="email" placeholder="Email" required>
-<input type="password" placeholder="Password" required>
-<button type="submit">Daftar</button>
-</form>
-<div class="back-btn" onclick="showLogin()">← Kembali ke Login</div>
 </div>
 </div>
 
@@ -332,62 +258,5 @@ terstruktur, dan terpercaya.
 <p>© 2026 CakeLib - Digital Cake Library</p>
 </div>
 
-<script>
-
-function showLogin(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-loginPage.style.display="block";
-daftarPage.style.display="none";
-}
-
-function showDaftar(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-loginPage.style.display="none";
-daftarPage.style.display="block";
-}
-
-function showHome(){
-homePage.style.display="block";
-tentangPage.style.display="none";
-loginPage.style.display="none";
-daftarPage.style.display="none";
-}
-
-function showTentang(){
-homePage.style.display="none";
-tentangPage.style.display="block";
-loginPage.style.display="none";
-daftarPage.style.display="none";
-}
-
-function login(){
-alert("Login berhasil!");
-return false;
-}
-
-function daftar(){
-alert("Pendaftaran berhasil!");
-return false;
-}
-
-function searchCake(){
-let input = document.getElementById("searchInput").value.toLowerCase();
-let cards = document.querySelectorAll("#cakeList .card");
-
-cards.forEach(card => {
-let text = card.innerText.toLowerCase();
-if(text.includes(input)){
-card.style.display="block";
-}else{
-card.style.display="none";
-}
-});
-}
-
-</script>
-
 </body>
 </html>
-
