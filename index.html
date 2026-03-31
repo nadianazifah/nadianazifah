@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,19 +83,22 @@ margin-top:30px;
 width:220px;
 background:#ffffff;
 border-radius:20px;
-padding:20px;
+padding:15px;
 box-shadow:0 8px 20px rgba(0,0,0,0.08);
 transition:0.3s;
+text-align:left;
 }
 
 .card:hover{
 transform:translateY(-8px);
 }
 
-.card i{
-font-size:40px;
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:15px;
 margin-bottom:10px;
-color:#f4b400;
 }
 
 /* LOGIN */
@@ -209,25 +211,25 @@ text-decoration:none;
 </div>
 </div>
 
-<!-- KOLEKSI -->
+<!-- KOLEKSI RESEP DENGAN GAMBAR -->
 <div class="section">
 <h2>Koleksi Resep</h2>
 <div class="collection" id="cakeList">
 
 <div class="card">
-<i class="fas fa-birthday-cake"></i>
+<img src="gambar/birthdaycake.jpg">
 <h3>Birthday Cake</h3>
 <p>Koleksi resep kue ulang tahun.</p>
 </div>
 
 <div class="card">
-<i class="fas fa-cookie"></i>
+<img src="gambar/cookies.jpg">
 <h3>Cookies</h3>
 <p>Resep cookies lezat.</p>
 </div>
 
 <div class="card">
-<i class="fas fa-cheese"></i>
+<img src="gambar/cheesecake.jpg">
 <h3>Cheesecake</h3>
 <p>Cheesecake lembut dan creamy.</p>
 </div>
@@ -235,15 +237,25 @@ text-decoration:none;
 </div>
 </div>
 
-<!-- KATEGORI -->
+<!-- EVENT -->
 <div class="section">
-<h2>Kategori</h2>
+<h2>Event CakeLib</h2>
 <div class="collection">
 
-<div class="card"><i class="fas fa-cake-candles"></i><h3>Birthday Cake</h3></div>
-<div class="card"><i class="fas fa-cookie"></i><h3>Cookies</h3></div>
-<div class="card"><i class="fas fa-cheese"></i><h3>Cheesecake</h3></div>
-<div class="card"><i class="fas fa-bread-slice"></i><h3>Bread</h3></div>
+<div class="card">
+<h3>Workshop Baking</h3>
+<p>Pelatihan membuat cake dan pastry.</p>
+</div>
+
+<div class="card">
+<h3>Lomba Cake</h3>
+<p>Kompetisi menghias dan membuat cake.</p>
+</div>
+
+<div class="card">
+<h3>Seminar Pastry</h3>
+<p>Seminar dan edukasi pastry.</p>
+</div>
 
 </div>
 </div>
@@ -251,25 +263,17 @@ text-decoration:none;
 <!-- VIDEO EDUKASI -->
 <div class="section">
 <h2>Video Edukasi Cake & Pastry</h2>
-<p>Pelajari cara membuat cake dan pastry melalui video edukasi berikut</p>
+<p>Pelajari cara membuat cake melalui video berikut</p>
 
 <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px;">
 
 <iframe width="350" height="200"
 src="https://www.youtube.com/embed/6o6fQ0s-X1Y"
-frameborder="0"
 allowfullscreen>
 </iframe>
 
 <iframe width="350" height="200"
 src="https://www.youtube.com/embed/LJw3e4sZcJQ"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-<iframe width="350" height="200"
-src="https://www.youtube.com/embed/4aZr5hZXP_s"
-frameborder="0"
 allowfullscreen>
 </iframe>
 
@@ -386,4 +390,4 @@ card.style.display="none";
 
 </body>
 </html>
-```
+
