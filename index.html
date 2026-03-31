@@ -204,6 +204,55 @@ border-radius:10px;
 border:1px solid #e5d38f;
 }
 
+/* POPCARD SARAN */
+.popcard-btn{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#f4c542;
+color:white;
+border:none;
+width:60px;
+height:60px;
+border-radius:50%;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+z-index:999;
+}
+
+.popcard-box{
+display:none;
+position:fixed;
+bottom:100px;
+right:30px;
+width:280px;
+background:#fffdf5;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+z-index:999;
+}
+
+.popcard-box input,
+.popcard-box textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #e5d38f;
+}
+
+.popcard-box button{
+width:100%;
+padding:10px;
+background:#f4c542;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
 /* FOOTER */
 .footer{
 background:#fff1a8;
@@ -305,27 +354,19 @@ allowfullscreen>
 </div>
 </div>
 
-<!-- TOMBOL SARAN -->
-<div style="text-align:center; margin:40px;">
-<button onclick="openSaran()" 
-style="padding:12px 20px; background:#f4c542; border:none; border-radius:20px; color:white; cursor:pointer;">
-Kotak Saran
+</div>
+
+<!-- POPCARD SARAN -->
+<button class="popcard-btn" onclick="togglePopcard()">
+<i class="fas fa-comment"></i>
 </button>
-</div>
 
-</div>
-
-<!-- POPUP SARAN -->
-<div id="popupSaran" class="popup">
-<div class="popup-content">
-<h2>Kotak Saran</h2>
+<div class="popcard-box" id="popcardSaran">
+<h3>Kotak Saran</h3>
 <input type="text" placeholder="Nama">
 <input type="email" placeholder="Email">
-<textarea placeholder="Tulis saran..." rows="4"></textarea>
+<textarea placeholder="Tulis saran..." rows="3"></textarea>
 <button>Kirim</button>
-<br><br>
-<button onclick="closeSaran()">Tutup</button>
-</div>
 </div>
 
 <!-- TENTANG -->
@@ -403,15 +444,15 @@ tentangPage.style.display="block";
 authPage.style.display="none";
 }
 
-function openSaran(){
-document.getElementById("popupSaran").style.display="flex";
+function togglePopcard(){
+var box = document.getElementById("popcardSaran");
+if(box.style.display === "block"){
+box.style.display = "none";
+}else{
+box.style.display = "block";
 }
-
-function closeSaran(){
-document.getElementById("popupSaran").style.display="none";
 }
 </script>
 
 </body>
 </html>
-
