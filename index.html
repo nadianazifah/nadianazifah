@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,7 @@ text-decoration:none;
 color:#6b5b2a;
 margin-left:20px;
 font-weight:500;
+cursor:pointer;
 }
 
 /* HERO */
@@ -122,6 +124,55 @@ flex-wrap:wrap;
 margin-top:30px;
 }
 
+/* LOGIN & DAFTAR */
+.login-section{
+display:none;
+text-align:center;
+padding:100px 20px;
+}
+
+.login-box{
+max-width:400px;
+margin:auto;
+background:#fffdf5;
+padding:30px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.login-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #e5d38f;
+}
+
+.login-box button{
+width:100%;
+padding:12px;
+background:#f4c542;
+color:white;
+border:none;
+border-radius:10px;
+}
+
+.back-btn{
+margin-top:15px;
+cursor:pointer;
+color:#c79a00;
+font-weight:bold;
+}
+
+/* TENTANG */
+.tentang{
+display:none;
+padding:80px 20px;
+text-align:center;
+max-width:700px;
+margin:auto;
+}
+
 /* FOOTER */
 .footer{
 background:#fff1a8;
@@ -161,14 +212,16 @@ text-decoration:none;
 <div class="navbar">
 <div class="logo">CakeLib</div>
 <div>
-<a href="#">Beranda</a>
-<a href="#">tentang</a>
-<a href="#">koleksi</a>
-<a href="#">Login</a>
+<a onclick="showHome()">Beranda</a>
+<a onclick="showTentang()">Tentang</a>
+<a onclick="showLogin()">Login</a>
+<a onclick="showDaftar()">Daftar</a>
 </div>
 </div>
 
-<!-- HERO -->
+<!-- HOME -->
+<div id="homePage">
+
 <div class="hero">
 <h1>Selamat Datang di CakeLib</h1>
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
@@ -200,33 +253,10 @@ text-decoration:none;
 </div>
 
 <div class="card">
-<img src="cheese cake.jpg">
+<img src="cheesecake.jpg">
 <h3>Cheesecake</h3>
 <p>Cheesecake lembut.</p>
 <button class="btn-card">Lihat Resep</button>
-</div>
-
-</div>
-</div>
-
-<!-- EVENT -->
-<div class="section">
-<h2>Event CakeLib</h2>
-<div class="collection">
-
-<div class="card">
-<h3>Workshop Baking</h3>
-<p>Pelatihan membuat cake.</p>
-</div>
-
-<div class="card">
-<h3>Lomba Cake</h3>
-<p>Kompetisi menghias cake.</p>
-</div>
-
-<div class="card">
-<h3>Seminar Pastry</h3>
-<p>Seminar pastry.</p>
 </div>
 
 </div>
@@ -238,12 +268,47 @@ text-decoration:none;
 <div class="video-container">
 
 <iframe width="350" height="200"
-src="https://www.youtube.com/embed/gLEJAx04Vr4?si=gBVqwCXz6ts7FOGL" 
+src="https://www.youtube.com/embed/gLEJAx04Vr4"
 allowfullscreen>
 </iframe>
 
-</iframe>
+</div>
+</div>
 
+</div>
+
+<!-- TENTANG -->
+<div id="tentangPage" class="tentang">
+<h2>Tentang CakeLib</h2>
+<p>
+CakeLib merupakan perpustakaan digital yang menyediakan berbagai
+referensi resep cake dan pastry bagi masyarakat. Website ini dibuat
+untuk membantu pengguna menemukan resep kue secara mudah,
+terstruktur, dan terpercaya.
+</p>
+</div>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-section">
+<div class="login-box">
+<h2>Login CakeLib</h2>
+<input type="text" placeholder="Nama">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button>Login</button>
+<div class="back-btn" onclick="showHome()">← Kembali</div>
+</div>
+</div>
+
+<!-- DAFTAR -->
+<div id="daftarPage" class="login-section">
+<div class="login-box">
+<h2>Daftar CakeLib</h2>
+<input type="text" placeholder="Nama Lengkap">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button>Daftar</button>
+<div class="back-btn" onclick="showLogin()">← Ke Login</div>
 </div>
 </div>
 
@@ -258,5 +323,36 @@ allowfullscreen>
 <p>© 2026 CakeLib - Digital Cake Library</p>
 </div>
 
+<script>
+function showLogin(){
+homePage.style.display="none";
+tentangPage.style.display="none";
+loginPage.style.display="block";
+daftarPage.style.display="none";
+}
+
+function showDaftar(){
+homePage.style.display="none";
+tentangPage.style.display="none";
+loginPage.style.display="none";
+daftarPage.style.display="block";
+}
+
+function showHome(){
+homePage.style.display="block";
+tentangPage.style.display="none";
+loginPage.style.display="none";
+daftarPage.style.display="none";
+}
+
+function showTentang(){
+homePage.style.display="none";
+tentangPage.style.display="block";
+loginPage.style.display="none";
+daftarPage.style.display="none";
+}
+</script>
+
 </body>
 </html>
+```
