@@ -26,10 +26,7 @@ top:0;
 z-index:1000;
 }
 
-.logo{
-font-size:22px;
-font-weight:bold;
-}
+.logo{font-size:22px;font-weight:bold;}
 
 .navbar a{
 text-decoration:none;
@@ -48,15 +45,17 @@ url('https://images.unsplash.com/photo-1559628233-100c798642d4');
 background-size:cover;
 }
 
-.hero h1{
-font-size:40px;
+.btn-hero{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#f4c542;
+color:white;
+border-radius:25px;
 }
 
 /* SECTION */
-.section{
-padding:60px 20px;
-text-align:center;
-}
+.section{padding:60px 20px;text-align:center;}
 
 .collection{
 display:flex;
@@ -72,7 +71,6 @@ background:white;
 border-radius:20px;
 padding:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
-text-align:center;
 }
 
 .card img{
@@ -92,10 +90,22 @@ border-radius:15px;
 cursor:pointer;
 }
 
-/* HALAMAN LAIN */
-.tentang, .login-section{
+/* POPUP EVENT */
+#eventPopup{
 display:none;
-padding:80px 20px;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:white;
+padding:25px;
+border-radius:15px;
+width:300px;
 text-align:center;
 }
 
@@ -117,7 +127,7 @@ margin-top:50px;
 <div>
 <a onclick="showHome()">Beranda</a>
 <a onclick="showTentang()">Informasi</a>
-<a onclick="showBerita()">Berita</a>
+<a onclick="showEvent()">Berita</a>
 <a onclick="showAuth()">Login</a>
 </div>
 </div>
@@ -128,96 +138,55 @@ margin-top:50px;
 <div class="hero">
 <h1>Selamat Datang di CakeLib</h1>
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
+<button class="btn-hero">Jelajahi Resep</button>
 </div>
 
-<div class="section">
-<h2>Koleksi Resep</h2>
-<div class="collection">
-<div class="card">
-<img src="birthdaycake.jpg">
-<h3>Birthday Cake</h3>
-<p>Resep kue ulang tahun.</p>
-</div>
-</div>
-</div>
-
-<!-- EVENT DI HOME -->
-<div class="section">
+<!-- EVENT -->
+<div class="section" id="eventSection">
 <h2>Event Bakery</h2>
-<div class="collection">
-
-<div class="card">
-<img src="workshop.jpg">
-<h3>Workshop Baking</h3>
-<p>Belajar membuat cake bersama chef profesional.</p>
-</div>
-
-<div class="card">
-<img src="Decorating cake.jpg">
-<h3>Decorating Cake</h3>
-<p>Tunjukkan kreativitas menghias cake terbaikmu.</p>
-</div>
-
-<div class="card">
-<img src="Pastry class.jpg">
-<h3>Pastry Class</h3>
-<p>Kelas membuat pastry modern dan klasik.</p>
-</div>
-
-</div>
-</div>
-
-</div>
-
-<!-- INFORMASI -->
-<div id="tentangPage" class="tentang">
-<h2>Tentang CakeLib</h2>
-<p>CakeLib adalah perpustakaan digital resep cake.</p>
-
-<h3>Visi</h3>
-<p>Menjadi platform resep terbaik dan kreatif.</p>
-
-<h3>Misi</h3>
-<ul style="text-align:left; max-width:500px; margin:auto;">
-<li>Menyediakan resep lengkap</li>
-<li>Mendorong kreativitas baking</li>
-<li>Menyediakan edukasi</li>
-</ul>
-</div>
-
-<!-- BERITA (ISI EVENT) -->
-<div id="beritaPage" class="tentang">
-<h2>Berita & Event</h2>
 
 <div class="collection">
 
 <div class="card">
 <img src="workshop.jpg">
 <h3>Workshop Baking</h3>
-<p>Belajar membuat cake bersama chef profesional.</p>
+<p>Belajar bersama chef profesional</p>
+<p><b>📅 20 Mei 2026</b></p>
+<button class="btn-card" onclick="openEvent('Workshop Baking')">Daftar</button>
 </div>
 
 <div class="card">
 <img src="Decorating cake.jpg">
 <h3>Decorating Cake</h3>
-<p>Tunjukkan kreativitas menghias cake terbaikmu.</p>
+<p>Lomba menghias cake</p>
+<p><b>📅 25 Mei 2026</b></p>
+<button class="btn-card" onclick="openEvent('Decorating Cake')">Ikuti</button>
 </div>
 
 <div class="card">
 <img src="Pastry class.jpg">
 <h3>Pastry Class</h3>
-<p>Kelas membuat pastry modern dan klasik.</p>
+<p>Kelas pastry modern</p>
+<p><b>📅 30 Mei 2026</b></p>
+<button class="btn-card" onclick="openEvent('Pastry Class')">Gabung</button>
 </div>
 
 </div>
 </div>
 
-<!-- LOGIN -->
-<div id="authPage" class="login-section">
-<h2>Login</h2>
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
-<button>Login</button>
+</div>
+
+<!-- POPUP EVENT -->
+<div id="eventPopup">
+<div class="popup-box">
+<h3 id="eventTitle">Daftar Event</h3>
+
+<input type="text" placeholder="Nama" style="width:100%;padding:10px;margin:10px 0;">
+<input type="email" placeholder="Email" style="width:100%;padding:10px;margin:10px 0;">
+
+<button class="btn-card">Kirim</button>
+<p onclick="closeEvent()" style="cursor:pointer;color:red;">Tutup</p>
+</div>
 </div>
 
 <!-- FOOTER -->
@@ -226,33 +195,35 @@ margin-top:50px;
 </div>
 
 <script>
+
 function showHome(){
 homePage.style.display="block";
-tentangPage.style.display="none";
-authPage.style.display="none";
-beritaPage.style.display="none";
 }
 
 function showTentang(){
-homePage.style.display="none";
-tentangPage.style.display="block";
-authPage.style.display="none";
-beritaPage.style.display="none";
-}
-
-function showBerita(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-authPage.style.display="none";
-beritaPage.style.display="block";
+alert("Halaman Informasi");
 }
 
 function showAuth(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-authPage.style.display="block";
-beritaPage.style.display="none";
+alert("Halaman Login");
 }
+
+function showEvent(){
+homePage.style.display="block";
+setTimeout(()=>{
+document.getElementById("eventSection").scrollIntoView({behavior:"smooth"});
+},100);
+}
+
+function openEvent(nama){
+eventPopup.style.display="flex";
+eventTitle.innerText="Daftar " + nama;
+}
+
+function closeEvent(){
+eventPopup.style.display="none";
+}
+
 </script>
 
 </body>
