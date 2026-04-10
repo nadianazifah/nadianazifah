@@ -106,25 +106,6 @@ object-fit:cover;
 border-radius:15px;
 }
 
-.btn-card{
-margin-top:10px;
-padding:8px 15px;
-border:none;
-background:#f4c542;
-color:white;
-border-radius:15px;
-cursor:pointer;
-}
-
-/* VIDEO */
-.video-container{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:30px;
-}
-
 /* LOGIN */
 .login-section{
 display:none;
@@ -141,30 +122,6 @@ border-radius:20px;
 box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
-.login-box input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:1px solid #e5d38f;
-}
-
-.login-box button{
-width:100%;
-padding:12px;
-background:#f4c542;
-color:white;
-border:none;
-border-radius:10px;
-}
-
-.back-btn{
-margin-top:15px;
-cursor:pointer;
-color:#c79a00;
-font-weight:bold;
-}
-
 /* TENTANG */
 .tentang{
 display:none;
@@ -172,6 +129,13 @@ padding:80px 20px;
 text-align:center;
 max-width:700px;
 margin:auto;
+}
+
+/* EVENT PAGE */
+.eventPage{
+display:none;
+padding:60px 20px;
+text-align:center;
 }
 
 /* FOOTER */
@@ -222,50 +186,18 @@ margin-top:50px;
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
 <p>Resep kue ulang tahun.</p>
-<button class="btn-card">Lihat Resep</button>
 </div>
 
 <div class="card">
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
 <p>Resep cookies lezat.</p>
-<button class="btn-card">Lihat Resep</button>
 </div>
 
 <div class="card">
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
 <p>Cheesecake lembut.</p>
-<button class="btn-card">Lihat Resep</button>
-</div>
-
-</div>
-</div>
-
-<!-- EVENT DI BERANDA -->
-<div class="section">
-<h2>Event Bakery</h2>
-<div class="collection">
-
-<div class="card">
-<img src="workshop.jpg">
-<h3>Workshop Baking</h3>
-<p>Belajar teknik membuat cake dari dasar hingga mahir bersama chef profesional.</p>
-<button class="btn-card">Lihat Kegiatan</button>
-</div>
-
-<div class="card">
-<img src="Decorating cake.jpg">
-<h3>Lomba Hias Cake</h3>
-<p>Ajang kreativitas menghias cake dengan tema unik dan menarik.</p>
-<button class="btn-card">Lihat Detail</button>
-</div>
-
-<div class="card">
-<img src="Pastry class.jpg">
-<h3>Pastry Class</h3>
-<p>Kelas membuat pastry modern dan klasik dengan teknik profesional.</p>
-<button class="btn-card">Eksplor Kelas</button>
 </div>
 
 </div>
@@ -274,57 +206,60 @@ margin-top:50px;
 <!-- VIDEO -->
 <div class="section">
 <h2>Video Edukasi</h2>
-<div class="video-container">
 <iframe width="350" height="200"
 src="https://www.youtube.com/embed/gLEJAx04Vr4"
-allowfullscreen>
-</iframe>
-</div>
+allowfullscreen></iframe>
 </div>
 
 </div>
 
 <!-- EVENT PAGE -->
+<div id="eventPage" class="eventPage">
 <h2>Event CakeLib 🎂</h2>
-<p>Jelajahi kegiatan baking yang edukatif, kreatif, dan inspiratif bersama CakeLib</p>
+<p>Kegiatan baking inspiratif, edukatif, dan penuh kreativitas</p>
 
 <div class="collection">
 
 <div class="card">
-<span style="background:#f4c542;color:white;padding:5px 10px;border-radius:20px;font-size:12px;">Terpopuler</span>
 <img src="workshop.jpg">
 <h3>Workshop Baking</h3>
-<p>
-Belajar langsung membuat cake dari awal hingga dekorasi bersama chef profesional dalam suasana interaktif.
-</p>
-<p style="font-size:13px;color:#8a7a3a;">📅 25 Mei 2026 • 👥 20 peserta</p>
+<p>Pelatihan membuat cake dari dasar hingga dekorasi bersama chef profesional.</p>
 </div>
 
 <div class="card">
-<span style="background:#f4c542;color:white;padding:5px 10px;border-radius:20px;font-size:12px;">Favorit</span>
 <img src="Decorating cake.jpg">
 <h3>Lomba Hias Cake</h3>
-<p>
-Tunjukkan kreativitas menghias cake dengan berbagai teknik menarik dan hasilkan karya terbaikmu.
-</p>
-<p style="font-size:13px;color:#8a7a3a;">📅 30 Mei 2026 • 👥 15 peserta</p>
+<p>Ajang menunjukkan kreativitas menghias cake dengan teknik unik.</p>
 </div>
 
 <div class="card">
-<span style="background:#f4c542;color:white;padding:5px 10px;border-radius:20px;font-size:12px;">Terbaru</span>
 <img src="Pastry class.jpg">
 <h3>Pastry Class</h3>
-<p>
-Pelajari pastry modern dan klasik seperti croissant dan puff pastry dengan praktik langsung.
-</p>
-<p style="font-size:13px;color:#8a7a3a;">📅 5 Juni 2026 • 👥 18 peserta</p>
+<p>Pembelajaran pastry modern dan klasik secara praktik langsung.</p>
 </div>
 
 </div>
-<!-- TENTANG -->
+</div>
+
+<!-- INFORMASI -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>CakeLib merupakan perpustakaan digital resep cake dan pastry.</p>
+<p>
+CakeLib adalah perpustakaan digital yang menyediakan berbagai referensi resep cake dan pastry untuk semua kalangan.
+</p>
+
+<h3>Visi</h3>
+<p>
+Menjadi platform digital terbaik dalam menyediakan informasi dan edukasi baking yang kreatif dan mudah diakses.
+</p>
+
+<h3>Misi</h3>
+<ul style="text-align:left;">
+<li>Menyediakan resep yang lengkap dan berkualitas</li>
+<li>Mendorong kreativitas dalam dunia baking</li>
+<li>Menyajikan informasi yang mudah dipahami</li>
+<li>Menghadirkan edukasi melalui event dan video</li>
+</ul>
 </div>
 
 <!-- LOGIN -->
@@ -334,7 +269,6 @@ Pelajari pastry modern dan klasik seperti croissant dan puff pastry dengan prakt
 <input type="email" placeholder="Email">
 <input type="password" placeholder="Password">
 <button>Login</button>
-<div class="back-btn" onclick="showHome()">← Kembali</div>
 </div>
 </div>
 
