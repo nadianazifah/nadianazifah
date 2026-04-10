@@ -106,21 +106,23 @@ object-fit:cover;
 border-radius:15px;
 }
 
-/* TAMBAHAN EVENT */
-.badge{
-display:inline-block;
-padding:5px 12px;
+.btn-card{
+margin-top:10px;
+padding:8px 15px;
+border:none;
 background:#f4c542;
 color:white;
-border-radius:20px;
-font-size:12px;
-margin-bottom:10px;
+border-radius:15px;
+cursor:pointer;
 }
 
-.event-info{
-font-size:13px;
-color:#8a7a3a;
-margin-top:8px;
+/* VIDEO */
+.video-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
 }
 
 /* LOGIN */
@@ -139,12 +141,36 @@ border-radius:20px;
 box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
+.login-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #e5d38f;
+}
+
+.login-box button{
+width:100%;
+padding:12px;
+background:#f4c542;
+color:white;
+border:none;
+border-radius:10px;
+}
+
+.back-btn{
+margin-top:15px;
+cursor:pointer;
+color:#c79a00;
+font-weight:bold;
+}
+
 /* TENTANG */
 .tentang{
 display:none;
 padding:80px 20px;
 text-align:center;
-max-width:900px;
+max-width:700px;
 margin:auto;
 }
 
@@ -178,60 +204,46 @@ margin-top:50px;
 <div class="hero">
 <h1>Selamat Datang di CakeLib</h1>
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
-
 <div class="search-box">
 <input type="text" placeholder="Cari Resep Cake...">
 </div>
-
 <button class="btn-hero">Jelajahi Resep</button>
 </div>
 </div>
 
-<!-- EVENT PAGE -->
+<!-- EVENT PAGE (BARU) -->
 <div id="eventPage" class="tentang">
 <h2>Event CakeLib 🎂</h2>
-<p>Jelajahi kegiatan baking yang edukatif, kreatif, dan inspiratif bersama CakeLib</p>
+<p>Temukan berbagai kegiatan seru dan edukatif di dunia baking</p>
 
 <div class="collection">
 
 <div class="card">
-<span class="badge">Terpopuler</span>
 <img src="workshop.jpg">
 <h3>Workshop Baking</h3>
-<p>
-Ikuti praktik langsung mulai dari persiapan bahan hingga dekorasi cake bersama chef profesional dalam suasana interaktif.
-</p>
-<div class="event-info">📅 25 Mei 2026 • 👥 20 peserta</div>
+<p>Belajar teknik membuat cake dari dasar hingga mahir bersama chef profesional.</p>
+<button class="btn-card">Pelajari Kegiatan</button>
 </div>
 
 <div class="card">
-<span class="badge">Favorit</span>
 <img src="Decorating cake.jpg">
 <h3>Lomba Hias Cake</h3>
-<p>
-Eksplorasi kreativitas menghias cake dengan teknik buttercream dan fondant untuk menghasilkan karya unik.
-</p>
-<div class="event-info">📅 30 Mei 2026 • 👥 15 peserta</div>
+<p>Ajang kreativitas menghias cake dengan tema menarik dan inovatif.</p>
+<button class="btn-card">Lihat Detail</button>
 </div>
 
 <div class="card">
-<span class="badge">Terbaru</span>
 <img src="Pastry class.jpg">
 <h3>Pastry Class</h3>
-<p>
-Pelajari pembuatan pastry modern dan klasik seperti croissant dan puff pastry secara praktik langsung.
-</p>
-<div class="event-info">📅 5 Juni 2026 • 👥 18 peserta</div>
+<p>Kelas membuat pastry modern dan klasik dengan teknik profesional.</p>
+<button class="btn-card">Eksplor Kelas</button>
 </div>
 
 <div class="card">
-<span class="badge">Rekomendasi</span>
 <img src="cookiess.jpg">
-<h3>Cookies Class</h3>
-<p>
-Belajar membuat berbagai jenis cookies kekinian dengan teknik sederhana namun hasil maksimal.
-</p>
-<div class="event-info">📅 10 Juni 2026 • 👥 25 peserta</div>
+<h3>Cookies Creative Class</h3>
+<p>Kreasi cookies kekinian dengan tampilan unik dan rasa lezat.</p>
+<button class="btn-card">Lihat Kegiatan</button>
 </div>
 
 </div>
@@ -240,7 +252,7 @@ Belajar membuat berbagai jenis cookies kekinian dengan teknik sederhana namun ha
 <!-- TENTANG -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>CakeLib merupakan perpustakaan digital resep cake.</p>
+<p>CakeLib merupakan perpustakaan digital resep cake dan pastry.</p>
 </div>
 
 <!-- LOGIN -->
