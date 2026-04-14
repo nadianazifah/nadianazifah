@@ -9,18 +9,18 @@
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:#fffdf4;
+background:linear-gradient(to bottom,#fffdf4,#fff8d9);
 color:#5c4b1f;
 }
 
 /* NAVBAR */
 .navbar{
-background:#fff1a8;
+background:#fff3b0;
 padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
 position:sticky;
 top:0;
 z-index:1000;
@@ -37,13 +37,18 @@ color:#6b5b2a;
 margin-left:20px;
 font-weight:500;
 cursor:pointer;
+transition:0.3s;
+}
+
+.navbar a:hover{
+color:#d4a017;
 }
 
 /* HERO */
 .hero{
 text-align:center;
 padding:120px 20px;
-background:linear-gradient(rgba(255,248,210,0.9), rgba(255,248,210,0.9)),
+background:linear-gradient(rgba(255,248,210,0.85), rgba(255,248,210,0.85)),
 url('https://images.unsplash.com/photo-1559628233-100c798642d4');
 background-size:cover;
 }
@@ -64,10 +69,32 @@ margin-top:15px;
 margin-top:20px;
 padding:12px 25px;
 border:none;
-background:#f4c542;
+background:linear-gradient(45deg,#f4c542,#e0a800);
 color:white;
 border-radius:25px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.btn-hero:hover{
+transform:scale(1.05);
+}
+
+/* CATEGORY */
+.category{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:-40px;
+}
+
+.category-item{
+background:white;
+padding:12px 18px;
+border-radius:20px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+font-size:14px;
 }
 
 /* SECTION */
@@ -81,7 +108,6 @@ display:flex;
 justify-content:center;
 gap:25px;
 flex-wrap:wrap;
-margin-top:30px;
 }
 
 /* CARD */
@@ -90,14 +116,13 @@ width:230px;
 background:white;
 border-radius:20px;
 padding:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 15px 30px rgba(0,0,0,0.15);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 .card img{
@@ -105,80 +130,60 @@ width:100%;
 height:150px;
 object-fit:cover;
 border-radius:15px;
-margin-bottom:10px;
 }
 
-/* KATEGORI */
-.category{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:-50px;
-}
-
-.category-item{
-background:white;
-padding:15px 20px;
-border-radius:20px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-font-size:14px;
-}
-
-/* EVENT BADGE */
+/* EVENT */
 .badge{
-display:inline-block;
 background:#f4c542;
 color:white;
 padding:5px 10px;
 border-radius:15px;
 font-size:12px;
-margin-bottom:5px;
 }
 
-/* VIDEO */
-.video-box{
-margin-top:30px;
-}
-
-/* LOGIN */
-.login-section{
-display:none;
-text-align:center;
-padding:100px 20px;
-}
-
-.login-box{
-max-width:400px;
-margin:auto;
-background:#fffdf5;
-padding:30px;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* TENTANG */
-.tentang{
+/* PAGE */
+.tentang, .eventPage, .login-section{
 display:none;
 padding:80px 20px;
-text-align:center;
-max-width:700px;
-margin:auto;
-}
-
-/* EVENT PAGE */
-.eventPage{
-display:none;
-padding:60px 20px;
 text-align:center;
 }
 
 /* FOOTER */
 .footer{
-background:#fff1a8;
-text-align:center;
-padding:40px;
+background:#f4c542;
+color:white;
+padding:50px 20px;
 margin-top:50px;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.footer h3{
+margin-bottom:10px;
+}
+
+.footer a{
+color:white;
+text-decoration:none;
+display:block;
+margin:5px 0;
+}
+
+.social-icons a{
+display:inline-block;
+margin:5px;
+font-size:20px;
+}
+
+.copy{
+text-align:center;
+margin-top:20px;
+font-size:14px;
 }
 </style>
 </head>
@@ -191,9 +196,7 @@ margin-top:50px;
 <div>
 <a onclick="showHome()">Beranda</a>
 <a onclick="showTentang()">Informasi</a>
-<a href="#">Koleksi</a>
 <a onclick="showEvent()">Event</a>
-<a href="#">Librarian</a>
 <a onclick="showAuth()">Login</a>
 </div>
 </div>
@@ -203,18 +206,18 @@ margin-top:50px;
 
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>Perpustakaan Digital Resep Cake & Pastry</p>
+<p>Tempat terbaik belajar dan menemukan resep cake</p>
 
 <div class="search-box">
-<input type="text" placeholder="Cari resep favoritmu...">
+<input type="text" placeholder="Cari resep cake favoritmu...">
 </div>
 
-<button class="btn-hero">Jelajahi Resep</button>
+<button class="btn-hero">Mulai Jelajah</button>
 </div>
 
-<!-- KATEGORI -->
+<!-- CATEGORY -->
 <div class="category">
-<div class="category-item">🎂 Birthday Cake</div>
+<div class="category-item">🎂 Birthday</div>
 <div class="category-item">🍪 Cookies</div>
 <div class="category-item">🧁 Cupcake</div>
 <div class="category-item">🍰 Cheesecake</div>
@@ -229,40 +232,29 @@ margin-top:50px;
 <div class="card">
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Resep kue ulang tahun spesial.</p>
+<p>Kue spesial untuk momen spesial</p>
 </div>
 
 <div class="card">
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
-<p>Cookies renyah & lezat.</p>
+<p>Renyah dan lezat setiap saat</p>
 </div>
 
 <div class="card">
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Lembut & creamy.</p>
+<p>Lembut dan creamy</p>
 </div>
 
 </div>
 </div>
 
-<!-- VIDEO -->
-<div class="section">
-<h2>Video Edukasi</h2>
-<div class="video-box">
-<iframe width="350" height="200"
-src="https://www.youtube.com/embed/gLEJAx04Vr4"
-allowfullscreen></iframe>
-</div>
 </div>
 
-</div>
-
-<!-- EVENT PAGE -->
+<!-- EVENT -->
 <div id="eventPage" class="eventPage">
 <h2>Event CakeLib 🎉</h2>
-<p>Ikuti kegiatan baking yang seru dan inspiratif</p>
 
 <div class="collection">
 
@@ -270,24 +262,21 @@ allowfullscreen></iframe>
 <span class="badge">Populer</span>
 <img src="workshop.jpg">
 <h3>Workshop Baking</h3>
-<p>Belajar membuat cake dari dasar hingga dekorasi.</p>
-<p style="font-size:13px;">📅 25 Mei 2026</p>
+<p>Belajar langsung dengan chef profesional</p>
 </div>
 
 <div class="card">
 <span class="badge">Favorit</span>
 <img src="Decorating cake.jpg">
 <h3>Lomba Hias Cake</h3>
-<p>Ajang kreativitas menghias cake terbaikmu.</p>
-<p style="font-size:13px;">📅 30 Mei 2026</p>
+<p>Tunjukkan kreativitas terbaikmu</p>
 </div>
 
 <div class="card">
 <span class="badge">Terbaru</span>
 <img src="Pastry class.jpg">
 <h3>Pastry Class</h3>
-<p>Kelas pastry modern & klasik.</p>
-<p style="font-size:13px;">📅 5 Juni 2026</p>
+<p>Kelas pastry modern dan klasik</p>
 </div>
 
 </div>
@@ -296,26 +285,23 @@ allowfullscreen></iframe>
 <!-- INFORMASI -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>
-CakeLib adalah perpustakaan digital resep cake dan pastry.
-</p>
+<p>CakeLib adalah perpustakaan digital resep cake.</p>
 
 <h3>Visi</h3>
-<p>Menjadi platform baking terbaik yang kreatif dan mudah diakses.</p>
+<p>Menjadi platform baking terbaik dan inovatif.</p>
 
 <h3>Misi</h3>
-<ul style="text-align:left;">
+<ul style="text-align:left;max-width:500px;margin:auto;">
 <li>Menyediakan resep berkualitas</li>
-<li>Mendorong kreativitas baking</li>
-<li>Menyajikan edukasi yang mudah dipahami</li>
-<li>Menyediakan event dan video edukatif</li>
+<li>Mendorong kreativitas</li>
+<li>Edukasi baking</li>
 </ul>
 </div>
 
 <!-- LOGIN -->
 <div id="authPage" class="login-section">
-<div class="login-box">
-<h2>Login CakeLib</h2>
+<div class="card">
+<h2>Login</h2>
 <input type="email" placeholder="Email"><br><br>
 <input type="password" placeholder="Password"><br><br>
 <button class="btn-hero">Login</button>
@@ -324,7 +310,41 @@ CakeLib adalah perpustakaan digital resep cake dan pastry.
 
 <!-- FOOTER -->
 <div class="footer">
-<p>© 2026 CakeLib</p>
+<div class="footer-container">
+
+<div>
+<h3>CakeLib</h3>
+<p>Platform digital untuk belajar baking dan resep cake.</p>
+</div>
+
+<div>
+<h3>Menu</h3>
+<a onclick="showHome()">Beranda</a>
+<a onclick="showTentang()">Informasi</a>
+<a onclick="showEvent()">Event</a>
+</div>
+
+<div>
+<h3>Kontak</h3>
+<p>Email: cakelib@gmail.com</p>
+<p>WhatsApp: 0812-3456-7890</p>
+<p>Alamat: Medan, Indonesia</p>
+</div>
+
+<div>
+<h3>Sosial Media</h3>
+<div class="social-icons">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-whatsapp"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+</div>
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 CakeLib - All Rights Reserved
+</div>
 </div>
 
 <script>
