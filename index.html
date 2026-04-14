@@ -49,7 +49,7 @@ background-size:cover;
 }
 
 .hero h1{
-font-size:42px;
+font-size:40px;
 }
 
 .search-box input{
@@ -60,6 +60,13 @@ border:1px solid #e5d38f;
 margin-top:15px;
 }
 
+#searchInfo{
+font-size:13px;
+color:#8a7a3a;
+margin-top:8px;
+}
+
+/* BUTTON */
 .btn-hero{
 margin-top:20px;
 padding:12px 25px;
@@ -90,14 +97,12 @@ width:230px;
 background:white;
 border-radius:20px;
 padding:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 30px rgba(0,0,0,0.15);
+transform:translateY(-8px);
 }
 
 .card img{
@@ -105,39 +110,31 @@ width:100%;
 height:150px;
 object-fit:cover;
 border-radius:15px;
-margin-bottom:10px;
 }
 
-/* KATEGORI */
-.category{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:-50px;
-}
-
-.category-item{
-background:white;
-padding:15px 20px;
-border-radius:20px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-font-size:14px;
-}
-
-/* EVENT BADGE */
-.badge{
-display:inline-block;
+.btn-card{
+margin-top:10px;
+padding:8px 15px;
+border:none;
 background:#f4c542;
 color:white;
-padding:5px 10px;
 border-radius:15px;
-font-size:12px;
-margin-bottom:5px;
+cursor:pointer;
+}
+
+/* FILTER BUTTON */
+.filter-box{
+margin-top:15px;
+}
+
+.filter-box button{
+margin:5px;
 }
 
 /* VIDEO */
-.video-box{
+.video-container{
+display:flex;
+justify-content:center;
 margin-top:30px;
 }
 
@@ -166,11 +163,30 @@ max-width:700px;
 margin:auto;
 }
 
-/* EVENT PAGE */
-.eventPage{
+/* POPCARD */
+.popcard-btn{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#f4c542;
+color:white;
+border:none;
+width:60px;
+height:60px;
+border-radius:50%;
+font-size:22px;
+cursor:pointer;
+}
+
+.popcard-box{
 display:none;
-padding:60px 20px;
-text-align:center;
+position:fixed;
+bottom:100px;
+right:30px;
+width:280px;
+background:#fffdf5;
+padding:20px;
+border-radius:20px;
 }
 
 /* FOOTER */
@@ -192,7 +208,7 @@ margin-top:50px;
 <a onclick="showHome()">Beranda</a>
 <a onclick="showTentang()">Informasi</a>
 <a href="#">Koleksi</a>
-<a onclick="showEvent()">Event</a>
+<a href="#">Event</a>
 <a href="#">Librarian</a>
 <a onclick="showAuth()">Login</a>
 </div>
@@ -202,46 +218,49 @@ margin-top:50px;
 <div id="homePage">
 
 <div class="hero">
-<h1>Selamat Datang di CakeLib 🎂</h1>
+<h1>Selamat Datang di CakeLib</h1>
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
 
 <div class="search-box">
-<input type="text" placeholder="Cari resep favoritmu...">
+<input type="text" id="searchInput" placeholder="Cari Resep Cake..." onkeyup="searchResep()">
+<p id="searchInfo"></p>
 </div>
 
 <button class="btn-hero">Jelajahi Resep</button>
 </div>
 
-<!-- KATEGORI -->
-<div class="category">
-<div class="category-item">🎂 Birthday Cake</div>
-<div class="category-item">🍪 Cookies</div>
-<div class="category-item">🧁 Cupcake</div>
-<div class="category-item">🍰 Cheesecake</div>
-<div class="category-item">🥐 Pastry</div>
-</div>
-
 <!-- KOLEKSI -->
 <div class="section">
 <h2>Koleksi Resep</h2>
+
+<div class="filter-box">
+<button class="btn-card" onclick="filterResep('all')">Semua</button>
+<button class="btn-card" onclick="filterResep('birthday')">Birthday</button>
+<button class="btn-card" onclick="filterResep('cookies')">Cookies</button>
+<button class="btn-card" onclick="filterResep('cheese')">Cheesecake</button>
+</div>
+
 <div class="collection">
 
-<div class="card">
+<div class="card" data-name="birthday cake">
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Resep kue ulang tahun spesial.</p>
+<p>Resep kue ulang tahun.</p>
+<button class="btn-card">Lihat Resep</button>
 </div>
 
-<div class="card">
+<div class="card" data-name="cookies">
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
-<p>Cookies renyah & lezat.</p>
+<p>Resep cookies lezat.</p>
+<button class="btn-card">Lihat Resep</button>
 </div>
 
-<div class="card">
+<div class="card" data-name="cheesecake">
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Lembut & creamy.</p>
+<p>Cheesecake lembut.</p>
+<button class="btn-card">Lihat Resep</button>
 </div>
 
 </div>
@@ -250,7 +269,7 @@ margin-top:50px;
 <!-- VIDEO -->
 <div class="section">
 <h2>Video Edukasi</h2>
-<div class="video-box">
+<div class="video-container">
 <iframe width="350" height="200"
 src="https://www.youtube.com/embed/gLEJAx04Vr4"
 allowfullscreen></iframe>
@@ -259,66 +278,55 @@ allowfullscreen></iframe>
 
 </div>
 
-<!-- EVENT PAGE -->
-<div id="eventPage" class="eventPage">
-<h2>Event CakeLib 🎉</h2>
-<p>Ikuti kegiatan baking yang seru dan inspiratif</p>
+<!-- POPCARD -->
+<button class="popcard-btn" onclick="togglePopcard()">
+<i class="fas fa-comment"></i>
+</button>
 
-<div class="collection">
-
-<div class="card">
-<span class="badge">Populer</span>
-<img src="workshop.jpg">
-<h3>Workshop Baking</h3>
-<p>Belajar membuat cake dari dasar hingga dekorasi.</p>
-<p style="font-size:13px;">📅 25 Mei 2026</p>
-</div>
-
-<div class="card">
-<span class="badge">Favorit</span>
-<img src="Decorating cake.jpg">
-<h3>Lomba Hias Cake</h3>
-<p>Ajang kreativitas menghias cake terbaikmu.</p>
-<p style="font-size:13px;">📅 30 Mei 2026</p>
-</div>
-
-<div class="card">
-<span class="badge">Terbaru</span>
-<img src="Pastry class.jpg">
-<h3>Pastry Class</h3>
-<p>Kelas pastry modern & klasik.</p>
-<p style="font-size:13px;">📅 5 Juni 2026</p>
-</div>
-
-</div>
+<div class="popcard-box" id="popcardSaran">
+<h3>Kotak Saran</h3>
+<input type="text" placeholder="Nama"><br>
+<input type="email" placeholder="Email"><br>
+<textarea placeholder="Tulis saran..."></textarea><br>
+<button onclick="kirimSaran()">Kirim</button>
 </div>
 
 <!-- INFORMASI -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>
-CakeLib adalah perpustakaan digital resep cake dan pastry.
-</p>
+<p>CakeLib adalah perpustakaan digital resep cake.</p>
 
 <h3>Visi</h3>
-<p>Menjadi platform baking terbaik yang kreatif dan mudah diakses.</p>
+<p>Menjadi platform baking terbaik dan inovatif.</p>
 
 <h3>Misi</h3>
 <ul style="text-align:left;">
 <li>Menyediakan resep berkualitas</li>
-<li>Mendorong kreativitas baking</li>
-<li>Menyajikan edukasi yang mudah dipahami</li>
-<li>Menyediakan event dan video edukatif</li>
+<li>Mendorong kreativitas</li>
+<li>Edukasi baking</li>
 </ul>
 </div>
 
 <!-- LOGIN -->
 <div id="authPage" class="login-section">
 <div class="login-box">
-<h2>Login CakeLib</h2>
+<h2 id="formTitle">Login CakeLib</h2>
+
+<div id="loginForm">
 <input type="email" placeholder="Email"><br><br>
 <input type="password" placeholder="Password"><br><br>
 <button class="btn-hero">Login</button>
+<p>Belum punya akun? <span onclick="showRegister()">Daftar</span></p>
+</div>
+
+<div id="registerForm" style="display:none;">
+<input type="text" placeholder="Nama"><br><br>
+<input type="email" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button class="btn-hero">Daftar</button>
+<p>Sudah punya akun? <span onclick="showLoginForm()">Login</span></p>
+</div>
+
 </div>
 </div>
 
@@ -328,32 +336,76 @@ CakeLib adalah perpustakaan digital resep cake dan pastry.
 </div>
 
 <script>
-function showHome(){
-homePage.style.display="block";
-tentangPage.style.display="none";
-authPage.style.display="none";
-eventPage.style.display="none";
+function searchResep(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let cards = document.querySelectorAll(".card");
+let found = 0;
+
+cards.forEach(card=>{
+let name = card.getAttribute("data-name");
+if(name && name.includes(input)){
+card.style.display="block";
+found++;
+}else{
+card.style.display="none";
+}
+});
+
+document.getElementById("searchInfo").innerText =
+found ? "Ditemukan "+found+" resep" : "Resep tidak ditemukan";
 }
 
-function showTentang(){
-homePage.style.display="none";
-tentangPage.style.display="block";
-authPage.style.display="none";
-eventPage.style.display="none";
+function filterResep(kategori){
+let cards = document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+let name = card.getAttribute("data-name");
+
+if(kategori==="all" || (name && name.includes(kategori))){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+
+function togglePopcard(){
+let box=document.getElementById("popcardSaran");
+box.style.display = box.style.display==="block"?"none":"block";
+}
+
+function kirimSaran(){
+alert("Terima kasih! Saran kamu berhasil dikirim 💛");
 }
 
 function showAuth(){
 homePage.style.display="none";
 tentangPage.style.display="none";
 authPage.style.display="block";
-eventPage.style.display="none";
 }
 
-function showEvent(){
-homePage.style.display="none";
+function showRegister(){
+loginForm.style.display="none";
+registerForm.style.display="block";
+formTitle.innerText="Daftar";
+}
+
+function showLoginForm(){
+loginForm.style.display="block";
+registerForm.style.display="none";
+formTitle.innerText="Login";
+}
+
+function showHome(){
+homePage.style.display="block";
 tentangPage.style.display="none";
 authPage.style.display="none";
-eventPage.style.display="block";
+}
+
+function showTentang(){
+homePage.style.display="none";
+tentangPage.style.display="block";
+authPage.style.display="none";
 }
 </script>
 
