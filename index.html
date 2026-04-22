@@ -7,7 +7,6 @@
 
 <style>
 
-/* BODY */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
@@ -22,19 +21,27 @@ padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 position:sticky;
 top:0;
 z-index:1000;
 }
 
-.logo{font-weight:bold;font-size:22px;}
+.logo{
+font-size:22px;
+font-weight:bold;
+}
 
 .navbar a{
-margin-left:15px;
-cursor:pointer;
+margin-left:20px;
 text-decoration:none;
 color:#6b5b2a;
+cursor:pointer;
+transition:0.3s;
+}
+
+.navbar a:hover{
+color:#f4c542;
 }
 
 .nav-btn{
@@ -47,71 +54,144 @@ border-radius:20px;
 /* HERO */
 .hero{
 text-align:center;
-padding:120px 20px;
+padding:130px 20px;
 background:linear-gradient(rgba(255,240,200,0.8),rgba(255,240,200,0.8)),
 url('https://images.unsplash.com/photo-1603532648955-039310d9ed75');
 background-size:cover;
 }
 
+.hero h1{
+font-size:45px;
+}
+
+.hero button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#f4c542;
+color:white;
+border-radius:25px;
+cursor:pointer;
+}
+
+/* SEARCH */
 .search-box input{
 padding:12px;
-border-radius:20px;
+border-radius:25px;
 border:none;
-width:250px;
+width:280px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+margin-top:15px;
 }
 
 /* SECTION */
 .section{
-padding:60px 20px;
+padding:70px 20px;
 text-align:center;
 }
 
 .collection{
 display:flex;
 flex-wrap:wrap;
-gap:20px;
+gap:25px;
 justify-content:center;
 }
 
 /* CARD */
 .card{
-width:230px;
+width:240px;
 background:white;
 border-radius:20px;
-padding:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
 }
 
 .card img{
 width:100%;
-border-radius:15px;
-height:140px;
+height:150px;
 object-fit:cover;
+transition:0.3s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.card h3{
+margin:10px;
 }
 
 /* VIDEO */
 .video-container{
-text-align:center;
-margin-top:30px;
+margin-top:40px;
 }
 
 iframe{
 border-radius:15px;
 }
 
+/* HIGHLIGHT */
+.highlight{
+background:#fff3cd;
+padding:40px;
+border-radius:20px;
+margin:30px auto;
+max-width:600px;
+}
+
 /* PAGE */
 .tentang,.eventPage,.forumPage,.loginPage{
 display:none;
-padding:60px;
+padding:70px 20px;
 text-align:center;
+}
+
+/* FORUM */
+.forum-box{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.forum-box textarea{
+width:100%;
+padding:10px;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* LOGIN */
+.login-box{
+max-width:400px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.login-box input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #ddd;
 }
 
 /* FOOTER */
 .footer{
 background:#f4c542;
-padding:40px;
-text-align:center;
 color:white;
+padding:50px;
+text-align:center;
 margin-top:50px;
 }
 
@@ -123,7 +203,6 @@ margin-top:50px;
 <!-- NAVBAR -->
 <div class="navbar">
 <div class="logo">🎂 CakeLib</div>
-
 <div>
 <a onclick="showPage('home')">Beranda</a>
 <a onclick="showPage('tentang')">Informasi</a>
@@ -138,11 +217,13 @@ margin-top:50px;
 
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>Perpustakaan Digital Resep Cake</p>
+<p>Tempat terbaik belajar baking & resep cake</p>
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Cari Resep..." onkeyup="searchResep()">
 </div>
+
+<button>Mulai Jelajah</button>
 </div>
 
 <div class="section">
@@ -153,30 +234,35 @@ margin-top:50px;
 <div class="card">
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Kue ulang tahun spesial</p>
 </div>
 
 <div class="card">
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
-<p>Cookies lezat</p>
 </div>
 
 <div class="card">
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Lembut dan creamy</p>
 </div>
 
-</div>
 </div>
 
 <!-- VIDEO -->
 <div class="video-container">
-<h2>Video Edukasi</h2>
+<h2>Belajar Baking 🎥</h2>
 <iframe width="350" height="200"
 src="https://www.youtube.com/embed/gLEJAx04Vr4">
 </iframe>
+</div>
+
+<div class="highlight">
+<h3>Kenapa CakeLib?</h3>
+<p>✔ Resep mudah dipahami<br>
+✔ Cocok untuk pemula<br>
+✔ Banyak inspirasi baking</p>
+</div>
+
 </div>
 
 </div>
@@ -185,16 +271,16 @@ src="https://www.youtube.com/embed/gLEJAx04Vr4">
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
 
-<p>CakeLib adalah perpustakaan digital untuk pecinta baking.</p>
+<p>CakeLib adalah platform digital yang menyediakan berbagai resep cake dan pastry modern.</p>
 
 <h3>Visi</h3>
-<p>Menjadi platform baking terbaik dan edukatif.</p>
+<p>Menjadi platform baking terbaik di Indonesia.</p>
 
 <h3>Misi</h3>
 <ul>
 <li>Menyediakan resep berkualitas</li>
-<li>Meningkatkan kreativitas baking</li>
-<li>Memberikan edukasi gratis</li>
+<li>Mendorong kreativitas baking</li>
+<li>Edukasi baking untuk semua</li>
 </ul>
 </div>
 
@@ -203,59 +289,44 @@ src="https://www.youtube.com/embed/gLEJAx04Vr4">
 <h2>Event CakeLib 🎉</h2>
 
 <div class="collection">
-
-<div class="card">
-<img src="workshop.jpg">
-<h3>Workshop Baking</h3>
-</div>
-
-<div class="card">
-<img src="Decorating cake.jpg">
-<h3>Lomba Hias Cake</h3>
-</div>
-
-<div class="card">
-<img src="Pastry class.jpg">
-<h3>Pastry Class</h3>
-</div>
-
+<div class="card"><img src="workshop.jpg"><h3>Workshop</h3></div>
+<div class="card"><img src="Decorating cake.jpg"><h3>Decorating</h3></div>
+<div class="card"><img src="Pastry class.jpg"><h3>Pastry Class</h3></div>
 </div>
 </div>
 
 <!-- FORUM -->
 <div id="forumPage" class="forumPage">
-<h2>Forum Diskusi Baking</h2>
+<h2>Forum Diskusi 🍰</h2>
 
-<p>💬 Diskusi seputar dunia baking:</p>
-
-<ul>
-<li>Kenapa cake bantat?</li>
-<li>Tips frosting lembut</li>
-<li>Resep andalan kalian?</li>
-</ul>
-
-<textarea placeholder="Tulis komentar..." style="width:300px;height:80px;"></textarea><br><br>
+<div class="forum-box">
+<p>Tanya jawab seputar baking</p>
+<textarea placeholder="Tulis pertanyaan..."></textarea><br><br>
 <button>Kirim</button>
+</div>
 </div>
 
 <!-- LOGIN -->
 <div id="loginPage" class="loginPage">
 
+<div class="login-box">
 <h2 id="formTitle">Login</h2>
 
 <div id="loginForm">
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
-<button onclick="alert('Login berhasil!')">Login</button>
-<p>Belum punya akun? <span onclick="showRegister()" style="color:orange;cursor:pointer;">Daftar</span></p>
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button>Login</button>
+<p>Belum punya akun? <span onclick="showRegister()">Daftar</span></p>
 </div>
 
 <div id="registerForm" style="display:none;">
-<input type="text" placeholder="Nama"><br><br>
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
-<button onclick="alert('Daftar berhasil!')">Daftar</button>
-<p>Sudah punya akun? <span onclick="showLogin()" style="color:orange;cursor:pointer;">Login</span></p>
+<input type="text" placeholder="Nama">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button>Daftar</button>
+<p>Sudah punya akun? <span onclick="showLogin()">Login</span></p>
+</div>
+
 </div>
 
 </div>
@@ -268,22 +339,20 @@ src="https://www.youtube.com/embed/gLEJAx04Vr4">
 
 <script>
 
-/* NAVIGATION FIX */
-function showPage(page){
-document.getElementById("homePage").style.display="none";
-document.getElementById("tentangPage").style.display="none";
-document.getElementById("eventPage").style.display="none";
-document.getElementById("forumPage").style.display="none";
-document.getElementById("loginPage").style.display="none";
+function showPage(p){
+homePage.style.display="none";
+tentangPage.style.display="none";
+eventPage.style.display="none";
+forumPage.style.display="none";
+loginPage.style.display="none";
 
-if(page==="home") homePage.style.display="block";
-if(page==="tentang") tentangPage.style.display="block";
-if(page==="event") eventPage.style.display="block";
-if(page==="forum") forumPage.style.display="block";
-if(page==="login") loginPage.style.display="block";
+if(p==="home") homePage.style.display="block";
+if(p==="tentang") tentangPage.style.display="block";
+if(p==="event") eventPage.style.display="block";
+if(p==="forum") forumPage.style.display="block";
+if(p==="login") loginPage.style.display="block";
 }
 
-/* SEARCH */
 function searchResep(){
 let input=document.getElementById("searchInput").value.toLowerCase();
 let cards=document.querySelectorAll("#resepList .card");
@@ -293,7 +362,6 @@ card.style.display = card.innerText.toLowerCase().includes(input) ? "block":"non
 });
 }
 
-/* LOGIN REGISTER */
 function showRegister(){
 loginForm.style.display="none";
 registerForm.style.display="block";
