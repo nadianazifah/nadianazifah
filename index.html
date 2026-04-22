@@ -3,11 +3,11 @@
 <head>
 <title>CakeLib - Digital Cake Library</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
+/* BODY */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
@@ -22,19 +22,19 @@ padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 position:sticky;
 top:0;
 z-index:1000;
 }
 
-.logo{font-size:22px;font-weight:bold;}
+.logo{font-weight:bold;font-size:22px;}
 
 .navbar a{
-margin-left:20px;
+margin-left:15px;
+cursor:pointer;
 text-decoration:none;
 color:#6b5b2a;
-cursor:pointer;
 }
 
 .nav-btn{
@@ -47,149 +47,71 @@ border-radius:20px;
 /* HERO */
 .hero{
 text-align:center;
-padding:130px 20px;
+padding:120px 20px;
 background:linear-gradient(rgba(255,240,200,0.8),rgba(255,240,200,0.8)),
 url('https://images.unsplash.com/photo-1603532648955-039310d9ed75');
 background-size:cover;
 }
 
-.hero h1{font-size:45px;}
-
 .search-box input{
 padding:12px;
-border-radius:25px;
+border-radius:20px;
 border:none;
-width:280px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-margin-top:15px;
+width:250px;
 }
 
 /* SECTION */
 .section{
-padding:70px 20px;
+padding:60px 20px;
 text-align:center;
 }
 
 .collection{
 display:flex;
 flex-wrap:wrap;
-gap:25px;
+gap:20px;
 justify-content:center;
 }
 
 /* CARD */
 .card{
-width:240px;
+width:230px;
 background:white;
 border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-transition:0.3s;
+padding:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
-
-.card:hover{transform:translateY(-10px);}
 
 .card img{
 width:100%;
-height:150px;
+border-radius:15px;
+height:140px;
 object-fit:cover;
 }
 
-.card h3{margin:10px;}
-
 /* VIDEO */
-.video-container{margin-top:40px;}
+.video-container{
+text-align:center;
+margin-top:30px;
+}
 
-iframe{border-radius:15px;}
-
-/* HIGHLIGHT */
-.highlight{
-background:#fff3cd;
-padding:40px;
-border-radius:20px;
-margin:30px auto;
-max-width:600px;
+iframe{
+border-radius:15px;
 }
 
 /* PAGE */
 .tentang,.eventPage,.forumPage,.loginPage{
 display:none;
-padding:70px 20px;
+padding:60px;
 text-align:center;
-}
-
-/* FORUM */
-.forum-box{
-max-width:500px;
-margin:auto;
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-
-.forum-box input,
-.forum-box select,
-.forum-box textarea{
-width:100%;
-padding:10px;
-margin-top:10px;
-border-radius:10px;
-border:1px solid #ddd;
-}
-
-.post{
-background:white;
-padding:15px;
-border-radius:15px;
-margin:10px auto;
-max-width:500px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-text-align:left;
-animation:fadeIn 0.4s ease;
-}
-
-.post h4{margin:0;color:#f4c542;}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(10px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-/* LOGIN */
-.login-box{
-max-width:400px;
-margin:auto;
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-
-.login-box input{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:10px;
-border:1px solid #ddd;
-}
-
-/* BUTTON */
-button{
-background:#f4c542;
-border:none;
-padding:10px 20px;
-border-radius:20px;
-color:white;
-cursor:pointer;
 }
 
 /* FOOTER */
 .footer{
 background:#f4c542;
-color:white;
-padding:50px;
+padding:40px;
 text-align:center;
+color:white;
 margin-top:50px;
 }
 
@@ -201,6 +123,7 @@ margin-top:50px;
 <!-- NAVBAR -->
 <div class="navbar">
 <div class="logo">🎂 CakeLib</div>
+
 <div>
 <a onclick="showPage('home')">Beranda</a>
 <a onclick="showPage('tentang')">Informasi</a>
@@ -215,7 +138,7 @@ margin-top:50px;
 
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>Tempat terbaik belajar baking & resep cake</p>
+<p>Perpustakaan Digital Resep Cake</p>
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Cari Resep..." onkeyup="searchResep()">
@@ -226,83 +149,115 @@ margin-top:50px;
 <h2>Koleksi Resep</h2>
 
 <div class="collection" id="resepList">
-<div class="card"><img src="birthdaycake.jpg"><h3>Birthday Cake</h3></div>
-<div class="card"><img src="cookiess.jpg"><h3>Cookies</h3></div>
-<div class="card"><img src="cheese cake.jpg"><h3>Cheesecake</h3></div>
+
+<div class="card">
+<img src="birthdaycake.jpg">
+<h3>Birthday Cake</h3>
+<p>Kue ulang tahun spesial</p>
 </div>
 
+<div class="card">
+<img src="cookiess.jpg">
+<h3>Cookies</h3>
+<p>Cookies lezat</p>
+</div>
+
+<div class="card">
+<img src="cheese cake.jpg">
+<h3>Cheesecake</h3>
+<p>Lembut dan creamy</p>
+</div>
+
+</div>
+</div>
+
+<!-- VIDEO -->
 <div class="video-container">
-<h2>Belajar Baking 🎥</h2>
+<h2>Video Edukasi</h2>
 <iframe width="350" height="200"
-src="https://www.youtube.com/embed/gLEJAx04Vr4"></iframe>
+src="https://www.youtube.com/embed/gLEJAx04Vr4">
+</iframe>
 </div>
 
-<div class="highlight">
-<h3>Kenapa CakeLib?</h3>
-<p>✔ Mudah dipahami<br>✔ Cocok pemula<br>✔ Inspiratif</p>
-</div>
-
-</div>
-</div>
-
-<!-- EVENT -->
-<div id="eventPage" class="eventPage">
-<h2>Event Baking 🎉</h2>
-<div class="collection">
-<div class="card"><img src="workshop.jpg"><h3>Workshop</h3></div>
-<div class="card"><img src="Decorating cake.jpg"><h3>Decorating</h3></div>
-<div class="card"><img src="Pastry class.jpg"><h3>Pastry Class</h3></div>
-</div>
 </div>
 
 <!-- INFORMASI -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>CakeLib adalah platform digital resep cake modern.</p>
+
+<p>CakeLib adalah perpustakaan digital untuk pecinta baking.</p>
+
+<h3>Visi</h3>
+<p>Menjadi platform baking terbaik dan edukatif.</p>
+
+<h3>Misi</h3>
+<ul>
+<li>Menyediakan resep berkualitas</li>
+<li>Meningkatkan kreativitas baking</li>
+<li>Memberikan edukasi gratis</li>
+</ul>
+</div>
+
+<!-- EVENT -->
+<div id="eventPage" class="eventPage">
+<h2>Event CakeLib 🎉</h2>
+
+<div class="collection">
+
+<div class="card">
+<img src="workshop.jpg">
+<h3>Workshop Baking</h3>
+</div>
+
+<div class="card">
+<img src="Decorating cake.jpg">
+<h3>Lomba Hias Cake</h3>
+</div>
+
+<div class="card">
+<img src="Pastry class.jpg">
+<h3>Pastry Class</h3>
+</div>
+
+</div>
 </div>
 
 <!-- FORUM -->
 <div id="forumPage" class="forumPage">
-<h2>Forum Diskusi Baking 🍰</h2>
+<h2>Forum Diskusi Baking</h2>
 
-<div class="forum-box">
-<input type="text" id="username" placeholder="Nama kamu">
-<select id="kategori">
-<option>Tips Baking</option>
-<option>Resep</option>
-<option>Problem Baking</option>
-</select>
+<p>💬 Diskusi seputar dunia baking:</p>
 
-<textarea id="forumInput" placeholder="Tulis diskusi..."></textarea>
+<ul>
+<li>Kenapa cake bantat?</li>
+<li>Tips frosting lembut</li>
+<li>Resep andalan kalian?</li>
+</ul>
 
-<br><br>
-<button onclick="addPost()">Kirim</button>
-</div>
-
-<div id="postList"></div>
+<textarea placeholder="Tulis komentar..." style="width:300px;height:80px;"></textarea><br><br>
+<button>Kirim</button>
 </div>
 
 <!-- LOGIN -->
 <div id="loginPage" class="loginPage">
-<div class="login-box">
+
 <h2 id="formTitle">Login</h2>
 
 <div id="loginForm">
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
-<button>Login</button>
-<p>Belum punya akun? <span onclick="showRegister()">Daftar</span></p>
+<input type="email" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button onclick="alert('Login berhasil!')">Login</button>
+<p>Belum punya akun? <span onclick="showRegister()" style="color:orange;cursor:pointer;">Daftar</span></p>
 </div>
 
 <div id="registerForm" style="display:none;">
-<input type="text" placeholder="Nama">
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
-<button>Daftar</button>
-<p>Sudah punya akun? <span onclick="showLogin()">Login</span></p>
+<input type="text" placeholder="Nama"><br><br>
+<input type="email" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button onclick="alert('Daftar berhasil!')">Daftar</button>
+<p>Sudah punya akun? <span onclick="showLogin()" style="color:orange;cursor:pointer;">Login</span></p>
 </div>
 
-</div>
 </div>
 
 <!-- FOOTER -->
@@ -313,20 +268,22 @@ src="https://www.youtube.com/embed/gLEJAx04Vr4"></iframe>
 
 <script>
 
-function showPage(p){
-homePage.style.display="none";
-tentangPage.style.display="none";
-eventPage.style.display="none";
-forumPage.style.display="none";
-loginPage.style.display="none";
+/* NAVIGATION FIX */
+function showPage(page){
+document.getElementById("homePage").style.display="none";
+document.getElementById("tentangPage").style.display="none";
+document.getElementById("eventPage").style.display="none";
+document.getElementById("forumPage").style.display="none";
+document.getElementById("loginPage").style.display="none";
 
-if(p==="home") homePage.style.display="block";
-if(p==="tentang") tentangPage.style.display="block";
-if(p==="event") eventPage.style.display="block";
-if(p==="forum") forumPage.style.display="block";
-if(p==="login") loginPage.style.display="block";
+if(page==="home") homePage.style.display="block";
+if(page==="tentang") tentangPage.style.display="block";
+if(page==="event") eventPage.style.display="block";
+if(page==="forum") forumPage.style.display="block";
+if(page==="login") loginPage.style.display="block";
 }
 
+/* SEARCH */
 function searchResep(){
 let input=document.getElementById("searchInput").value.toLowerCase();
 let cards=document.querySelectorAll("#resepList .card");
@@ -336,29 +293,7 @@ card.style.display = card.innerText.toLowerCase().includes(input) ? "block":"non
 });
 }
 
-function addPost(){
-let user=document.getElementById("username").value;
-let text=document.getElementById("forumInput").value;
-let kategori=document.getElementById("kategori").value;
-
-if(user===""||text===""){
-alert("Isi dulu ya!");
-return;
-}
-
-let post=document.createElement("div");
-post.className="post";
-
-post.innerHTML=`
-<h4>${kategori}</h4>
-<p>${text}</p>
-<small>👤 ${user}</small>
-`;
-
-document.getElementById("postList").prepend(post);
-forumInput.value="";
-}
-
+/* LOGIN REGISTER */
 function showRegister(){
 loginForm.style.display="none";
 registerForm.style.display="block";
