@@ -6,113 +6,53 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* RESET */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#fffaf4;
-color:#4b3b1f;
+background:#fffdf4;
+color:#5c4b1f;
 }
 
 /* NAVBAR */
 .navbar{
-background:rgba(255,255,255,0.9);
-backdrop-filter:blur(10px);
+background:#fff1a8;
 padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 position:sticky;
 top:0;
 z-index:1000;
 }
 
-.logo{
-font-size:22px;
-font-weight:bold;
-}
+.logo{font-size:22px;font-weight:bold;}
 
 .navbar a{
-position:relative;
+margin-left:20px;
+cursor:pointer;
 text-decoration:none;
 color:#6b5b2a;
-margin-left:20px;
-font-weight:500;
-cursor:pointer;
-}
-
-.navbar a::after{
-content:"";
-position:absolute;
-width:0%;
-height:2px;
-bottom:-5px;
-left:0;
-background:#f4c542;
-transition:0.3s;
-}
-
-.navbar a:hover::after{
-width:100%;
-}
-
-.nav-btn{
-background:#f4c542;
-color:white;
-padding:8px 15px;
-border-radius:20px;
-}
-
-/* DROPDOWN */
-.dropdown{
-position:relative;
-display:inline-block;
-}
-
-.dropdown-menu{
-display:none;
-position:absolute;
-background:white;
-padding:10px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-top:30px;
-}
-
-.dropdown-menu a{
-display:block;
-margin:5px 0;
 }
 
 /* HERO */
 .hero{
 text-align:center;
-padding:130px 20px;
-background:linear-gradient(rgba(255,240,200,0.85), rgba(255,240,200,0.85)),
-url('https://images.unsplash.com/photo-1603532648955-039310d9ed75');
+padding:120px 20px;
+background:linear-gradient(rgba(255,248,210,0.9), rgba(255,248,210,0.9)),
+url('https://images.unsplash.com/photo-1559628233-100c798642d4');
 background-size:cover;
 }
 
-.hero h1{
-font-size:42px;
-}
-
-/* SEARCH */
 .search-box input{
 padding:12px;
 width:300px;
 border-radius:25px;
-border:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border:1px solid #e5d38f;
 }
 
 /* SECTION */
-.section{
-padding:60px 20px;
-text-align:center;
-}
+.section{padding:60px 20px;text-align:center;}
 
 .collection{
 display:flex;
@@ -123,62 +63,44 @@ flex-wrap:wrap;
 
 /* CARD */
 .card{
-width:240px;
+width:230px;
 background:white;
 border-radius:20px;
-overflow:hidden;
+padding:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-10px);
-}
+.card:hover{transform:translateY(-8px);}
 
 .card img{
 width:100%;
 height:150px;
 object-fit:cover;
-transition:0.3s;
-}
-
-.card:hover img{
-transform:scale(1.1);
-}
-
-.card h3{
-margin:10px 0;
-}
-
-/* BUTTON */
-.btn-card{
-margin-bottom:10px;
-padding:8px 15px;
-border:none;
-background:#f4c542;
-color:white;
-border-radius:20px;
-cursor:pointer;
+border-radius:15px;
 }
 
 /* VIDEO */
-.video-container iframe{
-border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
+.video-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 /* PAGE */
 .tentang,.login-section,.eventPage{
 display:none;
-text-align:center;
 padding:80px 20px;
+text-align:center;
 }
 
 /* POPCARD */
 .popcard-btn{
 position:fixed;
-bottom:25px;
-right:25px;
+bottom:30px;
+right:30px;
 background:#f4c542;
 color:white;
 border:none;
@@ -192,40 +114,22 @@ cursor:pointer;
 .popcard-box{
 display:none;
 position:fixed;
-bottom:90px;
-right:25px;
+bottom:100px;
+right:30px;
 width:280px;
 background:white;
 padding:20px;
 border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* FOOTER */
 .footer{
-background:#f4c542;
-color:white;
-padding:50px 20px;
+background:#fff1a8;
+text-align:center;
+padding:40px;
 margin-top:50px;
 }
-
-.footer-container{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap;
-}
-
-.footer h3{
-margin-bottom:10px;
-}
-
-.footer a{
-color:white;
-text-decoration:none;
-display:block;
-margin:5px 0;
-}
-
 </style>
 </head>
 
@@ -233,37 +137,21 @@ margin:5px 0;
 
 <!-- NAVBAR -->
 <div class="navbar">
-
 <div class="logo">🎂 CakeLib</div>
-
 <div>
-
-<a onclick="showHome()"><i class="fas fa-home"></i> Beranda</a>
-
-<a onclick="showTentang()"><i class="fas fa-info-circle"></i> Informasi</a>
-
-<div class="dropdown">
-<a><i class="fas fa-book"></i> Koleksi ▾</a>
-<div class="dropdown-menu">
-<a href="#">🎂 Cake</a>
-<a href="#">🍪 Cookies</a>
-<a href="#">🧁 Cupcake</a>
+<a onclick="showHome()">Beranda</a>
+<a onclick="showTentang()">Informasi</a>
+<a onclick="showEvent()">Event</a>
+<a onclick="showForum()">Forum</a>
+<a onclick="showAuth()">Login</a>
 </div>
-</div>
-
-<a onclick="showEvent()"><i class="fas fa-calendar"></i> Event</a>
-
-<a onclick="showAuth()" class="nav-btn">Login</a>
-
-</div>
-
 </div>
 
 <!-- HOME -->
 <div id="homePage">
 
 <div class="hero">
-<h1>Selamat Datang di CakeLib 🎂</h1>
+<h1>Selamat Datang di CakeLib</h1>
 <p>Perpustakaan Digital Resep Cake & Pastry</p>
 
 <div class="search-box">
@@ -271,6 +159,7 @@ margin:5px 0;
 </div>
 </div>
 
+<!-- KOLEKSI -->
 <div class="section">
 <h2>Koleksi Resep</h2>
 
@@ -279,24 +168,32 @@ margin:5px 0;
 <div class="card">
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Kue ulang tahun spesial</p>
-<button class="btn-card">Lihat</button>
+<p>Kue ulang tahun</p>
 </div>
 
 <div class="card">
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
 <p>Cookies lezat</p>
-<button class="btn-card">Lihat</button>
 </div>
 
 <div class="card">
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Lembut dan creamy</p>
-<button class="btn-card">Lihat</button>
+<p>Lembut & creamy</p>
 </div>
 
+</div>
+</div>
+
+<!-- VIDEO -->
+<div class="section">
+<h2>Video Edukasi 🎥</h2>
+
+<div class="video-container">
+<iframe width="300" height="180" src="https://www.youtube.com/embed/gLEJAx04Vr4"></iframe>
+<iframe width="300" height="180" src="https://www.youtube.com/embed/1APZ3kY7l3c"></iframe>
+<iframe width="300" height="180" src="https://www.youtube.com/embed/4aZr5hZXP_s"></iframe>
 </div>
 
 </div>
@@ -308,7 +205,6 @@ margin:5px 0;
 <h2>Event CakeLib 🎉</h2>
 
 <div class="collection">
-
 <div class="card">
 <img src="workshop.jpg">
 <h3>Workshop Baking</h3>
@@ -318,6 +214,24 @@ margin:5px 0;
 <img src="Decorating cake.jpg">
 <h3>Lomba Hias Cake</h3>
 </div>
+</div>
+</div>
+
+<!-- FORUM -->
+<div id="forumPage" class="tentang">
+<h2>Forum CakeLib 💬</h2>
+
+<div style="max-width:600px;margin:auto;text-align:left;">
+
+<div class="card" style="margin-bottom:15px;">
+<h3>Bagaimana membuat cake lembut?</h3>
+<p><b>User:</b> Saya selalu gagal 😢</p>
+</div>
+
+<div class="card">
+<h3>Resep cookies mudah?</h3>
+<p><b>User:</b> Ada rekomendasi?</p>
+</div>
 
 </div>
 </div>
@@ -325,7 +239,7 @@ margin:5px 0;
 <!-- INFORMASI -->
 <div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>CakeLib adalah perpustakaan digital resep cake dan pastry.</p>
+<p>CakeLib adalah perpustakaan digital resep cake.</p>
 </div>
 
 <!-- LOGIN -->
@@ -333,7 +247,7 @@ margin:5px 0;
 <h2>Login</h2>
 <input type="email" placeholder="Email"><br><br>
 <input type="password" placeholder="Password"><br><br>
-<button class="btn-card">Login</button>
+<button>Login</button>
 </div>
 
 <!-- POPCARD -->
@@ -346,33 +260,12 @@ margin:5px 0;
 <input type="text" placeholder="Nama"><br>
 <input type="email" placeholder="Email"><br>
 <textarea placeholder="Saran"></textarea><br>
-<button class="btn-card">Kirim</button>
+<button>Kirim</button>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-<div class="footer-container">
-
-<div>
-<h3>CakeLib</h3>
-<p>Platform digital resep cake modern</p>
-</div>
-
-<div>
-<h3>Kontak</h3>
-<p>📍 Medan</p>
-<p>📧 cakelib@gmail.com</p>
-<p>📞 0812-3456-7890</p>
-</div>
-
-<div>
-<h3>Sosial Media</h3>
-<a href="#">Instagram</a>
-<a href="#">WhatsApp</a>
-<a href="#">Facebook</a>
-</div>
-
-</div>
+<p>© 2026 CakeLib | Medan</p>
 </div>
 
 <script>
@@ -383,6 +276,7 @@ homePage.style.display="block";
 tentangPage.style.display="none";
 authPage.style.display="none";
 eventPage.style.display="none";
+forumPage.style.display="none";
 }
 
 function showTentang(){
@@ -390,13 +284,7 @@ homePage.style.display="none";
 tentangPage.style.display="block";
 authPage.style.display="none";
 eventPage.style.display="none";
-}
-
-function showAuth(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-authPage.style.display="block";
-eventPage.style.display="none";
+forumPage.style.display="none";
 }
 
 function showEvent(){
@@ -404,6 +292,23 @@ homePage.style.display="none";
 tentangPage.style.display="none";
 authPage.style.display="none";
 eventPage.style.display="block";
+forumPage.style.display="none";
+}
+
+function showForum(){
+homePage.style.display="none";
+tentangPage.style.display="none";
+authPage.style.display="none";
+eventPage.style.display="none";
+forumPage.style.display="block";
+}
+
+function showAuth(){
+homePage.style.display="none";
+tentangPage.style.display="none";
+authPage.style.display="block";
+eventPage.style.display="none";
+forumPage.style.display="none";
 }
 
 /* SEARCH */
@@ -421,18 +326,6 @@ function togglePopcard(){
 let box=document.getElementById("popcardSaran");
 box.style.display = box.style.display==="block"?"none":"block";
 }
-
-/* DROPDOWN */
-const dropdown = document.querySelector(".dropdown");
-const menu = document.querySelector(".dropdown-menu");
-
-dropdown.addEventListener("mouseover", () => {
-menu.style.display="block";
-});
-
-dropdown.addEventListener("mouseout", () => {
-menu.style.display="none";
-});
 
 </script>
 
