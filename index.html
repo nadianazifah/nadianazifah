@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CakeLib - Digital Cake Library</title>
+<title>CakeLib - Premium Baking Library</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
+/* GLOBAL */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#fffaf4;
+background:linear-gradient(to bottom,#fffaf4,#fff1d6);
 color:#4b3b1f;
-}
-
-/* ANIMATION */
-.fade{
-opacity:0;
-transform:translateY(20px);
-transition:0.6s;
-}
-.fade.show{
-opacity:1;
-transform:translateY(0);
 }
 
 /* NAVBAR */
 .navbar{
-background:white;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(12px);
 padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
-.logo{font-weight:bold;}
+.logo{
+font-weight:700;
+font-size:22px;
+}
 
 .navbar a{
 margin-left:20px;
-cursor:pointer;
 text-decoration:none;
 color:#6b5b2a;
+position:relative;
+}
+
+.navbar a::after{
+content:"";
+width:0%;
+height:2px;
+background:#f4c542;
+position:absolute;
+bottom:-5px;
+left:0;
+transition:0.3s;
+}
+
+.navbar a:hover::after{
+width:100%;
 }
 
 .nav-btn{
-background:#f4c542;
+background:linear-gradient(45deg,#ffb347,#ffcc33);
 color:white;
 padding:8px 15px;
 border-radius:20px;
@@ -57,92 +67,176 @@ border-radius:20px;
 /* HERO */
 .hero{
 text-align:center;
-padding:130px 20px;
-background:linear-gradient(rgba(255,240,200,0.8),rgba(255,240,200,0.8)),
-url('https://images.unsplash.com/photo-1603532648955-039310d9ed75');
+padding:160px 20px;
+background:
+linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+url('https://images.unsplash.com/photo-1559628233-100c798642d4');
 background-size:cover;
+color:white;
 }
 
+.hero h1{
+font-size:50px;
+font-weight:700;
+text-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.hero p{
+opacity:0.9;
+}
+
+/* SEARCH */
 .search-box input{
+margin-top:20px;
 padding:12px;
-border-radius:25px;
+width:300px;
 border:none;
-width:280px;
-margin-top:15px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* CARD */
+/* SECTION */
+.section{
+padding:80px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:30px;
+position:relative;
+display:inline-block;
+}
+
+.section h2::after{
+content:"";
+width:60%;
+height:3px;
+background:#f4c542;
+position:absolute;
+left:20%;
+bottom:-8px;
+}
+
+/* COLLECTION */
 .collection{
 display:flex;
 flex-wrap:wrap;
-gap:25px;
+gap:30px;
 justify-content:center;
+margin-top:40px;
 }
 
+/* CARD PREMIUM */
 .card{
-width:240px;
-background:white;
-border-radius:20px;
+width:260px;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
+border-radius:25px;
 overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-cursor:pointer;
-transition:0.3s;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+transition:0.4s;
+position:relative;
 }
 
-.card:hover{transform:translateY(-10px);}
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+}
 
 .card img{
 width:100%;
-height:150px;
+height:170px;
 object-fit:cover;
+transition:0.4s;
 }
 
-.section{
-padding:70px 20px;
-text-align:center;
+.card:hover img{
+transform:scale(1.1);
 }
 
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-justify-content:center;
-align-items:center;
+.card h3{
+margin:15px;
 }
 
-.modal-content{
-background:white;
-padding:20px;
+/* BADGE */
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:#f4c542;
+color:white;
+padding:5px 10px;
+border-radius:10px;
+font-size:12px;
+}
+
+/* VIDEO */
+.video-container{
+margin-top:50px;
+}
+
+iframe{
 border-radius:20px;
-max-width:400px;
-text-align:center;
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* HIGHLIGHT */
+.highlight{
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:20px;
+max-width:600px;
+margin:40px auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
 /* FORUM */
 .forum-box{
 max-width:500px;
 margin:auto;
-background:white;
+background:rgba(255,255,255,0.8);
 padding:20px;
 border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
 .post{
-text-align:left;
 margin-top:10px;
+text-align:left;
 padding:10px;
 border-bottom:1px solid #eee;
+}
+
+/* LOGIN */
+.login-box{
+max-width:400px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* BUTTON */
+button{
+background:linear-gradient(45deg,#ffb347,#ffcc33);
+border:none;
+padding:10px 20px;
+border-radius:20px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* PAGE */
 .tentang,.eventPage,.forumPage,.loginPage{
 display:none;
-padding:70px 20px;
+padding:80px 20px;
 text-align:center;
 }
 
@@ -150,9 +244,9 @@ text-align:center;
 .footer{
 background:#f4c542;
 color:white;
-padding:40px;
+padding:50px;
 text-align:center;
-margin-top:40px;
+margin-top:50px;
 }
 
 </style>
@@ -175,35 +269,50 @@ margin-top:40px;
 <!-- HOME -->
 <div id="homePage">
 
-<div class="hero fade">
+<div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>Belajar baking jadi lebih mudah & seru</p>
+<p>Inspirasi baking modern untuk semua</p>
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Cari Resep..." onkeyup="searchResep()">
 </div>
 </div>
 
-<div class="section fade">
-<h2>Koleksi Resep</h2>
+<div class="section">
+<h2>Koleksi Premium</h2>
 
 <div class="collection" id="resepList">
 
-<div class="card" onclick="openModal('Birthday Cake lembut & cocok untuk ulang tahun')">
+<div class="card">
+<div class="badge">Popular</div>
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
 </div>
 
-<div class="card" onclick="openModal('Cookies renyah dan mudah dibuat')">
+<div class="card">
+<div class="badge">Best</div>
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
 </div>
 
-<div class="card" onclick="openModal('Cheesecake creamy dan lembut')">
+<div class="card">
+<div class="badge">New</div>
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
 </div>
 
+</div>
+
+<div class="video-container">
+<h2>Belajar Baking 🎥</h2>
+<iframe width="350" height="200" src="https://www.youtube.com/embed/gLEJAx04Vr4"></iframe>
+</div>
+
+<div class="highlight">
+<h3>Kenapa CakeLib?</h3>
+<p>✔ Desain modern & elegan<br>
+✔ Resep mudah dipahami<br>
+✔ Cocok pemula hingga pro</p>
 </div>
 
 </div>
@@ -211,24 +320,24 @@ margin-top:40px;
 </div>
 
 <!-- EVENT -->
-<div id="eventPage" class="eventPage fade">
-<h2>Event CakeLib 🎉</h2>
-<p>Ikuti event seru & tingkatkan skill baking kamu!</p>
+<div id="eventPage" class="eventPage">
+<h2>Event Baking 🎉</h2>
+<p>Ikuti workshop & kelas baking seru!</p>
 </div>
 
 <!-- INFORMASI -->
-<div id="tentangPage" class="tentang fade">
+<div id="tentangPage" class="tentang">
 <h2>Tentang CakeLib</h2>
-<p>Platform belajar baking modern.</p>
+<p>Platform digital baking modern di Indonesia.</p>
 </div>
 
 <!-- FORUM -->
-<div id="forumPage" class="forumPage fade">
+<div id="forumPage" class="forumPage">
 
 <h2>Forum Diskusi 🍰</h2>
 
 <div class="forum-box">
-<textarea id="forumInput" placeholder="Tulis sesuatu..."></textarea><br><br>
+<textarea id="forumInput" placeholder="Tulis pertanyaan..."></textarea><br><br>
 <button onclick="addPost()">Kirim</button>
 
 <div id="postList"></div>
@@ -239,29 +348,22 @@ margin-top:40px;
 
 <!-- LOGIN -->
 <div id="loginPage" class="loginPage">
+<div class="login-box">
 <h2>Login</h2>
 <input type="email" placeholder="Email"><br><br>
 <input type="password" placeholder="Password"><br><br>
 <button>Login</button>
 </div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-<div class="modal-content">
-<p id="modalText"></p>
-<button onclick="closeModal()">Tutup</button>
-</div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-<p>📍 Medan | 📧 cakelib@gmail.com</p>
+<p>📍 Medan | 📧 cakelib@gmail.com | 📞 0812-3456-7890</p>
 <p>© 2026 CakeLib</p>
 </div>
 
 <script>
 
-/* PAGE */
 function showPage(p){
 homePage.style.display="none";
 tentangPage.style.display="none";
@@ -276,7 +378,6 @@ if(p==="forum") forumPage.style.display="block";
 if(p==="login") loginPage.style.display="block";
 }
 
-/* SEARCH */
 function searchResep(){
 let input=document.getElementById("searchInput").value.toLowerCase();
 let cards=document.querySelectorAll(".card");
@@ -286,16 +387,6 @@ card.style.display = card.innerText.toLowerCase().includes(input) ? "block":"non
 });
 }
 
-/* MODAL */
-function openModal(text){
-modal.style.display="flex";
-modalText.innerText=text;
-}
-function closeModal(){
-modal.style.display="none";
-}
-
-/* FORUM */
 function addPost(){
 let text=document.getElementById("forumInput").value;
 if(text==="") return;
@@ -306,13 +397,6 @@ post.innerText="👤 User: "+text;
 
 document.getElementById("postList").appendChild(post);
 forumInput.value="";
-}
-
-/* ANIMATION */
-window.onload=()=>{
-document.querySelectorAll('.fade').forEach(el=>{
-setTimeout(()=>el.classList.add('show'),300);
-});
 }
 
 </script>
