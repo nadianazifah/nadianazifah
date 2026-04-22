@@ -11,29 +11,32 @@ margin:0;
 font-family:'Segoe UI',sans-serif;
 background:linear-gradient(to bottom,#fffdf4,#fff6cc);
 color:#5c4b1f;
+transition:0.3s;
+}
+
+/* DARK MODE */
+.dark{
+background:#1e1e1e;
+color:white;
 }
 
 /* NAVBAR */
 .navbar{
-background:#fff1a8;
+background:rgba(255,241,168,0.9);
+backdrop-filter:blur(10px);
 padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
 position:sticky;
 top:0;
 z-index:1000;
 }
 
 .navbar a{
-text-decoration:none;
-color:#6b5b2a;
-margin-left:20px;
+margin-left:15px;
 cursor:pointer;
 }
-
-.navbar a:hover{color:#d4a017;}
 
 /* HERO */
 .hero{
@@ -42,115 +45,131 @@ padding:120px 20px;
 background:linear-gradient(rgba(255,248,210,0.9), rgba(255,248,210,0.9)),
 url('https://images.unsplash.com/photo-1559628233-100c798642d4');
 background-size:cover;
-animation:fadeIn 1s;
+animation:fade 1s;
 }
 
-.hero h1{font-size:42px;}
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
 
+/* SEARCH */
 .search-box input{
 padding:12px;
-width:300px;
+width:280px;
 border-radius:25px;
-border:1px solid #e5d38f;
+border:1px solid #ccc;
 }
 
-/* BUTTON */
-.btn-hero,.btn-card{
-margin-top:10px;
-padding:10px 20px;
-border:none;
-background:linear-gradient(45deg,#f4c542,#e0a800);
-color:white;
-border-radius:25px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.btn-hero:hover,.btn-card:hover{
-transform:scale(1.05);
-}
-
-/* SECTION */
-.section{
-padding:60px 20px;
+/* CATEGORY */
+.category{
 text-align:center;
+margin:20px;
 }
 
-.collection{
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
+.category button{
+margin:5px;
+padding:8px 15px;
+border:none;
+border-radius:20px;
+background:#f4c542;
+color:white;
+cursor:pointer;
 }
 
 /* CARD */
+.collection{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
 .card{
 width:230px;
 background:white;
-border-radius:20px;
 padding:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 transition:0.3s;
-animation:fadeUp 0.8s;
+position:relative;
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 .card img{
 width:100%;
 height:150px;
-object-fit:cover;
 border-radius:15px;
+object-fit:cover;
 }
 
-.card i{
-color:#f4c542;
-margin-bottom:10px;
+/* BADGE */
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:#f4c542;
+color:white;
+padding:5px 10px;
+border-radius:15px;
+font-size:12px;
 }
 
-/* ANIMASI */
-@keyframes fadeUp{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+/* LIKE */
+.like{
+position:absolute;
+top:10px;
+right:10px;
+cursor:pointer;
+color:#aaa;
+}
+.like.active{
+color:red;
 }
 
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
+/* BUTTON */
+.btn-card{
+margin-top:10px;
+padding:8px 15px;
+border:none;
+background:#f4c542;
+color:white;
+border-radius:15px;
+cursor:pointer;
 }
 
-/* PAGE */
-.tentang,.login-section,.eventPage{
+/* MODAL */
+.modal{
 display:none;
-padding:80px 20px;
-text-align:center;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
 }
 
-/* CTA */
-.cta{
-background:#fff1a8;
-padding:60px;
-text-align:center;
+.modal-content{
+background:white;
+padding:20px;
+border-radius:15px;
+width:300px;
 }
 
 /* FOOTER */
 .footer{
-background:#f4c542;
+background:linear-gradient(45deg,#f4c542,#e0a800);
 color:white;
-padding:50px 20px;
+padding:40px;
+text-align:center;
+margin-top:40px;
 }
-
-.footer-container{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap;
-gap:20px;
-}
-
-.copy{text-align:center;margin-top:20px;}
 </style>
 </head>
 
@@ -162,8 +181,7 @@ gap:20px;
 <div>
 <a onclick="showHome()">Beranda</a>
 <a onclick="showTentang()">Informasi</a>
-<a onclick="showEvent()">Event</a>
-<a onclick="showAuth()">Login</a>
+<a onclick="toggleDark()">🌙</a>
 </div>
 </div>
 
@@ -171,193 +189,124 @@ gap:20px;
 <div id="homePage">
 
 <div class="hero">
-<h1>Temukan Resep Cake Favoritmu 🎂</h1>
-<p>Dari pemula sampai profesional</p>
+<h1>Selamat Datang di CakeLib 🎂</h1>
+<p>Perpustakaan Digital Resep Cake & Pastry</p>
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Cari Resep..." onkeyup="searchResep()">
 </div>
-
-<button class="btn-hero">Mulai Jelajah</button>
 </div>
 
-<!-- KEUNGGULAN -->
-<div class="section">
-<h2>Kenapa CakeLib?</h2>
-<div class="collection">
-
-<div class="card">
-<i class="fas fa-book"></i>
-<h3>Resep Lengkap</h3>
-<p>Dari basic sampai pro</p>
-</div>
-
-<div class="card">
-<i class="fas fa-video"></i>
-<h3>Video Edukasi</h3>
-<p>Belajar lebih mudah</p>
-</div>
-
-<div class="card">
-<i class="fas fa-users"></i>
-<h3>Event Seru</h3>
-<p>Workshop & lomba</p>
-</div>
-
-</div>
+<!-- FILTER -->
+<div class="category">
+<button onclick="filter('all')">Semua</button>
+<button onclick="filter('cake')">Cake</button>
+<button onclick="filter('cookies')">Cookies</button>
 </div>
 
 <!-- KOLEKSI -->
-<div class="section">
-<h2>Koleksi Resep</h2>
 <div class="collection" id="resepList">
 
-<div class="card">
+<div class="card cake">
+<span class="badge">Populer</span>
+<i class="fas fa-heart like" onclick="like(this)"></i>
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Kue ulang tahun spesial</p>
+<button class="btn-card" onclick="detail('Kue ulang tahun lezat')">Detail</button>
 </div>
 
-<div class="card">
+<div class="card cookies">
+<span class="badge">Baru</span>
+<i class="fas fa-heart like" onclick="like(this)"></i>
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
-<p>Cookies lezat</p>
+<button class="btn-card" onclick="detail('Cookies renyah')">Detail</button>
 </div>
 
-<div class="card">
+<div class="card cake">
+<i class="fas fa-heart like" onclick="like(this)"></i>
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Lembut dan creamy</p>
-</div>
-
-</div>
-</div>
-
-<!-- TESTIMONI -->
-<div class="section">
-<h2>Kata Pengguna 💬</h2>
-<div class="collection">
-
-<div class="card">
-<p>"Resepnya mudah banget!"</p>
-<b>- Nadia</b>
-</div>
-
-<div class="card">
-<p>"Aku jadi bisa baking sendiri 😍"</p>
-<b>- Sari</b>
-</div>
-
-<div class="card">
-<p>"Eventnya seru!"</p>
-<b>- Rina</b>
-</div>
-
-</div>
-</div>
-
-<!-- CTA -->
-<div class="cta">
-<h2>Yuk Mulai Baking 🎂</h2>
-<button class="btn-hero" onclick="showAuth()">Gabung Sekarang</button>
+<button class="btn-card" onclick="detail('Cheesecake creamy')">Detail</button>
 </div>
 
 </div>
 
-<!-- EVENT -->
-<div id="eventPage" class="eventPage">
-<h2>Event CakeLib 🎉</h2>
-<div class="collection">
-
-<div class="card">
-<img src="workshop.jpg">
-<h3>Workshop Baking</h3>
-</div>
-
-<div class="card">
-<img src="Decorating cake.jpg">
-<h3>Lomba Hias Cake</h3>
-</div>
-
-</div>
 </div>
 
 <!-- INFORMASI -->
-<div id="tentangPage" class="tentang">
+<div id="tentangPage" style="display:none;text-align:center;padding:40px;">
 <h2>Tentang CakeLib</h2>
-<p>Platform digital resep cake</p>
+<p>CakeLib adalah perpustakaan digital resep cake dan pastry.</p>
 </div>
 
-<!-- LOGIN -->
-<div id="authPage" class="login-section">
-<div class="card">
-<h2>Login</h2>
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
-<button class="btn-hero">Login</button>
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<p id="isi"></p>
+<button onclick="closeModal()">Tutup</button>
 </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-<div class="footer-container">
-<div>
-<h3>CakeLib</h3>
-<p>Belajar baking jadi mudah</p>
-</div>
-
-<div>
-<h3>Kontak</h3>
-<p>Medan</p>
-<p>cakelib@gmail.com</p>
-</div>
-
-<div>
-<h3>Sosial</h3>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-whatsapp"></i>
-</div>
-</div>
-
-<div class="copy">© 2026 CakeLib</div>
+<p>📍 Medan, Sumatera Utara</p>
+<p>📧 cakelib@gmail.com | 📞 0812-3456-7890</p>
+<p>© 2026 CakeLib</p>
 </div>
 
 <script>
 function showHome(){
 homePage.style.display="block";
 tentangPage.style.display="none";
-authPage.style.display="none";
-eventPage.style.display="none";
 }
 
 function showTentang(){
 homePage.style.display="none";
 tentangPage.style.display="block";
-authPage.style.display="none";
-eventPage.style.display="none";
 }
 
-function showAuth(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-authPage.style.display="block";
-eventPage.style.display="none";
-}
-
-function showEvent(){
-homePage.style.display="none";
-tentangPage.style.display="none";
-authPage.style.display="none";
-eventPage.style.display="block";
-}
-
+/* SEARCH */
 function searchResep(){
 let input=document.getElementById("searchInput").value.toLowerCase();
 let cards=document.querySelectorAll("#resepList .card");
 
 cards.forEach(card=>{
-card.style.display=card.innerText.toLowerCase().includes(input)?"block":"none";
+card.style.display = card.innerText.toLowerCase().includes(input) ? "block" : "none";
 });
+}
+
+/* FILTER */
+function filter(type){
+let cards=document.querySelectorAll("#resepList .card");
+
+cards.forEach(card=>{
+if(type==="all"){
+card.style.display="block";
+}else{
+card.style.display = card.classList.contains(type) ? "block" : "none";
+}
+});
+}
+
+/* LIKE */
+function like(el){
+el.classList.toggle("active");
+}
+
+/* MODAL */
+function detail(text){
+modal.style.display="flex";
+isi.innerText=text;
+}
+
+function closeModal(){
+modal.style.display="none";
+}
+
+/* DARK MODE */
+function toggleDark(){
+document.body.classList.toggle("dark");
 }
 </script>
 
