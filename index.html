@@ -121,10 +121,28 @@ border-radius:15px;
 }
 
 /* PAGE */
-.tentang,.eventPage,.forumPage,.loginPage,.koleksiPage{
+.tentang,.eventPage,.forumPage,.loginPage,.koleksiPage,.komunitasPage{
 display:none;
 padding:60px;
 text-align:center;
+}
+
+/* KOMUNITAS */
+.komunitas-box{
+max-width:350px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.komunitas-box input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #ddd;
 }
 
 /* FOOTER */
@@ -151,6 +169,7 @@ margin-top:50px;
 <a onclick="showPage('event')">Event</a>
 <a onclick="showPage('koleksi')">Koleksi</a>
 <a onclick="showPage('forum')">Forum</a>
+<a onclick="showPage('komunitas')">Komunitas</a>
 <a onclick="showPage('login')" class="nav-btn">Login</a>
 </div>
 </div>
@@ -193,7 +212,6 @@ margin-top:50px;
 </div>
 </div>
 
-<!-- VIDEO -->
 <div class="video-container">
 <h2>Video Edukasi</h2>
 <iframe width="350" height="200"
@@ -203,58 +221,20 @@ src="https://www.youtube.com/embed/gLEJAx04Vr4">
 
 </div>
 
-<!-- KOLEKSI BARU -->
+<!-- KOLEKSI -->
 <div id="koleksiPage" class="koleksiPage">
 <h2>📚 Koleksi Buku Resep</h2>
-<p>Belajar baking dari referensi terbaik</p>
 
 <div class="collection">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
-<h3>Buku Resep Cake Dasar</h3>
-<p>Cocok untuk pemula</p>
-<button>Baca</button>
+<div class="card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587"><h3>Resep Dasar</h3></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1604908176997-43136b4f89c2"><h3>Pastry Modern</h3></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1542826438-5c8c9b5e2e9c"><h3>Decorating Cake</h3></div>
 </div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908176997-43136b4f89c2">
-<h3>Pastry Modern</h3>
-<p>Inspirasi dessert kekinian</p>
-<button>Baca</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1542826438-5c8c9b5e2e9c">
-<h3>Decorating Cake</h3>
-<p>Belajar menghias cake</p>
-<button>Baca</button>
-</div>
-
-</div>
-</div>
-
-<!-- INFORMASI -->
-<div id="tentangPage" class="tentang">
-<h2>Tentang CakeLib</h2>
-
-<p>CakeLib adalah perpustakaan digital untuk pecinta baking.</p>
-
-<h3>Visi</h3>
-<p>Menjadi platform baking terbaik dan edukatif.</p>
-
-<h3>Misi</h3>
-<ul>
-<li>Menyediakan resep berkualitas</li>
-<li>Meningkatkan kreativitas baking</li>
-<li>Memberikan edukasi gratis</li>
-</ul>
 </div>
 
 <!-- EVENT -->
 <div id="eventPage" class="eventPage">
 <h2>Event CakeLib 🎉</h2>
-
 <div class="collection">
 <div class="card"><img src="workshop.jpg"><h3>Workshop Baking</h3></div>
 <div class="card"><img src="Decorating cake.jpg"><h3>Lomba Hias Cake</h3></div>
@@ -265,56 +245,49 @@ src="https://www.youtube.com/embed/gLEJAx04Vr4">
 <!-- FORUM -->
 <div id="forumPage" class="forumPage">
 <h2>Forum Diskusi Baking</h2>
-
-<p>💬 Diskusi seputar dunia baking:</p>
-
-<ul>
-<li>Kenapa cake bantat?</li>
-<li>Tips frosting lembut</li>
-<li>Resep andalan kalian?</li>
-</ul>
-
 <textarea placeholder="Tulis komentar..." style="width:300px;height:80px;"></textarea><br><br>
 <button>Kirim</button>
 </div>
 
+<!-- KOMUNITAS -->
+<div id="komunitasPage" class="komunitasPage">
+<h2>👩‍🍳 Komunitas Baking</h2>
+
+<div class="komunitas-box">
+<input type="number" id="tepung" placeholder="Tepung (gram)">
+<input type="number" id="gula" placeholder="Gula (gram)">
+<input type="number" id="porsi" placeholder="Jumlah Porsi">
+
+<button onclick="hitungResep()">Hitung</button>
+
+<p id="hasilHitung"></p>
+</div>
+
+</div>
+
 <!-- LOGIN -->
 <div id="loginPage" class="loginPage">
-
-<h2 id="formTitle">Login</h2>
-
-<div id="loginForm">
+<h2>Login</h2>
 <input type="email" placeholder="Email"><br><br>
 <input type="password" placeholder="Password"><br><br>
-<button onclick="alert('Login berhasil!')">Login</button>
-<p>Belum punya akun? <span onclick="showRegister()" style="color:orange;cursor:pointer;">Daftar</span></p>
-</div>
-
-<div id="registerForm" style="display:none;">
-<input type="text" placeholder="Nama"><br><br>
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
-<button onclick="alert('Daftar berhasil!')">Daftar</button>
-<p>Sudah punya akun? <span onclick="showLogin()" style="color:orange;cursor:pointer;">Login</span></p>
-</div>
-
+<button>Login</button>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
 <p>📍 Medan | 📧 cakelib@gmail.com | 📞 08123456789</p>
-<p>© 2026 CakeLib</p>
 </div>
 
 <script>
 
 function showPage(page){
-homePage.style.display="none";
-tentangPage.style.display="none";
-eventPage.style.display="none";
-forumPage.style.display="none";
-loginPage.style.display="none";
-koleksiPage.style.display="none";
+document.getElementById("homePage").style.display="none";
+document.getElementById("tentangPage").style.display="none";
+document.getElementById("eventPage").style.display="none";
+document.getElementById("forumPage").style.display="none";
+document.getElementById("loginPage").style.display="none";
+document.getElementById("koleksiPage").style.display="none";
+document.getElementById("komunitasPage").style.display="none";
 
 if(page==="home") homePage.style.display="block";
 if(page==="tentang") tentangPage.style.display="block";
@@ -322,6 +295,7 @@ if(page==="event") eventPage.style.display="block";
 if(page==="forum") forumPage.style.display="block";
 if(page==="login") loginPage.style.display="block";
 if(page==="koleksi") koleksiPage.style.display="block";
+if(page==="komunitas") komunitasPage.style.display="block";
 }
 
 function searchResep(){
@@ -333,16 +307,21 @@ card.style.display = card.innerText.toLowerCase().includes(input) ? "block":"non
 });
 }
 
-function showRegister(){
-loginForm.style.display="none";
-registerForm.style.display="block";
-formTitle.innerText="Daftar";
+function hitungResep(){
+let tepung=document.getElementById("tepung").value;
+let gula=document.getElementById("gula").value;
+let porsi=document.getElementById("porsi").value;
+
+if(tepung===""||gula===""||porsi===""){
+document.getElementById("hasilHitung").innerText="⚠️ Input belum lengkap!";
+return;
 }
 
-function showLogin(){
-loginForm.style.display="block";
-registerForm.style.display="none";
-formTitle.innerText="Login";
+let totalTepung=tepung*porsi;
+let totalGula=gula*porsi;
+
+document.getElementById("hasilHitung").innerText=
+"Tepung: "+totalTepung+"g | Gula: "+totalGula+"g";
 }
 
 </script>
