@@ -13,6 +13,7 @@ background:#fffaf4;
 color:#4b3b1f;
 }
 
+/* NAVBAR */
 .navbar{
 background:white;
 padding:15px 40px;
@@ -20,6 +21,8 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
+position:sticky;
+top:0;
 }
 
 .navbar a{
@@ -27,6 +30,11 @@ margin-left:15px;
 cursor:pointer;
 text-decoration:none;
 color:#6b5b2a;
+transition:0.3s;
+}
+
+.navbar a:hover{
+color:#f4c542;
 }
 
 .nav-btn{
@@ -36,31 +44,50 @@ padding:8px 15px;
 border-radius:20px;
 }
 
+/* HERO */
 .hero{
 text-align:center;
 padding:120px 20px;
-background:#ffe9b0;
+background:linear-gradient(135deg,#ffe9b0,#ffd36b);
 }
 
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+max-width:500px;
+margin:auto;
+}
+
+/* SECTION */
 .section{
 padding:60px 20px;
 text-align:center;
 }
 
+/* CARD */
 .collection{
 display:flex;
 gap:20px;
 justify-content:center;
+flex-wrap:wrap;
 }
 
 .card{
 width:230px;
 background:white;
 border-radius:20px;
-padding:10px;
+padding:20px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
+.card:hover{
+transform:translateY(-8px);
+}
+
+/* PAGE */
 .page{
 display:none;
 padding:60px;
@@ -69,7 +96,7 @@ text-align:center;
 
 /* KALKULATOR */
 .kalkulator{
-max-width:300px;
+max-width:320px;
 margin:auto;
 background:white;
 padding:20px;
@@ -81,23 +108,50 @@ box-shadow:0 5px 15px rgba(0,0,0,0.1);
 width:90%;
 padding:10px;
 margin:10px;
+border-radius:10px;
+border:1px solid #ddd;
 }
 
 .kalkulator button{
-padding:10px;
+padding:10px 15px;
 margin:5px;
 background:#f4c542;
 border:none;
 color:white;
 border-radius:10px;
 cursor:pointer;
+transition:0.3s;
 }
 
+.kalkulator button:hover{
+background:#e0b233;
+}
+
+/* LOGIN */
+.login-box{
+max-width:300px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.login-box input{
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+/* FOOTER */
 .footer{
 background:#f4c542;
 padding:30px;
 text-align:center;
 color:white;
+margin-top:40px;
 }
 
 </style>
@@ -120,16 +174,33 @@ color:white;
 
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>Platform digital untuk pecinta baking yang menyediakan berbagai resep cake, tips memasak, dan inspirasi dessert modern.</p>
+<p>
+Tempat terbaik untuk belajar baking, menemukan resep lezat, dan berbagi inspirasi dessert modern.
+Mulai perjalanan baking kamu bersama CakeLib sekarang!
+</p>
 </div>
 
 <div class="section">
-<h2>Tentang CakeLib</h2>
-<p>
-CakeLib adalah perpustakaan digital yang membantu kamu belajar membuat berbagai jenis kue,
-mulai dari dasar hingga profesional. Dengan CakeLib, kamu bisa menemukan resep,
-tutorial, dan berbagi pengalaman baking dengan mudah.
-</p>
+<h2>Kenapa CakeLib?</h2>
+
+<div class="collection">
+
+<div class="card">
+<h3>📖 Resep Lengkap</h3>
+<p>Berbagai resep dari pemula hingga profesional.</p>
+</div>
+
+<div class="card">
+<h3>👩‍🍳 Komunitas</h3>
+<p>Diskusi dan berbagi pengalaman baking.</p>
+</div>
+
+<div class="card">
+<h3>🎥 Edukasi</h3>
+<p>Belajar dari tutorial dan tips terbaik.</p>
+</div>
+
+</div>
 </div>
 
 </div>
@@ -150,6 +221,7 @@ tutorial, dan berbagi pengalaman baking dengan mudah.
 <button onclick="hitung('-')">-</button>
 <button onclick="hitung('*')">×</button>
 <button onclick="hitung('/')">÷</button>
+<button onclick="clearHasil()">C</button>
 
 <h3 id="hasil"></h3>
 
@@ -160,19 +232,23 @@ tutorial, dan berbagi pengalaman baking dengan mudah.
 <!-- LOGIN -->
 <div id="loginPage" class="page">
 
-<h2>Login</h2>
+<h2>Login CakeLib</h2>
 
-<input type="text" id="username" placeholder="Username"><br><br>
-<input type="password" id="password" placeholder="Password"><br><br>
+<div class="login-box">
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
 
 <p id="pesanLogin"></p>
+</div>
 
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
+<p>🎂 CakeLib - Digital Cake Library</p>
+<p>Belajar • Berbagi • Berkembang</p>
 <p>© 2026 CakeLib</p>
 </div>
 
@@ -208,7 +284,13 @@ if(operator==="/") hasil = b !== 0 ? a / b : "Tidak bisa dibagi 0";
 document.getElementById("hasil").innerText="Hasil: " + hasil;
 }
 
-// LOGIN 3 KONDISI
+function clearHasil(){
+document.getElementById("angka1").value="";
+document.getElementById("angka2").value="";
+document.getElementById("hasil").innerText="";
+}
+
+// LOGIN
 function login(){
 let user = document.getElementById("username").value;
 let pass = document.getElementById("password").value;
@@ -224,7 +306,7 @@ document.getElementById("pesanLogin").innerText="❌ Login gagal!";
 }
 }
 
-// default tampil
+// default
 showPage('home');
 
 </script>
