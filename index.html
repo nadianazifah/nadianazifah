@@ -4,7 +4,6 @@
 <title>CakeLib - Digital Cake Library</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ICON -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -53,6 +52,27 @@ padding:60px 20px;
 text-align:center;
 }
 
+/* CARD */
+.collection{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.card{
+width:230px;
+background:white;
+border-radius:20px;
+padding:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+}
+
 /* PAGE */
 .page{
 display:none;
@@ -70,22 +90,6 @@ border-radius:20px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.kalkulator input{
-width:90%;
-padding:10px;
-margin:10px;
-}
-
-.kalkulator button{
-padding:10px;
-margin:5px;
-background:#f4c542;
-border:none;
-color:white;
-border-radius:10px;
-cursor:pointer;
-}
-
 /* FOOTER */
 .footer{
 background:#f4c542;
@@ -94,32 +98,7 @@ padding:40px 20px;
 text-align:center;
 }
 
-.footer-container{
-display:flex;
-flex-wrap:wrap;
-justify-content:space-around;
-gap:20px;
-}
-
-.footer-box{
-max-width:250px;
-text-align:left;
-}
-
-.social-icons a{
-margin-right:10px;
-font-size:22px;
-color:white;
-}
-
-/* MAP */
-.map{
-margin-top:20px;
-border-radius:15px;
-overflow:hidden;
-}
-
-/* WA BUTTON */
+/* WA */
 .wa-btn{
 position:fixed;
 bottom:20px;
@@ -129,6 +108,10 @@ color:white;
 font-size:28px;
 padding:15px;
 border-radius:50%;
+}
+
+button{
+cursor:pointer;
 }
 
 </style>
@@ -141,6 +124,8 @@ border-radius:50%;
 <div><b>🎂 CakeLib</b></div>
 <div>
 <a onclick="showPage('home')">Beranda</a>
+<a onclick="showPage('koleksi')">Koleksi</a>
+<a onclick="showPage('referensi')">Referensi</a>
 <a onclick="showPage('kalkulator')">Kalkulator</a>
 <a onclick="showPage('login')" class="nav-btn">Login</a>
 </div>
@@ -151,13 +136,78 @@ border-radius:50%;
 
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>Platform digital untuk pecinta baking yang menyediakan berbagai resep cake, tips, dan inspirasi dessert modern.</p>
+<p>Platform digital untuk pecinta baking yang menyediakan resep, tutorial, dan inspirasi cake modern.</p>
 </div>
 
-<div class="section">
-<h2>Tentang CakeLib</h2>
-<p>CakeLib membantu kamu belajar baking dari dasar hingga profesional dengan cara yang mudah dan menyenangkan.</p>
 </div>
+
+<!-- KOLEKSI -->
+<div id="koleksiPage" class="page">
+
+<h2>📚 Koleksi Resep</h2>
+
+<div class="collection">
+
+<div class="card">
+<img src="cookiess.jpg">
+<h3>Cookies</h3>
+<p>Kue kering favorit</p>
+</div>
+
+<div class="card">
+<img src="birthdaycake.jpg">
+<h3>Birthday Cake</h3>
+<p>Kue ulang tahun</p>
+</div>
+
+<div class="card">
+<img src="cheese cake.jpg">
+<h3>Cheesecake</h3>
+<p>Lembut & creamy</p>
+</div>
+
+</div>
+
+<br>
+
+<button onclick="showPage('referensi')" style="padding:10px 20px;background:#f4c542;border:none;border-radius:10px;color:white;">
+➡️ Selanjutnya ke Referensi
+</button>
+
+</div>
+
+<!-- REFERENSI -->
+<div id="referensiPage" class="page">
+
+<h2>📖 Referensi Resep & Buku</h2>
+
+<div class="collection">
+
+<div class="card">
+<h3>Buku Resep Dasar</h3>
+<p>Cocok untuk pemula</p>
+<button>Baca</button>
+</div>
+
+<div class="card">
+<h3>Resep Dessert Modern</h3>
+<p>Inspirasi kekinian</p>
+<button>Baca</button>
+</div>
+
+<div class="card">
+<h3>Teknik Hias Cake</h3>
+<p>Belajar dekorasi</p>
+<button>Baca</button>
+</div>
+
+</div>
+
+<br>
+
+<button onclick="showPage('koleksi')" style="padding:10px 20px;background:#4b3b1f;border:none;border-radius:10px;color:white;">
+⬅️ Kembali ke Koleksi
+</button>
 
 </div>
 
@@ -167,10 +217,8 @@ border-radius:50%;
 <h2>🧮 Kalkulator</h2>
 
 <div class="kalkulator">
-<input type="number" id="angka1" placeholder="Angka 1">
-<input type="number" id="angka2" placeholder="Angka 2">
-
-<br>
+<input type="number" id="angka1" placeholder="Angka 1"><br>
+<input type="number" id="angka2" placeholder="Angka 2"><br>
 
 <button onclick="hitung('+')">+</button>
 <button onclick="hitung('-')">-</button>
@@ -198,49 +246,11 @@ border-radius:50%;
 
 <!-- FOOTER -->
 <div class="footer">
-
-<div class="footer-container">
-
-<div class="footer-box">
-<h3>🎂 CakeLib</h3>
-<p>Platform belajar baking modern.</p>
-</div>
-
-<div class="footer-box">
-<h3>Menu</h3>
-<p onclick="showPage('home')">Beranda</p>
-<p onclick="showPage('kalkulator')">Kalkulator</p>
-<p onclick="showPage('login')">Login</p>
-</div>
-
-<div class="footer-box">
-<h3>Kontak</h3>
-<p>📍 Medan</p>
-<p>📧 cakelib@gmail.com</p>
-</div>
-
-<div class="footer-box">
-<h3>Follow</h3>
-<div class="social-icons">
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-facebook"></i></a>
-<a href="#"><i class="fab fa-youtube"></i></a>
-</div>
-</div>
-
-</div>
-
-<div class="map">
-<iframe src="https://maps.google.com/maps?q=Medan&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="100%" height="200"></iframe>
-</div>
-
 <p>© 2026 CakeLib</p>
-
 </div>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/6281234567890" class="wa-btn" target="_blank">
+<!-- WA -->
+<a href="https://wa.me/6281234567890" class="wa-btn">
 <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -248,17 +258,21 @@ width="100%" height="200"></iframe>
 
 function showPage(page){
 document.getElementById("homePage").style.display="none";
+document.getElementById("koleksiPage").style.display="none";
+document.getElementById("referensiPage").style.display="none";
 document.getElementById("kalkulatorPage").style.display="none";
 document.getElementById("loginPage").style.display="none";
 
 if(page==="home") homePage.style.display="block";
+if(page==="koleksi") koleksiPage.style.display="block";
+if(page==="referensi") referensiPage.style.display="block";
 if(page==="kalkulator") kalkulatorPage.style.display="block";
 if(page==="login") loginPage.style.display="block";
 }
 
 function hitung(op){
-let a=parseFloat(document.getElementById("angka1").value);
-let b=parseFloat(document.getElementById("angka2").value);
+let a=parseFloat(angka1.value);
+let b=parseFloat(angka2.value);
 
 if(isNaN(a)||isNaN(b)){
 hasil.innerText="Isi angka!";
