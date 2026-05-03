@@ -54,6 +54,16 @@ padding:120px 20px;
 background:linear-gradient(to right,#ffe9b0,#ffd36b);
 }
 
+/* SEARCH */
+.search-box input{
+padding:12px;
+border-radius:20px;
+border:none;
+width:250px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+margin-top:15px;
+}
+
 /* CARD */
 .collection{
 display:flex;
@@ -89,7 +99,7 @@ padding:60px;
 text-align:center;
 }
 
-/* TAB MENU */
+/* TAB */
 .tab-menu{
 display:flex;
 justify-content:center;
@@ -120,10 +130,10 @@ border-radius:20px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.kalkulator input{
-width:90%;
-padding:10px;
-margin:10px;
+/* VIDEO */
+iframe{
+border-radius:15px;
+margin-top:20px;
 }
 
 /* FOOTER */
@@ -144,6 +154,32 @@ cursor:pointer;
 color:#f4c542;
 }
 
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:white;
+padding:20px;
+border-radius:15px;
+width:300px;
+text-align:center;
+}
+
+.popup-box input, .popup-box textarea{
+width:90%;
+margin:10px;
+padding:8px;
+}
+
 /* WA */
 .wa-btn{
 position:fixed;
@@ -154,10 +190,6 @@ color:white;
 font-size:28px;
 padding:15px;
 border-radius:50%;
-}
-
-button{
-cursor:pointer;
 }
 
 </style>
@@ -181,97 +213,92 @@ cursor:pointer;
 
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>CakeLib adalah platform digital untuk pecinta baking yang menyediakan resep, tutorial, dan inspirasi cake modern yang mudah diakses kapan saja.</p>
+
+<p>
+CakeLib adalah platform digital yang dirancang khusus untuk pecinta baking.
+Di sini kamu bisa menemukan berbagai resep cake, tutorial video, serta inspirasi
+dessert modern yang mudah dipelajari oleh pemula maupun profesional.
+</p>
+
+<div class="search-box">
+<input type="text" placeholder="Cari resep...">
 </div>
 
 </div>
 
-<!-- KOLEKSI (TAB SYSTEM) -->
-<div id="koleksiPage" class="page">
+<!-- KOLEKSI PREVIEW -->
+<h2 style="text-align:center;">✨ Koleksi Populer</h2>
 
-<h2>📚 Koleksi CakeLib</h2>
-
-<div class="tab-menu">
-<button class="active" onclick="showTab('resep')">Referensi Resep</button>
-<button onclick="showTab('buku')">Buku Resep</button>
-</div>
-
-<!-- TAB RESEP -->
-<div id="tab-resep" class="collection">
+<div class="collection">
 
 <div class="card">
 <img src="cookiess.jpg">
 <h3>Cookies</h3>
-<p>Kue kering favorit</p>
 </div>
 
 <div class="card">
 <img src="birthdaycake.jpg">
 <h3>Birthday Cake</h3>
-<p>Kue ulang tahun</p>
 </div>
 
 <div class="card">
 <img src="cheese cake.jpg">
 <h3>Cheesecake</h3>
-<p>Lembut & creamy</p>
 </div>
 
 </div>
 
-<!-- TAB BUKU -->
-<div id="tab-buku" class="collection" style="display:none;">
-
-<div class="card">
-<h3>Buku Resep Dasar</h3>
-<p>Cocok untuk pemula</p>
+<!-- AUDIO -->
+<div style="text-align:center; margin-top:30px;">
+<h3>🎧 Dengarkan Tips Baking</h3>
+<audio controls>
+<source src="audio.mp3" type="audio/mpeg">
+</audio>
 </div>
 
-<div class="card">
-<h3>Resep Dessert Modern</h3>
-<p>Inspirasi kekinian</p>
+<!-- VIDEO -->
+<div style="text-align:center;">
+<h3>🎥 Video Tutorial</h3>
+<iframe width="350" height="200"
+src="https://www.youtube.com/embed/gLEJAx04Vr4">
+</iframe>
 </div>
 
-<div class="card">
-<h3>Teknik Hias Cake</h3>
-<p>Belajar dekorasi</p>
+<!-- BUTTON SARAN -->
+<div style="text-align:center;margin-top:20px;">
+<button onclick="openPopup()" style="padding:10px 20px;background:#f4c542;border:none;border-radius:10px;color:white;">
+💡 Beri Saran
+</button>
 </div>
 
 </div>
 
+<!-- KOLEKSI -->
+<div id="koleksiPage" class="page">
+<h2>Koleksi</h2>
 </div>
 
 <!-- KALKULATOR -->
 <div id="kalkulatorPage" class="page">
-
-<h2>🧮 Kalkulator</h2>
-
-<div class="kalkulator">
-<input type="number" id="angka1" placeholder="Angka 1"><br>
-<input type="number" id="angka2" placeholder="Angka 2"><br>
-
-<button onclick="hitung('+')">+</button>
-<button onclick="hitung('-')">-</button>
-<button onclick="hitung('*')">×</button>
-<button onclick="hitung('/')">÷</button>
-
-<h3 id="hasil"></h3>
-</div>
-
+<h2>Kalkulator</h2>
 </div>
 
 <!-- LOGIN -->
 <div id="loginPage" class="page">
-
 <h2>Login</h2>
+<input type="text" placeholder="Username"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button>Login</button>
+</div>
 
-<input type="text" id="username" placeholder="Username"><br><br>
-<input type="password" id="password" placeholder="Password"><br><br>
-
-<button onclick="login()">Login</button>
-
-<p id="pesanLogin"></p>
-
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+<h3>Saran untuk CakeLib</h3>
+<input type="email" placeholder="Email"><br>
+<textarea placeholder="Tulis saran..."></textarea><br>
+<button onclick="closePopup()">Kirim</button>
+</div>
 </div>
 
 <!-- FOOTER -->
@@ -285,21 +312,21 @@ cursor:pointer;
 <i class="fab fa-tiktok"></i>
 </div>
 
-<p>© 2026 CakeLib - All Rights Reserved</p>
+<p>© 2026 CakeLib</p>
 </div>
 
 <!-- WA -->
-<a href="https://wa.me/6281234567890" class="wa-btn">
+<a href="#" class="wa-btn">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
 
 function showPage(page){
-document.getElementById("homePage").style.display="none";
-document.getElementById("koleksiPage").style.display="none";
-document.getElementById("kalkulatorPage").style.display="none";
-document.getElementById("loginPage").style.display="none";
+homePage.style.display="none";
+koleksiPage.style.display="none";
+kalkulatorPage.style.display="none";
+loginPage.style.display="none";
 
 if(page==="home") homePage.style.display="block";
 if(page==="koleksi") koleksiPage.style.display="block";
@@ -307,48 +334,12 @@ if(page==="kalkulator") kalkulatorPage.style.display="block";
 if(page==="login") loginPage.style.display="block";
 }
 
-/* TAB */
-function showTab(tab){
-document.getElementById("tab-resep").style.display="none";
-document.getElementById("tab-buku").style.display="none";
-
-if(tab==="resep") document.getElementById("tab-resep").style.display="flex";
-if(tab==="buku") document.getElementById("tab-buku").style.display="flex";
+function openPopup(){
+popup.style.display="flex";
 }
 
-/* KALKULATOR */
-function hitung(op){
-let a=parseFloat(angka1.value);
-let b=parseFloat(angka2.value);
-
-if(isNaN(a)||isNaN(b)){
-hasil.innerText="Isi angka!";
-return;
-}
-
-let r;
-if(op==="+") r=a+b;
-if(op==="-" ) r=a-b;
-if(op==="*") r=a*b;
-if(op==="/") r=b!==0?a/b:"Error";
-
-hasil.innerText="Hasil: "+r;
-}
-
-/* LOGIN */
-function login(){
-let u=username.value;
-let p=password.value;
-
-if(u===""||p===""){
-pesanLogin.innerText="Isi dulu!";
-}
-else if(u==="admin"&&p==="123"){
-pesanLogin.innerText="Login berhasil!";
-}
-else{
-pesanLogin.innerText="Login gagal!";
-}
+function closePopup(){
+popup.style.display="none";
 }
 
 showPage('home');
