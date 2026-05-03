@@ -23,6 +23,9 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .navbar a{
@@ -30,6 +33,11 @@ margin-left:15px;
 cursor:pointer;
 text-decoration:none;
 color:#6b5b2a;
+font-weight:500;
+}
+
+.navbar a:hover{
+color:#f4c542;
 }
 
 .nav-btn{
@@ -44,12 +52,6 @@ border-radius:20px;
 text-align:center;
 padding:120px 20px;
 background:linear-gradient(to right,#ffe9b0,#ffd36b);
-}
-
-/* SECTION */
-.section{
-padding:40px;
-text-align:center;
 }
 
 /* CARD */
@@ -70,12 +72,14 @@ transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
 }
 
 .card img{
 width:100%;
 border-radius:15px;
+height:140px;
+object-fit:cover;
 }
 
 /* PAGE */
@@ -86,11 +90,13 @@ text-align:center;
 }
 
 /* TAB MENU */
-.tab{
+.tab-menu{
+display:flex;
+justify-content:center;
 margin-bottom:20px;
 }
 
-.tab button{
+.tab-menu button{
 padding:10px 20px;
 margin:5px;
 border:none;
@@ -99,7 +105,7 @@ background:#ddd;
 cursor:pointer;
 }
 
-.tab button.active{
+.tab-menu button.active{
 background:#f4c542;
 color:white;
 }
@@ -114,12 +120,28 @@ border-radius:20px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
+.kalkulator input{
+width:90%;
+padding:10px;
+margin:10px;
+}
+
 /* FOOTER */
 .footer{
-background:#f4c542;
+background:#4b3b1f;
 color:white;
 padding:40px 20px;
 text-align:center;
+}
+
+.footer i{
+margin:10px;
+font-size:20px;
+cursor:pointer;
+}
+
+.footer i:hover{
+color:#f4c542;
 }
 
 /* WA */
@@ -134,7 +156,9 @@ padding:15px;
 border-radius:50%;
 }
 
-button{cursor:pointer;}
+button{
+cursor:pointer;
+}
 
 </style>
 </head>
@@ -154,26 +178,26 @@ button{cursor:pointer;}
 
 <!-- HOME -->
 <div id="homePage">
+
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
-<p>CakeLib adalah platform digital untuk pecinta baking yang menyediakan berbagai resep cake, tutorial, dan inspirasi dessert modern. Temukan kreasi terbaikmu di sini!</p>
-</div>
+<p>CakeLib adalah platform digital untuk pecinta baking yang menyediakan resep, tutorial, dan inspirasi cake modern yang mudah diakses kapan saja.</p>
 </div>
 
-<!-- KOLEKSI -->
+</div>
+
+<!-- KOLEKSI (TAB SYSTEM) -->
 <div id="koleksiPage" class="page">
 
 <h2>📚 Koleksi CakeLib</h2>
 
-<!-- TAB -->
-<div class="tab">
+<div class="tab-menu">
 <button class="active" onclick="showTab('resep')">Referensi Resep</button>
 <button onclick="showTab('buku')">Buku Resep</button>
 </div>
 
-<!-- RESEP -->
-<div id="resep" class="tabContent">
-<div class="collection">
+<!-- TAB RESEP -->
+<div id="tab-resep" class="collection">
 
 <div class="card">
 <img src="cookiess.jpg">
@@ -194,31 +218,25 @@ button{cursor:pointer;}
 </div>
 
 </div>
-</div>
 
-<!-- BUKU -->
-<div id="buku" class="tabContent" style="display:none;">
-<div class="collection">
+<!-- TAB BUKU -->
+<div id="tab-buku" class="collection" style="display:none;">
 
 <div class="card">
 <h3>Buku Resep Dasar</h3>
 <p>Cocok untuk pemula</p>
-<button>Baca</button>
 </div>
 
 <div class="card">
-<h3>Resep Modern</h3>
+<h3>Resep Dessert Modern</h3>
 <p>Inspirasi kekinian</p>
-<button>Baca</button>
 </div>
 
 <div class="card">
-<h3>Decorating Cake</h3>
-<p>Teknik menghias</p>
-<button>Baca</button>
+<h3>Teknik Hias Cake</h3>
+<p>Belajar dekorasi</p>
 </div>
 
-</div>
 </div>
 
 </div>
@@ -244,6 +262,7 @@ button{cursor:pointer;}
 
 <!-- LOGIN -->
 <div id="loginPage" class="page">
+
 <h2>Login</h2>
 
 <input type="text" id="username" placeholder="Username"><br><br>
@@ -252,17 +271,21 @@ button{cursor:pointer;}
 <button onclick="login()">Login</button>
 
 <p id="pesanLogin"></p>
+
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
 <p>📍 Medan | 📧 cakelib@gmail.com</p>
-<p>Follow kami:
+
+<div>
 <i class="fab fa-instagram"></i>
 <i class="fab fa-facebook"></i>
 <i class="fab fa-youtube"></i>
-</p>
-<p>© 2026 CakeLib</p>
+<i class="fab fa-tiktok"></i>
+</div>
+
+<p>© 2026 CakeLib - All Rights Reserved</p>
 </div>
 
 <!-- WA -->
@@ -273,10 +296,10 @@ button{cursor:pointer;}
 <script>
 
 function showPage(page){
-homePage.style.display="none";
-koleksiPage.style.display="none";
-kalkulatorPage.style.display="none";
-loginPage.style.display="none";
+document.getElementById("homePage").style.display="none";
+document.getElementById("koleksiPage").style.display="none";
+document.getElementById("kalkulatorPage").style.display="none";
+document.getElementById("loginPage").style.display="none";
 
 if(page==="home") homePage.style.display="block";
 if(page==="koleksi") koleksiPage.style.display="block";
@@ -284,22 +307,16 @@ if(page==="kalkulator") kalkulatorPage.style.display="block";
 if(page==="login") loginPage.style.display="block";
 }
 
+/* TAB */
 function showTab(tab){
-document.getElementById("resep").style.display="none";
-document.getElementById("buku").style.display="none";
+document.getElementById("tab-resep").style.display="none";
+document.getElementById("tab-buku").style.display="none";
 
-document.querySelectorAll(".tab button").forEach(btn=>btn.classList.remove("active"));
-
-if(tab==="resep"){
-resep.style.display="block";
-document.querySelectorAll(".tab button")[0].classList.add("active");
-}
-else{
-buku.style.display="block";
-document.querySelectorAll(".tab button")[1].classList.add("active");
-}
+if(tab==="resep") document.getElementById("tab-resep").style.display="flex";
+if(tab==="buku") document.getElementById("tab-buku").style.display="flex";
 }
 
+/* KALKULATOR */
 function hitung(op){
 let a=parseFloat(angka1.value);
 let b=parseFloat(angka2.value);
@@ -318,6 +335,7 @@ if(op==="/") r=b!==0?a/b:"Error";
 hasil.innerText="Hasil: "+r;
 }
 
+/* LOGIN */
 function login(){
 let u=username.value;
 let p=password.value;
