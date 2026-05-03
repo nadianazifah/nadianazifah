@@ -84,7 +84,6 @@ box-shadow:0 5px 15px rgba(0,0,0,0.1);
 .fitur-box i{
 font-size:30px;
 color:#f4c542;
-margin-bottom:10px;
 }
 
 /* CARD */
@@ -131,11 +130,6 @@ background:white;
 border-radius:20px;
 overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.event-card:hover{
-transform:translateY(-8px);
 }
 
 .event-card img{
@@ -144,16 +138,7 @@ height:160px;
 object-fit:cover;
 }
 
-.event-card h4{
-padding:10px;
-margin:0;
-}
-
 /* KATEGORI */
-.kategori{
-margin-top:60px;
-}
-
 .kategori-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -165,12 +150,6 @@ padding:20px;
 position:relative;
 border-radius:15px;
 overflow:hidden;
-cursor:pointer;
-transition:0.3s;
-}
-
-.kategori-item:hover{
-transform:scale(1.05);
 }
 
 .kategori-item img{
@@ -184,25 +163,8 @@ position:absolute;
 bottom:10px;
 left:10px;
 background:white;
-padding:5px 12px;
+padding:5px 10px;
 border-radius:10px;
-font-weight:bold;
-}
-
-/* CTA */
-.cta{
-text-align:center;
-margin-top:40px;
-}
-
-.cta button{
-background:#f4c542;
-border:none;
-padding:12px 25px;
-border-radius:20px;
-color:white;
-font-size:16px;
-cursor:pointer;
 }
 
 /* PAGE */
@@ -212,20 +174,10 @@ padding:60px;
 text-align:center;
 }
 
-/* FOOTER */
-.footer{
-background:#4b3b1f;
-color:white;
-padding:40px 20px;
-text-align:center;
-}
-
-/* RESPONSIVE */
-@media(max-width:600px){
-.collection{
-flex-direction:column;
-align-items:center;
-}
+/* KALKULATOR */
+.kalkulator input{
+margin:5px;
+padding:10px;
 }
 
 </style>
@@ -250,116 +202,90 @@ align-items:center;
 <div class="hero">
 <h1>Selamat Datang di CakeLib 🎂</h1>
 <p>🔥 100+ Resep | 🎥 Video Tutorial | 👩‍🍳 Komunitas Baking</p>
-
-<div class="search-box">
-<input type="text" placeholder="Cari resep...">
-</div>
 </div>
 
 <!-- FITUR -->
 <div class="fitur">
-<div class="fitur-box">
-<i class="fas fa-book"></i>
-<p>Resep Lengkap</p>
-</div>
-
-<div class="fitur-box">
-<i class="fas fa-video"></i>
-<p>Video Tutorial</p>
-</div>
-
-<div class="fitur-box">
-<i class="fas fa-users"></i>
-<p>Komunitas</p>
-</div>
+<div class="fitur-box"><i class="fas fa-book"></i><p>Resep</p></div>
+<div class="fitur-box"><i class="fas fa-video"></i><p>Video</p></div>
+<div class="fitur-box"><i class="fas fa-users"></i><p>Komunitas</p></div>
 </div>
 
 <!-- KOLEKSI -->
-<h2 style="text-align:center;">✨ Koleksi Populer</h2>
-
+<h2 align="center">✨ Koleksi</h2>
 <div class="collection">
-
-<div class="card">
-<img src="cookiess.jpg">
-<h3>Cookies</h3>
-</div>
-
-<div class="card">
-<img src="birthdaycake.jpg">
-<h3>Birthday Cake</h3>
-</div>
-
-<div class="card">
-<img src="cheese cake.jpg">
-<h3>Cheesecake</h3>
-</div>
-
+<div class="card"><img src="cookiess.jpg"><h3>Cookies</h3></div>
+<div class="card"><img src="birthdaycake.jpg"><h3>Birthday Cake</h3></div>
+<div class="card"><img src="cheese cake.jpg"><h3>Cheesecake</h3></div>
 </div>
 
 <!-- EVENT -->
-<h2 style="text-align:center;">🎉 Event & Inspirasi</h2>
-
+<h2 align="center">🎉 Event</h2>
 <div class="event">
-
-<div class="event-card">
-<img src="cookiess.jpg">
-<h4>Strawberry Cake Special 🍓</h4>
-</div>
-
-<div class="event-card">
-<img src="birthdaycake.jpg">
-<h4>Cake March Madness 🎂</h4>
-</div>
-
-<div class="event-card">
-<img src="cheese cake.jpg">
-<h4>Spring Cake Ideas 🌸</h4>
-</div>
-
+<div class="event-card"><img src="cookiess.jpg"></div>
+<div class="event-card"><img src="birthdaycake.jpg"></div>
 </div>
 
 <!-- KATEGORI -->
-<div class="kategori">
-
-<h2 style="text-align:center;">🍰 Browse Kategori</h2>
-
+<h2 align="center">🍰 Kategori</h2>
 <div class="kategori-grid">
-
-<div class="kategori-item">
-<img src="birthdaycake.jpg">
-<span>Cake</span>
-</div>
-
-<div class="kategori-item">
-<img src="cheese cake.jpg">
-<span>Cheesecake</span>
-</div>
-
-<div class="kategori-item">
-<img src="cookiess.jpg">
-<span>Cookies</span>
-</div>
-
-<div class="kategori-item">
-<img src="birthdaycake.jpg">
-<span>Birthday</span>
-</div>
-
-<div class="kategori-item">
-<img src="cheese cake.jpg">
-<span>Dessert</span>
-</div>
-
-<div class="kategori-item">
-<img src="cookiess.jpg">
-<span>Buttercream</span>
+<div class="kategori-item"><img src="cookiess.jpg"><span>Cookies</span></div>
+<div class="kategori-item"><img src="birthdaycake.jpg"><span>Cake</span></div>
 </div>
 
 </div>
 
+<!-- KOLEKSI PAGE -->
+<div id="koleksiPage" class="page">
+<h2>Koleksi Lengkap</h2>
+<p>Isi koleksi di sini</p>
+</div>
+
+<!-- KALKULATOR -->
+<div id="kalkulatorPage" class="page">
+<h2>Kalkulator</h2>
+
+<div class="kalkulator">
+<input type="number" id="a" placeholder="Angka 1">
+<input type="number" id="b" placeholder="Angka 2"><br>
+
+<button onclick="hitung('+')">+</button>
+<button onclick="hitung('-')">-</button>
+
+<h3 id="hasil"></h3>
 </div>
 
 </div>
+
+<!-- LOGIN -->
+<div id="loginPage" class="page">
+<h2>Login</h2>
+<input id="username"><br><br>
+<input id="password" type="password"><br><br>
+<button onclick="login()">Login</button>
+<p id="pesanLogin"></p>
+</div>
+
+<script>
+
+function showPage(page){
+document.querySelectorAll('.page,#homePage').forEach(el=>el.style.display="none");
+document.getElementById(page+"Page").style.display="block";
+}
+
+function hitung(op){
+let a=parseFloat(document.getElementById("a").value);
+let b=parseFloat(document.getElementById("b").value);
+hasil.innerText = op==="+" ? a+b : a-b;
+}
+
+function login(){
+pesanLogin.innerText="Login berhasil!";
+}
+
+showPage('home');
+
+</script>
 
 </body>
 </html>
