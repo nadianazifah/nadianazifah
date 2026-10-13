@@ -1,239 +1,318 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tesaurus Alat Musik Nusantara</title>
-<meta name="description" content="Tesaurus mini alat musik tradisional Nusantara — Kelompok 4, Pengantar Tesaurus, Ilmu Perpustakaan dan Sains Informasi USU.">
-<style>
-  :root{
-    --navy:#5a2a14; --navy-2:#7a3a1c; --accent:#b5651d; --gold:#e3a857;
-    --bg:#ffffff; --side:#faf6f1; --line:#e6ddd2; --text:#2a211b; --muted:#7a6a5c;
-    --hl:#f5e6d3; --link:#9a4a12;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;height:100%}
-  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg);display:flex;flex-direction:column}
-  header{background:var(--navy);color:#fff;display:flex;align-items:center;gap:16px;padding:0 20px;height:58px;flex:none}
-  header h1{font-size:19px;margin:0;font-weight:700;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  header h1 small{font-weight:400;opacity:.75;font-size:13px;margin-left:8px}
-  .search{margin-left:auto;position:relative}
-  .search input{width:240px;padding:7px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;font-size:14px;outline:none}
-  .search input::placeholder{color:rgba(255,255,255,.7)}
-  .search input:focus{background:#fff;color:var(--text)}
-  .results{position:absolute;right:0;top:38px;width:300px;background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.15);max-height:360px;overflow:auto;display:none;z-index:10}
-  .results a{display:block;padding:8px 12px;color:var(--text);text-decoration:none;font-size:14px;border-bottom:1px solid var(--line)}
-  .results a:hover,.results a.active{background:var(--hl)}
-  .results a em{color:var(--muted);font-style:normal;font-size:12px}
-  .badge{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:12px;display:grid;place-items:center;flex:none}
-  main{flex:1;display:flex;min-height:0}
-  aside{width:340px;flex:none;background:var(--side);border-right:1px solid var(--line);overflow:auto;padding:18px 14px}
-  .label{color:var(--accent);font-weight:700;font-size:15px;letter-spacing:.5px;margin:0 2px 12px;text-transform:uppercase}
-  .tabs{display:flex;gap:6px;margin:0 2px 12px}
-  .tabs button{flex:1;padding:6px;border:1px solid var(--line);background:#fff;border-radius:5px;font-size:12.5px;cursor:pointer;color:var(--muted)}
-  .tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
-  .top{margin:4px 0}
-  .top > .tt{display:flex;align-items:center;gap:6px;width:100%;border:0;background:none;padding:5px 8px;font-weight:700;color:var(--navy);font-size:14.5px;cursor:pointer;text-align:left;border-radius:4px;letter-spacing:.2px}
-  .top > .tt .car{font-size:10px;width:12px;transition:transform .15s}
-  .top.closed > .tt .car{transform:rotate(-90deg)}
-  .top.closed ul{display:none}
-  .tt.sel{background:var(--hl)}
-  ul{list-style:none;margin:0;padding:0}
-  li a{display:block;padding:5px 10px 5px 30px;color:var(--text);text-decoration:none;font-size:14px;border-radius:4px}
-  li a::before{content:"•";margin-right:7px;color:var(--muted)}
-  li a:hover{background:#efe6da}
-  li a.sel{background:var(--hl);color:var(--link);font-weight:600}
-  .alpha li a{padding-left:10px}
-  .alpha li a.np{color:var(--muted);font-style:italic}
-  section.detail{flex:1;overflow:auto;padding:20px 22px;display:flex;flex-direction:column}
-  .card{border:1px solid var(--line);border-radius:2px;flex:1;display:flex;flex-direction:column}
-  .card h2{margin:0;background:var(--navy);color:#fff;padding:14px 20px;font-size:21px;letter-spacing:.5px}
-  .card h2 .type{font-size:12px;font-weight:500;background:rgba(255,255,255,.18);padding:3px 8px;border-radius:10px;margin-left:10px;vertical-align:middle;letter-spacing:.3px}
-  dl{margin:0;padding:8px 20px 16px}
-  .row{border-bottom:1px solid var(--line);padding:11px 0}
-  dt{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
-  dd{margin:0;font-size:14.5px;line-height:1.55}
-  dd a{color:var(--link);text-decoration:none;border-bottom:1px dotted var(--link)}
-  dd a:hover{border-bottom-style:solid}
-  .none{color:var(--muted)}
-  .foot{font-size:11.5px;color:var(--muted);margin-top:8px}
-  .stats{font-size:12px;color:var(--muted);margin:14px 4px 0;border-top:1px solid var(--line);padding-top:10px;line-height:1.6}
-  @media (max-width:760px){
-    header{height:auto;flex-wrap:wrap;padding:10px 16px}
-    header h1{font-size:16px;white-space:normal}
-    .search{margin-left:0;width:100%}.search input{width:100%}.results{width:100%}
-    .badge{display:none}
-    main{flex-direction:column}
-    aside{width:auto;max-height:42vh;border-right:0;border-bottom:1px solid var(--line)}
-    section.detail{padding:16px}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tesaurus mini alat musik tradisional Nusantara untuk membantu pengorganisasian dan temu kembali informasi.">
+  <title>Tesaurus Alat Musik Tradisional Nusantara</title>
+  <style>
+    :root {
+      --navy: #222b63;
+      --navy-dark: #171f4f;
+      --blue: #176b9b;
+      --bg: #f4f6fa;
+      --panel: #ffffff;
+      --line: #dce2eb;
+      --muted: #657087;
+      --text: #20283a;
+      --accent: #f2a64a;
+      --selected: #e1edf5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 18px clamp(16px, 4vw, 48px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    header h1 { margin: 0; font-size: clamp(19px, 3vw, 27px); line-height: 1.25; }
+    header p { margin: 5px 0 0; color: #e0e5ff; font-size: 13px; }
+    .mark {
+      flex: 0 0 38px; width: 38px; height: 38px; border-radius: 50%;
+      background: var(--accent); color: var(--navy-dark); display: grid;
+      place-items: center; font-weight: 800;
+    }
+    .container { max-width: 1180px; margin: 24px auto; padding: 0 16px; }
+    .intro { margin: 0 0 18px; color: #4d5870; }
+    .search-row { display: flex; gap: 10px; margin-bottom: 18px; }
+    .search-row input {
+      flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid #cbd4e2;
+      border-radius: 8px; font: inherit; background: white;
+    }
+    .search-row button, .clear-btn {
+      border: 0; border-radius: 8px; padding: 11px 15px; font: inherit;
+      cursor: pointer; background: var(--navy); color: white;
+    }
+    .search-row button:hover, .clear-btn:hover { background: var(--navy-dark); }
+    .layout { display: grid; grid-template-columns: minmax(230px, 300px) 1fr; gap: 18px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .panel h2 {
+      font-size: 13px; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--blue); margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line);
+    }
+    #termTree { padding: 8px; }
+    details { margin: 2px 0; }
+    summary {
+      list-style: none; cursor: pointer; padding: 7px 9px; font-weight: 750;
+      color: var(--navy); border-radius: 5px; font-size: 13px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "▸"; display: inline-block; margin-right: 7px; transition: transform .15s; }
+    details[open] > summary::before { transform: rotate(90deg); }
+    .term-list { padding: 0 0 5px 15px; }
+    .term-button {
+      width: 100%; border: 0; background: transparent; text-align: left;
+      padding: 6px 10px; border-radius: 5px; cursor: pointer; color: #39445a;
+      font: inherit; font-size: 13px;
+    }
+    .term-button::before { content: "•"; margin-right: 7px; color: #5b718c; }
+    .term-button:hover { background: #f0f4f8; }
+    .term-button.active { background: var(--selected); color: #075f91; font-weight: 700; }
+    .detail-content { padding: 18px; }
+    .term-title { background: var(--navy); color: white; padding: 12px 15px; margin: 0 0 15px; border-radius: 5px; font-size: 20px; }
+    .field { border-bottom: 1px solid var(--line); padding: 10px 0; }
+    .field:last-child { border-bottom: 0; }
+    .field-label { color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .04em; margin-bottom: 4px; }
+    .field-value { overflow-wrap: anywhere; }
+    .relation { color: #0b6796; text-decoration: underline; text-decoration-style: dotted; cursor: pointer; margin-right: 8px; display: inline-block; }
+    .empty { color: var(--muted); }
+    .note { margin-top: 18px; color: var(--muted); font-size: 12px; }
+    .status { padding: 12px 16px; background: #eef5f9; border-bottom: 1px solid var(--line); font-size: 13px; color: #38516a; }
+    footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .search-row { flex-wrap: wrap; }
+      .search-row button { flex: 0 0 auto; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Tesaurus Mini Alat Musik Tradisional Nusantara<small>Kelompok 4</small></h1>
-  <div class="search">
-    <input id="q" type="search" placeholder="Cari istilah…" autocomplete="off" aria-label="Cari istilah">
-    <div class="results" id="res"></div>
-  </div>
-  <div class="badge" title="Kelompok 4">K4</div>
-</header>
-<main>
-  <aside>
-    <div class="label">Struktur Istilah</div>
-    <div class="tabs"><button id="tH" class="on">Hierarki</button><button id="tA">Alfabetis</button></div>
-    <nav id="tree"></nav>
-    <div class="stats" id="stats"></div>
-  </aside>
-  <section class="detail">
-    <div class="label">Detail Istilah</div>
-    <div class="card" id="card"></div>
-    <div class="foot">Antarmuka web tesaurus mini buatan Kelompok 4 (HTML/JavaScript) — bukan TemaTres atau VocBench. Data mengikuti struktur ISO 25964-1:2011.</div>
-  </section>
-</main>
-<script>
-/* ===== DATA TESAURUS =====
-   [istilah, BT, scope note, RT (dipisah ;), UF (dipisah ;)]
-   Top term ditulis dengan BT kosong. Relasi NT dan RT timbal balik dibangun otomatis. */
-const DATA = [
- ["IDIOFON","","Kategori alat musik yang bunyinya terutama dihasilkan oleh getaran badan alat itu sendiri.","",""],
- ["Angklung","IDIOFON","Alat musik dari tabung bambu yang disusun dalam rangka dan menghasilkan bunyi ketika digoyangkan; berasal dari Jawa Barat.","Menggoyang",""],
- ["Kolintang","IDIOFON","Alat musik berbilah kayu yang disusun di atas resonator dan dimainkan dengan cara dipukul; dikenal dalam tradisi Minahasa.","Memukul","Kulintang"],
- ["Saron","IDIOFON","Alat musik berbilah logam yang diletakkan di atas resonator dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.","Gamelan;Memukul",""],
- ["Bonang","IDIOFON","Alat musik berupa deretan gong kecil berpencu yang diletakkan mendatar pada rancak/rak dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.","Gamelan;Kenong;Memukul",""],
- ["Gong","IDIOFON","Alat musik logam berbentuk bundar, umumnya berpencu, yang menghasilkan bunyi ketika dipukul. Dalam gamelan, gong dapat menandai batas atau akhir bagian musikal.","Gamelan;Kenong;Memukul",""],
- ["Kenong","IDIOFON","Alat musik berupa gong kecil berpencu yang diletakkan pada tali di atas rak dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.","Bonang;Gamelan;Gong;Memukul",""],
- ["Talempong","IDIOFON","Alat musik logam berpencu dari tradisi Minangkabau yang dimainkan dengan cara dipukul.","Memukul",""],
- ["Rindik","IDIOFON","Alat musik berbilah bambu dari Bali yang dimainkan dengan cara dipukul.","Memukul",""],
+  <header>
+    <div>
+      <h1>Tesaurus Alat Musik Tradisional Nusantara</h1>
+      <p>Kosakata terkendali untuk pengorganisasian dan temu kembali informasi budaya</p>
+    </div>
+    <div class="mark" aria-label="Tesaurus mini">TM</div>
+  </header>
 
- ["MEMBRANOFON","","Kategori alat musik yang bunyinya dihasilkan oleh getaran membran atau selaput yang direntangkan.","",""],
- ["Kendang","MEMBRANOFON","Gendang yang umumnya memiliki dua sisi membran dan dimainkan dengan tangan; berfungsi antara lain mengatur irama dalam gamelan.","Gamelan;Ketipung;Memukul","Gendang;Kendhang"],
- ["Ketipung","MEMBRANOFON","Gendang berukuran relatif kecil yang dimainkan dengan cara dipukul, umumnya menggunakan tangan.","Kendang;Memukul",""],
- ["Rebana","MEMBRANOFON","Alat musik berbentuk gendang bingkai dengan satu membran, digunakan dalam berbagai tradisi musik, termasuk musik Islami dan Melayu.","Gambus;Memukul",""],
- ["Tifa","MEMBRANOFON","Alat musik pukul berbentuk tabung dari kayu berongga dengan membran pada salah satu ujungnya; dikenal di Maluku dan Papua.","Memukul",""],
- ["Bedug","MEMBRANOFON","Gendang berukuran besar yang dipukul dan lazim digunakan di masjid untuk menandai waktu salat atau mengumumkan kegiatan keagamaan.","Memukul",""],
- ["Taganing","MEMBRANOFON","Seperangkat gendang bernada dalam tradisi musik Batak Toba; lazim dikenal sebagai rangkaian lima gendang.","Gondang Sabangunan;Sarune Bolon;Memukul",""],
+  <main class="container">
+    <p class="intro">Pilih istilah pada panel struktur untuk melihat definisi, istilah yang lebih luas (BT), dan istilah terkait (RT). Gunakan pencarian untuk menemukan istilah dengan cepat.</p>
+    <div class="search-row">
+      <input id="searchInput" type="search" placeholder="Cari istilah, misalnya: Angklung, Memukul..." aria-label="Cari istilah">
+      <button id="searchButton" type="button">Cari</button>
+      <button id="clearButton" class="clear-btn" type="button">Reset</button>
+    </div>
 
- ["KORDOFON","","Kategori alat musik yang bunyinya dihasilkan oleh getaran dawai atau senar.","",""],
- ["Sasando","KORDOFON","Alat musik berdawai dari Pulau Rote, Nusa Tenggara Timur, dengan tabung bambu sebagai bagian struktur dan daun lontar sebagai resonator.","Memetik",""],
- ["Rebab","KORDOFON","Alat musik berdawai yang dimainkan dengan cara digesek dan digunakan dalam sejumlah tradisi musik, termasuk gamelan.","Gamelan;Menggesek",""],
- ["Kecapi","KORDOFON","Alat musik berdawai yang dipetik, dikenal antara lain dalam tradisi Sunda.","Memetik;Suling","Kacapi"],
- ["Sampe","KORDOFON","Alat musik berdawai petik yang dikenal dalam tradisi sejumlah masyarakat Dayak di Kalimantan.","Memetik",""],
- ["Gambus","KORDOFON","Alat musik berdawai yang dimainkan dengan cara dipetik dan berkembang dalam berbagai tradisi musik Melayu serta musik yang mendapat pengaruh Timur Tengah.","Memetik;Rebana",""],
- ["Hasapi","KORDOFON","Alat musik berdawai petik, umumnya berdawai dua, dalam tradisi Batak Toba.","Memetik",""],
+    <div class="layout">
+      <aside class="panel">
+        <h2>Struktur Istilah</h2>
+        <div id="termTree" aria-label="Daftar istilah tesaurus"></div>
+      </aside>
+      <section class="panel" aria-live="polite">
+        <h2>Detail Istilah</h2>
+        <div id="detailStatus" class="status">Pilih istilah untuk melihat detailnya.</div>
+        <div id="termDetail" class="detail-content">
+          <p class="empty">Belum ada istilah yang dipilih.</p>
+        </div>
+      </section>
+    </div>
+    <p class="note">Catatan: laman ini merupakan prototipe HTML statis. Relasi dan definisi mengikuti draf tesaurus kelompok dan sebaiknya divalidasi kembali menggunakan sumber rujukan yang dicantumkan dalam laporan.</p>
+  </main>
+  <footer>Proyek Tesaurus Mini · Alat Musik Tradisional Nusantara</footer>
 
- ["AEROFON","","Kategori alat musik yang bunyinya dihasilkan oleh getaran udara di dalam atau di sekitar alat.","",""],
- ["Suling","AEROFON","Alat musik tiup berbentuk tabung dengan lubang-lubang nada; banyak dibuat dari bambu dan digunakan dalam berbagai tradisi musik.","Gamelan;Kecapi;Meniup","Seruling"],
- ["Saluang","AEROFON","Alat musik tiup dari bambu dalam tradisi Minangkabau.","Meniup",""],
- ["Serunai","AEROFON","Alat musik tiup berlidah (reed), dikenal dalam sejumlah tradisi musik Melayu dan daerah lain.","Meniup",""],
- ["Sarune Bolon","AEROFON","Alat musik tiup berukuran besar dalam tradisi Batak Toba, digunakan dalam ansambel Gondang Sabangunan.","Gondang Sabangunan;Meniup;Taganing","Sarunai Bolon"],
- ["Tarompet","AEROFON","Alat musik tiup berlidah ganda yang dikenal dalam tradisi Sunda.","Meniup",""],
+  <script>
+    // Data disusun mengikuti istilah dan definisi dalam draf laporan kelompok.
+    const terms = [
+      {term:"IDIOFON", bt:"", definition:"Kategori alat musik yang bunyinya terutama dihasilkan oleh getaran badan alat itu sendiri.", rt:[]},
+      {term:"ANGKLUNG", bt:"IDIOFON", definition:"Alat musik dari tabung bambu yang disusun dalam rangka dan menghasilkan bunyi ketika digoyangkan; berasal dari Jawa Barat.", rt:["MENGGOYANG"]},
+      {term:"KOLINTANG", bt:"IDIOFON", definition:"Alat musik berbilah kayu yang disusun di atas resonator dan dimainkan dengan cara dipukul; dikenal dalam tradisi Minahasa.", rt:["MEMUKUL"]},
+      {term:"SARON", bt:"IDIOFON", definition:"Alat musik berbilah logam yang diletakkan di atas resonator dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.", rt:["GAMELAN","MEMUKUL"]},
+      {term:"BONANG", bt:"IDIOFON", definition:"Alat musik berupa deretan gong kecil berpencu yang diletakkan mendatar pada rancak/rak dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.", rt:["GAMELAN","KENONG","MEMUKUL"]},
+      {term:"GONG", bt:"IDIOFON", definition:"Alat musik logam berbentuk bundar, umumnya berpencu, yang menghasilkan bunyi ketika dipukul. Dalam gamelan, gong dapat menandai batas atau akhir bagian musikal.", rt:["GAMELAN","KENONG","MEMUKUL"]},
+      {term:"KENONG", bt:"IDIOFON", definition:"Alat musik berupa gong kecil berpencu yang diletakkan pada tali di atas rak dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.", rt:["BONANG","GAMELAN","GONG","MEMUKUL"]},
+      {term:"TALEMPONG", bt:"IDIOFON", definition:"Alat musik logam berpencu dari tradisi Minangkabau yang dimainkan dengan cara dipukul.", rt:["MEMUKUL"]},
+      {term:"RINDIK", bt:"IDIOFON", definition:"Alat musik berbilah bambu dari Bali yang dimainkan dengan cara dipukul.", rt:["MEMUKUL"]},
+      {term:"MEMBRANOFON", bt:"", definition:"Kategori alat musik yang bunyinya dihasilkan oleh getaran membran atau selaput yang direntangkan.", rt:[]},
+      {term:"KENDANG", bt:"MEMBRANOFON", definition:"Gendang yang umumnya memiliki dua sisi membran dan dimainkan dengan tangan; berfungsi antara lain mengatur irama dalam gamelan.", rt:["GAMELAN","KETIPUNG","MEMUKUL"]},
+      {term:"KETIPUNG", bt:"MEMBRANOFON", definition:"Gendang berukuran relatif kecil yang dimainkan dengan cara dipukul, umumnya menggunakan tangan.", rt:["KENDANG","MEMUKUL"]},
+      {term:"REBANA", bt:"MEMBRANOFON", definition:"Alat musik berbentuk gendang bingkai dengan satu membran, digunakan dalam berbagai tradisi musik, termasuk musik Islami dan Melayu.", rt:["MEMUKUL","GAMBUS"]},
+      {term:"TIFA", bt:"MEMBRANOFON", definition:"Alat musik pukul berbentuk tabung dari kayu berongga dengan membran pada salah satu ujungnya; dikenal di Maluku dan Papua.", rt:["MEMUKUL"]},
+      {term:"BEDUG", bt:"MEMBRANOFON", definition:"Gendang berukuran besar yang dipukul dan lazim digunakan di masjid untuk menandai waktu salat atau mengumumkan kegiatan keagamaan.", rt:["MEMUKUL"]},
+      {term:"TAGANING", bt:"MEMBRANOFON", definition:"Seperangkat gendang bernada dalam tradisi musik Batak Toba; lazim dikenal sebagai rangkaian lima gendang.", rt:["GONDANG SABANGUNAN","MEMUKUL","SARUNE BOLON"]},
+      {term:"KORDOFON", bt:"", definition:"Kategori alat musik yang bunyinya dihasilkan oleh getaran dawai atau senar.", rt:[]},
+      {term:"SASANDO", bt:"KORDOFON", definition:"Alat musik berdawai dari Pulau Rote, Nusa Tenggara Timur, dengan tabung bambu sebagai bagian struktur dan daun lontar sebagai resonator.", rt:["MEMETIK"]},
+      {term:"REBAB", bt:"KORDOFON", definition:"Alat musik berdawai yang dimainkan dengan cara digesek dan digunakan dalam sejumlah tradisi musik, termasuk gamelan.", rt:["GAMELAN","MENGGESEK"]},
+      {term:"KECAPI", bt:"KORDOFON", definition:"Alat musik berdawai yang dipetik, dikenal antara lain dalam tradisi Sunda.", rt:["MEMETIK","SULING"]},
+      {term:"SAMPE", bt:"KORDOFON", definition:"Alat musik berdawai petik yang dikenal dalam tradisi sejumlah masyarakat Dayak di Kalimantan.", rt:["MEMETIK"]},
+      {term:"GAMBUS", bt:"KORDOFON", definition:"Alat musik berdawai yang dimainkan dengan cara dipetik dan berkembang dalam berbagai tradisi musik Melayu serta musik yang mendapat pengaruh Timur Tengah.", rt:["MEMETIK","REBANA"]},
+      {term:"HASAPI", bt:"KORDOFON", definition:"Alat musik berdawai petik, umumnya berdawai dua, dalam tradisi Batak Toba.", rt:["MEMETIK"]},
+      {term:"AEROFON", bt:"", definition:"Kategori alat musik yang bunyinya dihasilkan oleh getaran udara di dalam atau di sekitar alat.", rt:[]},
+      {term:"SULING", bt:"AEROFON", definition:"Alat musik tiup berbentuk tabung dengan lubang-lubang nada; banyak dibuat dari bambu dan digunakan dalam berbagai tradisi musik.", rt:["GAMELAN","KECAPI","MENIUP"]},
+      {term:"SALUANG", bt:"AEROFON", definition:"Alat musik tiup dari bambu dalam tradisi Minangkabau.", rt:["MENIUP"]},
+      {term:"SERUNAI", bt:"AEROFON", definition:"Alat musik tiup berlidah (reed), dikenal dalam sejumlah tradisi musik Melayu dan daerah lain.", rt:["MENIUP"]},
+      {term:"SARUNE BOLON", bt:"AEROFON", definition:"Alat musik tiup berukuran besar dalam tradisi Batak Toba, digunakan dalam ansambel Gondang Sabangunan.", rt:["GONDANG SABANGUNAN","MENIUP","TAGANING"]},
+      {term:"TAROMPET", bt:"AEROFON", definition:"Alat musik tiup berlidah ganda yang dikenal dalam tradisi Sunda.", rt:["MENIUP"]},
+      {term:"ANSAMBEL MUSIK", bt:"", definition:"Kategori istilah untuk kelompok alat musik yang dimainkan bersama sebagai satu kesatuan musikal.", rt:[]},
+      {term:"GAMELAN", bt:"ANSAMBEL MUSIK", definition:"Ansambel musik tradisional yang berkembang terutama di Jawa dan Bali, terdiri atas berbagai instrumen seperti gong, kendang, bonang, kenong, saron, dan instrumen lainnya.", rt:["BONANG","GONG","KENDANG","KENONG","REBAB","SARON","SULING"]},
+      {term:"GONDANG SABANGUNAN", bt:"ANSAMBEL MUSIK", definition:"Ansambel musik tradisional Batak Toba yang antara lain melibatkan taganing, sarune bolon, dan instrumen gong.", rt:["SARUNE BOLON","TAGANING"]},
+      {term:"GORDANG SAMBILAN", bt:"ANSAMBEL MUSIK", definition:"Ansambel tradisional Mandailing yang terdiri atas sembilan gendang dengan ukuran berbeda.", rt:[]},
+      {term:"TANJIDOR", bt:"ANSAMBEL MUSIK", definition:"Ansambel musik tradisional Betawi yang menggunakan instrumen tiup dan perkusi.", rt:[]},
+      {term:"TEKNIK MEMAINKAN", bt:"", definition:"Kategori istilah untuk cara atau tindakan yang digunakan untuk menghasilkan bunyi dari alat musik.", rt:[]},
+      {term:"MEMUKUL", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan memukul alat musik menggunakan tangan atau alat pemukul.", rt:["BEDUG","BONANG","KENDANG","KENONG","KETIPUNG","KOLINTANG","REBANA","RINDIK","SARON","TAGANING","TALEMPONG","TIFA"]},
+      {term:"MEMETIK", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan memetik dawai menggunakan jari atau alat pemetik.", rt:["GAMBUS","HASAPI","KECAPI","SAMPE","SASANDO"]},
+      {term:"MENGGESEK", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan menggesek dawai menggunakan alat penggesek.", rt:["REBAB"]},
+      {term:"MENIUP", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan meniupkan udara ke dalam atau melalui alat musik.", rt:["SALUANG","SARUNE BOLON","SERUNAI","SULING","TAROMPET"]},
+      {term:"MENGGOYANG", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan menggoyangkan atau mengocok alat musik.", rt:["ANGKLUNG"]}
+    ];
 
- ["ANSAMBEL MUSIK","","Kategori istilah untuk kelompok alat musik yang dimainkan bersama sebagai satu kesatuan musikal.","",""],
- ["Gamelan","ANSAMBEL MUSIK","Ansambel musik tradisional yang berkembang terutama di Jawa dan Bali, terdiri atas berbagai instrumen seperti gong, kendang, bonang, kenong, saron, dan instrumen lainnya.","Bonang;Gong;Kendang;Kenong;Rebab;Saron;Suling",""],
- ["Gondang Sabangunan","ANSAMBEL MUSIK","Ansambel musik tradisional Batak Toba yang antara lain melibatkan taganing, sarune bolon, dan instrumen gong.","Sarune Bolon;Taganing",""],
- ["Gordang Sambilan","ANSAMBEL MUSIK","Ansambel tradisional Mandailing yang terdiri atas sembilan gendang dengan ukuran berbeda.","",""],
- ["Tanjidor","ANSAMBEL MUSIK","Ansambel musik tradisional Betawi yang menggunakan instrumen tiup dan perkusi.","",""],
+    const aliases = [
+      {label:"GENDANG", use:"KENDANG"},
+      {label:"KENDHANG", use:"KENDANG"},
+      {label:"SERULING", use:"SULING"},
+      {label:"KULINTANG", use:"KOLINTANG"},
+      {label:"KACAPI", use:"KECAPI"},
+      {label:"SARUNAI BOLON", use:"SARUNE BOLON"},
+      {label:"MENABUH", use:"MEMUKUL"},
+      {label:"MENGOCOK", use:"MENGGOYANG"}
+    ];
 
- ["TEKNIK MEMAINKAN","","Kategori istilah untuk cara atau tindakan yang digunakan untuk menghasilkan bunyi dari alat musik.","",""],
- ["Memukul","TEKNIK MEMAINKAN","Cara menghasilkan bunyi dengan memukul alat musik menggunakan tangan atau alat pemukul.","Bedug;Bonang;Gong;Kendang;Kenong;Ketipung;Kolintang;Rebana;Rindik;Saron;Taganing;Talempong;Tifa","Menabuh"],
- ["Memetik","TEKNIK MEMAINKAN","Cara menghasilkan bunyi dengan memetik dawai menggunakan jari atau alat pemetik.","Gambus;Hasapi;Kecapi;Sampe;Sasando",""],
- ["Menggesek","TEKNIK MEMAINKAN","Cara menghasilkan bunyi dengan menggesek dawai menggunakan alat penggesek.","Rebab",""],
- ["Meniup","TEKNIK MEMAINKAN","Cara menghasilkan bunyi dengan meniupkan udara ke dalam atau melalui alat musik.","Saluang;Sarune Bolon;Serunai;Suling;Tarompet",""],
- ["Menggoyang","TEKNIK MEMAINKAN","Cara menghasilkan bunyi dengan menggoyangkan/mengocok alat musik.","Angklung","Mengocok"]
-];
+    const tree = document.getElementById("termTree");
+    const detail = document.getElementById("termDetail");
+    const status = document.getElementById("detailStatus");
+    const searchInput = document.getElementById("searchInput");
+    let activeTerm = "";
 
-/* ===== MODEL ===== */
-const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-const split = s => s ? s.split(';').map(x=>x.trim()).filter(Boolean) : [];
-const T = {}, ORDER = [], TOPS = [], NP = {};   // NP: istilah tidak terpilih -> istilah pilihan
-const key = s => s.toLowerCase();
-DATA.forEach(([t,bt,sn,rt,uf])=>{
-  T[key(t)] = {t, bt, sn, rt:new Set(split(rt).map(key)), uf:split(uf), nt:[]};
-  ORDER.push(key(t)); if(!bt) TOPS.push(key(t));
-});
-ORDER.forEach(k=>{
-  const e=T[k];
-  if(e.bt) T[key(e.bt)].nt.push(k);
-  e.rt.forEach(r=>{ if(T[r]) T[r].rt.add(k); else console.warn('RT tidak ditemukan:',r,'pada',e.t); });  // RT timbal balik
-  e.uf.forEach(u=>NP[key(u)]={t:u,use:k});
-});
-const byName = (a,b)=>T[a].t.localeCompare(T[b].t,'id');
+    const groups = [
+      {name:"IDIOFON", terms:["ANGKLUNG","KOLINTANG","SARON","BONANG","GONG","KENONG","TALEMPONG","RINDIK"]},
+      {name:"MEMBRANOFON", terms:["KENDANG","KETIPUNG","REBANA","TIFA","BEDUG","TAGANING"]},
+      {name:"KORDOFON", terms:["SASANDO","REBAB","KECAPI","SAMPE","GAMBUS","HASAPI"]},
+      {name:"AEROFON", terms:["SULING","SALUANG","SERUNAI","SARUNE BOLON","TAROMPET"]},
+      {name:"ANSAMBEL MUSIK", terms:["GAMELAN","GONDANG SABANGUNAN","GORDANG SAMBILAN","TANJIDOR"]},
+      {name:"TEKNIK MEMAINKAN", terms:["MEMUKUL","MEMETIK","MENGGESEK","MENIUP","MENGGOYANG"]}
+    ];
 
-/* ===== RENDER ===== */
-const tree=document.getElementById('tree'), card=document.getElementById('card');
-let mode='h', current=null; const opened=new Set();
-const link = k => `<a href="#${slug(T[k].t)}">${T[k].t}</a>`;
-const list = arr => arr.length ? arr.slice().sort(byName).map(link).join(' ; ') : '<span class="none">—</span>';
-
-function renderTree(){
-  if(mode==='h'){
-    const branch = current ? (T[current].bt ? key(T[current].bt) : current) : null;
-    tree.innerHTML = TOPS.map(k=>`<div class="top${opened.has(k)||k===branch?'':' closed'}" data-k="${k}">
-      <button class="tt" data-go="${slug(T[k].t)}"><span class="car">▼</span>${T[k].t.toUpperCase()}</button>
-      <ul>${T[k].nt.map(n=>`<li><a href="#${slug(T[n].t)}" data-k="${n}">${T[n].t}</a></li>`).join('')}</ul></div>`).join('');
-    tree.querySelectorAll('.tt').forEach(b=>b.onclick=e=>{
-      const top=b.parentElement;
-      const k=top.dataset.k;
-      if(current===k){ top.classList.toggle('closed'); top.classList.contains('closed')?opened.delete(k):opened.add(k); }
-      else { top.classList.remove('closed'); opened.add(k); location.hash=b.dataset.go; }
+    function findTerm(name) { return terms.find(t => t.term === name.toUpperCase()); }
+    function makeRelation(name) {
+      const span = document.createElement("span");
+      span.className = "relation";
+      span.textContent = name;
+      span.tabIndex = 0;
+      span.setAttribute("role", "button");
+      span.setAttribute("aria-label", "Buka istilah " + name);
+      span.addEventListener("click", () => selectTerm(name));
+      span.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") selectTerm(name); });
+      return span;
+    }
+    function addField(parent, label, value, relationNames = false) {
+      const field = document.createElement("div");
+      field.className = "field";
+      const lab = document.createElement("div");
+      lab.className = "field-label";
+      lab.textContent = label;
+      const val = document.createElement("div");
+      val.className = "field-value";
+      if (relationNames && value.length) value.forEach((name, i) => {
+        if (i) val.appendChild(document.createTextNode("; "));
+        val.appendChild(makeRelation(name));
+      });
+      else val.innerHTML = value ? escapeHTML(value) : '<span class="empty">—</span>';
+      field.append(lab, val);
+      parent.appendChild(field);
+    }
+    function escapeHTML(s) {
+      return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    }
+    function selectTerm(name) {
+      const term = findTerm(name);
+      if (!term) return;
+      activeTerm = term.term;
+      renderTree(searchInput.value.trim());
+      detail.replaceChildren();
+      const title = document.createElement("h3");
+      title.className = "term-title";
+      title.textContent = term.term;
+      detail.appendChild(title);
+      addField(detail, "Definisi / Scope Note", term.definition);
+      addField(detail, "BT (Broader Term)", term.bt, false);
+      const nt = terms.filter(t => t.bt === term.term).map(t => t.term);
+      addField(detail, "NT (Narrower Term)", nt, true);
+      addField(detail, "RT (Related Term)", term.rt, true);
+      const aliasList = aliases.filter(a => a.use === term.term).map(a => a.label);
+      addField(detail, "UF (Used For)", aliasList, true);
+      status.textContent = "Detail istilah terpilih ditampilkan di bawah.";
+    }
+    function renderTree(filter = "") {
+      tree.replaceChildren();
+      const q = filter.toLocaleUpperCase("id-ID");
+      groups.forEach(group => {
+        const matching = group.terms.filter(n => {
+          const t = findTerm(n);
+          return !q || n.includes(q) || (t && t.definition.toLocaleUpperCase("id-ID").includes(q));
+        });
+        const categoryMatches = group.name.includes(q);
+        if (q && !matching.length && !categoryMatches) return;
+        const d = document.createElement("details");
+        d.open = !q || categoryMatches || matching.length > 0;
+        const s = document.createElement("summary");
+        s.textContent = group.name;
+        d.appendChild(s);
+        const list = document.createElement("div");
+        list.className = "term-list";
+        const categoryButton = document.createElement("button");
+        categoryButton.className = "term-button" + (activeTerm === group.name ? " active" : "");
+        categoryButton.textContent = group.name + " (kategori)";
+        categoryButton.addEventListener("click", () => selectTerm(group.name));
+        if (!q || categoryMatches) list.appendChild(categoryButton);
+        matching.forEach(n => {
+          const b = document.createElement("button");
+          b.className = "term-button" + (activeTerm === n ? " active" : "");
+          b.textContent = titleCase(n);
+          b.addEventListener("click", () => selectTerm(n));
+          list.appendChild(b);
+        });
+        d.appendChild(list);
+        tree.appendChild(d);
+      });
+    }
+    function titleCase(s) { return s.toLowerCase().replace(/\b\p{L}/gu, c => c.toLocaleUpperCase("id-ID")); }
+    function doSearch() {
+      const q = searchInput.value.trim().toLocaleUpperCase("id-ID");
+      const exact = findTerm(q);
+      if (exact) selectTerm(exact.term);
+      else {
+        renderTree(searchInput.value.trim());
+        const alias = aliases.find(a => a.label === q);
+        if (alias) selectTerm(alias.use);
+        else {
+          const match = terms.find(t => t.term.includes(q) || t.definition.toLocaleUpperCase("id-ID").includes(q));
+          if (match) selectTerm(match.term);
+          else {
+            status.textContent = q ? "Istilah tidak ditemukan. Coba kata kunci lain." : "Pilih istilah untuk melihat detailnya.";
+            detail.innerHTML = '<p class="empty">Tidak ada istilah yang cocok dengan pencarian.</p>';
+          }
+        }
+      }
+    }
+    document.getElementById("searchButton").addEventListener("click", doSearch);
+    searchInput.addEventListener("keydown", e => { if (e.key === "Enter") doSearch(); });
+    document.getElementById("clearButton").addEventListener("click", () => {
+      searchInput.value = "";
+      activeTerm = "";
+      renderTree();
+      detail.innerHTML = '<p class="empty">Belum ada istilah yang dipilih.</p>';
+      status.textContent = "Pilih istilah untuk melihat detailnya.";
     });
-  } else {
-    const all=[...ORDER.map(k=>({t:T[k].t,h:slug(T[k].t),np:false})),
-               ...Object.values(NP).map(n=>({t:`${n.t} → ${T[n.use].t}`,h:slug(T[n.use].t),np:true,s:n.t}))]
-      .sort((a,b)=>(a.s||a.t).localeCompare(b.s||b.t,'id'));
-    tree.innerHTML='<ul class="alpha">'+all.map(x=>`<li><a href="#${x.h}" class="${x.np?'np':''}" data-k="${x.np?'':key(x.t)}">${x.t}</a></li>`).join('')+'</ul>';
-  }
-  mark();
-}
-function mark(){
-  tree.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));
-  if(!current) return;
-  tree.querySelectorAll(`a[data-k="${current}"]`).forEach(a=>{a.classList.add('sel');});
-  const top=tree.querySelector(`.top[data-k="${current}"] > .tt`); if(top) top.classList.add('sel');
-  const a=tree.querySelector('.sel'); if(a && a.scrollIntoViewIfNeeded) a.scrollIntoViewIfNeeded(false);
-}
-function show(k){
-  current=k; const e=T[k], isTop=!e.bt;
-  const br=isTop?k:key(e.bt); opened.add(br);
-  const tp=tree.querySelector(`.top[data-k="${br}"]`); if(tp) tp.classList.remove('closed');
-  card.innerHTML = `<h2>${e.t.toUpperCase()}<span class="type">${isTop?'Top Term':'Deskriptor'}</span></h2>
-  <dl>
-    <div class="row"><dt>Definisi / Scope Note (SN)</dt><dd>${e.sn}</dd></div>
-    <div class="row"><dt>BT (Broader Term)</dt><dd>${e.bt?link(key(e.bt)):'<span class="none">— (Top Term)</span>'}</dd></div>
-    <div class="row"><dt>NT (Narrower Term)</dt><dd>${list(e.nt)}</dd></div>
-    <div class="row"><dt>RT (Related Term)</dt><dd>${list([...e.rt])}</dd></div>
-    <div class="row"><dt>USE</dt><dd><span class="none">— (istilah pilihan)</span></dd></div>
-    <div class="row"><dt>UF (Used For)</dt><dd>${e.uf.length?e.uf.join(' ; '):'<span class="none">—</span>'}</dd></div>
-  </dl>`;
-  document.title = e.t + ' · Tesaurus Alat Musik Nusantara';
-  mark();
-}
-function route(){
-  const h=decodeURIComponent(location.hash.slice(1));
-  const k=ORDER.find(k=>slug(T[k].t)===h) || ORDER.find(k=>slug(T[k].t)==='gamelan');
-  show(k);
-}
-
-/* ===== PENCARIAN (termasuk istilah tidak terpilih / USE) ===== */
-const q=document.getElementById('q'), res=document.getElementById('res');
-q.addEventListener('input',()=>{
-  const s=q.value.trim().toLowerCase(); if(!s){res.style.display='none';return;}
-  const hits=[...ORDER.filter(k=>k.includes(s)||T[k].sn.toLowerCase().includes(s)).map(k=>`<a href="#${slug(T[k].t)}">${T[k].t}</a>`),
-              ...Object.keys(NP).filter(n=>n.includes(s)).map(n=>`<a href="#${slug(T[NP[n].use].t)}">${NP[n].t} <em>USE ${T[NP[n].use].t}</em></a>`)];
-  res.innerHTML = hits.length?hits.join(''):'<a><em>Istilah tidak ditemukan</em></a>';
-  res.style.display='block';
-});
-res.addEventListener('click',()=>{res.style.display='none';q.value='';});
-document.addEventListener('click',e=>{if(!e.target.closest('.search'))res.style.display='none';});
-q.addEventListener('keydown',e=>{if(e.key==='Enter'){const a=res.querySelector('a[href]'); if(a){location.hash=a.getAttribute('href'); res.style.display='none'; q.value='';}}});
-
-document.getElementById('tH').onclick=()=>{mode='h';tH.classList.add('on');tA.classList.remove('on');renderTree();};
-document.getElementById('tA').onclick=()=>{mode='a';tA.classList.add('on');tH.classList.remove('on');renderTree();};
-document.getElementById('stats').innerHTML=`${ORDER.length} deskriptor (${TOPS.length} top term, ${ORDER.length-TOPS.length} istilah spesifik) · ${Object.keys(NP).length} istilah tidak terpilih (UF)`;
-
-window.addEventListener('hashchange',route);
-route(); renderTree();
-</script>
+    renderTree();
+    selectTerm("GONDANG SABANGUNAN");
+  </script>
 </body>
 </html>
