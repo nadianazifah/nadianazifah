@@ -1,318 +1,342 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tesaurus mini alat musik tradisional Nusantara untuk membantu pengorganisasian dan temu kembali informasi.">
-  <title>Tesaurus Alat Musik Tradisional Nusantara</title>
-  <style>
-    :root {
-      --navy: #222b63;
-      --navy-dark: #171f4f;
-      --blue: #176b9b;
-      --bg: #f4f6fa;
-      --panel: #ffffff;
-      --line: #dce2eb;
-      --muted: #657087;
-      --text: #20283a;
-      --accent: #f2a64a;
-      --selected: #e1edf5;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-    }
-    header {
-      background: var(--navy);
-      color: white;
-      padding: 18px clamp(16px, 4vw, 48px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    header h1 { margin: 0; font-size: clamp(19px, 3vw, 27px); line-height: 1.25; }
-    header p { margin: 5px 0 0; color: #e0e5ff; font-size: 13px; }
-    .mark {
-      flex: 0 0 38px; width: 38px; height: 38px; border-radius: 50%;
-      background: var(--accent); color: var(--navy-dark); display: grid;
-      place-items: center; font-weight: 800;
-    }
-    .container { max-width: 1180px; margin: 24px auto; padding: 0 16px; }
-    .intro { margin: 0 0 18px; color: #4d5870; }
-    .search-row { display: flex; gap: 10px; margin-bottom: 18px; }
-    .search-row input {
-      flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid #cbd4e2;
-      border-radius: 8px; font: inherit; background: white;
-    }
-    .search-row button, .clear-btn {
-      border: 0; border-radius: 8px; padding: 11px 15px; font: inherit;
-      cursor: pointer; background: var(--navy); color: white;
-    }
-    .search-row button:hover, .clear-btn:hover { background: var(--navy-dark); }
-    .layout { display: grid; grid-template-columns: minmax(230px, 300px) 1fr; gap: 18px; }
-    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-    .panel h2 {
-      font-size: 13px; text-transform: uppercase; letter-spacing: .04em;
-      color: var(--blue); margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line);
-    }
-    #termTree { padding: 8px; }
-    details { margin: 2px 0; }
-    summary {
-      list-style: none; cursor: pointer; padding: 7px 9px; font-weight: 750;
-      color: var(--navy); border-radius: 5px; font-size: 13px;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::before { content: "▸"; display: inline-block; margin-right: 7px; transition: transform .15s; }
-    details[open] > summary::before { transform: rotate(90deg); }
-    .term-list { padding: 0 0 5px 15px; }
-    .term-button {
-      width: 100%; border: 0; background: transparent; text-align: left;
-      padding: 6px 10px; border-radius: 5px; cursor: pointer; color: #39445a;
-      font: inherit; font-size: 13px;
-    }
-    .term-button::before { content: "•"; margin-right: 7px; color: #5b718c; }
-    .term-button:hover { background: #f0f4f8; }
-    .term-button.active { background: var(--selected); color: #075f91; font-weight: 700; }
-    .detail-content { padding: 18px; }
-    .term-title { background: var(--navy); color: white; padding: 12px 15px; margin: 0 0 15px; border-radius: 5px; font-size: 20px; }
-    .field { border-bottom: 1px solid var(--line); padding: 10px 0; }
-    .field:last-child { border-bottom: 0; }
-    .field-label { color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .04em; margin-bottom: 4px; }
-    .field-value { overflow-wrap: anywhere; }
-    .relation { color: #0b6796; text-decoration: underline; text-decoration-style: dotted; cursor: pointer; margin-right: 8px; display: inline-block; }
-    .empty { color: var(--muted); }
-    .note { margin-top: 18px; color: var(--muted); font-size: 12px; }
-    .status { padding: 12px 16px; background: #eef5f9; border-bottom: 1px solid var(--line); font-size: 13px; color: #38516a; }
-    footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
-    @media (max-width: 720px) {
-      .layout { grid-template-columns: 1fr; }
-      .search-row { flex-wrap: wrap; }
-      .search-row button { flex: 0 0 auto; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tesaurus Mini Hukum Indonesia: 40 istilah dari tujuh cabang hukum, lengkap dengan definisi dan relasi BT, NT, USE/UF, dan RT.">
+<title>Tesaurus Mini Hukum Indonesia</title>Kelompok 4
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14222e;--ink2:#1d3242;--paper:#f4f6f6;--panel:#fff;--line:#d7dedf;--muted:#5b6a72;--text:#1c2a33;--teal:#1d6a68;--brass:#a8843a;--sel:#e4eeee;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--text);font:16px/1.65 var(--sans)}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+nav{position:sticky;top:0;z-index:10;background:var(--ink);border-bottom:1px solid #2a4254;display:flex;align-items:center;gap:6px;padding:0 clamp(16px,4vw,48px);overflow-x:auto}
+nav b{font:600 17px var(--serif);color:#fff;margin-right:auto;white-space:nowrap;padding:14px 0}
+nav a{color:#c5d3da;text-decoration:none;font-size:14px;padding:16px 10px;white-space:nowrap}
+nav a:hover{color:#fff}
+.hero{background:var(--ink);color:#fff;padding:clamp(36px,7vw,84px) clamp(16px,4vw,48px) 40px}
+.wrap{max-width:1180px;margin:0 auto}
+.hero h1{font:500 clamp(34px,6vw,64px)/1.05 var(--serif);margin:0 0 16px;max-width:15ch;letter-spacing:-.01em}
+.hero p{margin:0 0 26px;max-width:62ch;color:#c5d3da;font-size:17px}
+.search{display:flex;gap:10px;max-width:640px}
+.search input{flex:1;min-width:0;padding:14px 16px;border:1px solid #3b5568;border-radius:6px;background:#fff;font:inherit;color:var(--text)}
+.btn{border:0;border-radius:6px;padding:0 18px;font:600 15px var(--sans);cursor:pointer;background:var(--brass);color:#14222e}
+.btn:hover{background:#bb974b}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #3b5568}
+.btn.ghost:hover{background:#1d3242}
+.branches{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.branches button{font:500 14px var(--sans);color:#e8f0f3;background:var(--ink2);border:1px solid #2f4a5c;border-radius:999px;padding:7px 14px;cursor:pointer}
+.branches button:hover{border-color:var(--brass)}
+.branches span{color:#8fa6b3;margin-left:6px}
+section{padding:clamp(36px,6vw,64px) clamp(16px,4vw,48px)}
+section.alt{background:#fff;border-block:1px solid var(--line)}
+h2{font:500 clamp(26px,4vw,36px)/1.15 var(--serif);margin:0 0 8px;color:var(--ink)}
+h3{font:600 20px/1.3 var(--serif);margin:28px 0 8px;color:var(--ink)}
+.lead{color:var(--muted);max-width:68ch;margin:0 0 26px}
+.prose{max-width:70ch}
+.prose p{margin:0 0 14px}
+.layout{display:grid;grid-template-columns:minmax(250px,320px) 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.panel>h4{margin:0;padding:13px 16px;font:600 15px var(--sans);color:var(--teal);border-bottom:1px solid var(--line)}
+#tree{padding:8px;max-height:620px;overflow:auto}
+details{margin:2px 0}
+summary{list-style:none;cursor:pointer;padding:8px 10px;font-weight:600;color:var(--ink);border-radius:5px;font-size:14px;display:flex;justify-content:space-between;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";margin-right:8px;color:var(--brass);transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary i{font-style:normal;margin-left:auto;color:var(--muted);font-weight:400;font-size:13px}
+summary:hover{background:#f0f4f4}
+.tl{padding:0 0 6px 18px}
+.tb{display:block;width:100%;border:0;border-left:2px solid transparent;background:transparent;text-align:left;padding:6px 10px;border-radius:0 5px 5px 0;cursor:pointer;color:#34444d;font:inherit;font-size:14px}
+.tb:hover{background:#f0f4f4}
+.tb.on{background:var(--sel);border-left-color:var(--brass);color:var(--ink);font-weight:600}
+.tb.top{font-style:italic;color:var(--muted)}
+.status{padding:11px 18px;background:#eef4f4;border-bottom:1px solid var(--line);font-size:14px;color:#36505a}
+#detail{padding:20px 22px 24px;min-height:340px}
+.ttl{font:500 clamp(26px,3.5vw,34px)/1.15 var(--serif);color:var(--ink);margin:0 0 4px}
+.cab{font-size:14px;color:var(--muted);margin:0 0 16px}
+.field{border-top:1px solid var(--line);padding:12px 0}
+.fl{font:600 13px var(--sans);color:var(--muted);margin-bottom:5px}
+.fv{overflow-wrap:anywhere}
+.chip{display:inline-block;margin:0 6px 6px 0;padding:3px 11px;border:1px solid #b9cdcd;border-radius:999px;background:#f3f8f8;color:var(--teal);font:500 14px var(--sans);cursor:pointer}
+.chip:hover{background:var(--sel);border-color:var(--teal)}
+.empty{color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p,.card li{font-size:15px;margin:0 0 8px}
+.card ul{margin:0;padding-left:18px}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;max-width:76ch}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 16px 48px;border-left:1px solid var(--line);margin-left:15px}
+ol.steps li::before{content:counter(s);position:absolute;left:-16px;top:0;width:31px;height:31px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:600 14px var(--sans)}
+ol.steps li:last-child{border-left-color:transparent}
+ol.steps b{display:block;font:600 17px var(--serif);color:var(--ink)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.filters button{font:500 14px var(--sans);border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;color:var(--text)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{background:#eef3f3;text-align:left;font:600 14px var(--sans);color:var(--ink);padding:11px 14px;white-space:nowrap}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+td.n{color:var(--muted);width:44px}
+td button{all:unset;cursor:pointer;color:var(--teal);font-weight:600}
+td button:hover{text-decoration:underline}
+tr.top td{background:#f8f5ee}
+.note{border-left:3px solid var(--brass);background:#fbf8f1;padding:12px 16px;margin:20px 0 0;max-width:76ch;font-size:15px}
+.sm{font-size:14px;color:var(--muted)}
+details.pairs{margin-top:14px}
+details.pairs summary{padding-left:0}
+footer{background:var(--ink);color:#b7c7d0;padding:34px clamp(16px,4vw,48px);font-size:14px}
+footer b{color:#fff;font-family:var(--serif);font-size:17px;font-weight:600}
+footer p{margin:6px 0;max-width:80ch}
+@media(max-width:760px){.layout{grid-template-columns:1fr}#tree{max-height:340px}.search{flex-wrap:wrap}.search .btn{padding:12px 18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>Tesaurus Alat Musik Tradisional Nusantara</h1>
-      <p>Kosakata terkendali untuk pengorganisasian dan temu kembali informasi budaya</p>
-    </div>
-    <div class="mark" aria-label="Tesaurus mini">TM</div>
-  </header>
+<nav aria-label="Navigasi utama"><b>Tesaurus Mini Hukum</b><a href="#jelajah">Jelajah</a><a href="#daftar">Daftar istilah</a><a href="#relasi">Relasi</a><a href="#metode">Metodologi</a><a href="#tentang">Tentang</a></nav>
 
-  <main class="container">
-    <p class="intro">Pilih istilah pada panel struktur untuk melihat definisi, istilah yang lebih luas (BT), dan istilah terkait (RT). Gunakan pencarian untuk menemukan istilah dengan cepat.</p>
-    <div class="search-row">
-      <input id="searchInput" type="search" placeholder="Cari istilah, misalnya: Angklung, Memukul..." aria-label="Cari istilah">
-      <button id="searchButton" type="button">Cari</button>
-      <button id="clearButton" class="clear-btn" type="button">Reset</button>
-    </div>
+<header class="hero"><div class="wrap">
+<h1>Tesaurus Mini Hukum Indonesia</h1>
+<p>Empat puluh istilah dari tujuh cabang hukum, disusun dengan definisi dan hubungan antaristilah agar istilah hukum lebih seragam dan mudah ditelusuri.</p>
+<div class="search" role="search"><input id="q" type="search" placeholder="Cari istilah, misalnya: wanprestasi, HAM, amdal" aria-label="Cari istilah"><button class="btn" id="go" type="button">Cari</button><button class="btn ghost" id="reset" type="button">Reset</button></div>
+<div class="branches" id="branches" aria-label="Cabang hukum"></div>
+</div></header>
 
-    <div class="layout">
-      <aside class="panel">
-        <h2>Struktur Istilah</h2>
-        <div id="termTree" aria-label="Daftar istilah tesaurus"></div>
-      </aside>
-      <section class="panel" aria-live="polite">
-        <h2>Detail Istilah</h2>
-        <div id="detailStatus" class="status">Pilih istilah untuk melihat detailnya.</div>
-        <div id="termDetail" class="detail-content">
-          <p class="empty">Belum ada istilah yang dipilih.</p>
-        </div>
-      </section>
-    </div>
-    <p class="note">Catatan: laman ini merupakan prototipe HTML statis. Relasi dan definisi mengikuti draf tesaurus kelompok dan sebaiknya divalidasi kembali menggunakan sumber rujukan yang dicantumkan dalam laporan.</p>
-  </main>
-  <footer>Proyek Tesaurus Mini · Alat Musik Tradisional Nusantara</footer>
+<section id="jelajah"><div class="wrap">
+<h2>Jelajahi istilah</h2>
+<p class="lead">Pilih istilah di panel kiri untuk melihat definisi, istilah yang lebih luas (BT) dan lebih khusus (NT), istilah terkait (RT), serta singkatan yang dialihkan ke istilah ini (UF). Klik istilah di bagian relasi untuk berpindah.</p>
+<div class="layout">
+<aside class="panel"><h4>Struktur istilah</h4><div id="tree"></div></aside>
+<div class="panel" aria-live="polite"><h4>Detail istilah</h4><div class="status" id="status"></div><div id="detail"></div></div>
+</div></div></section>
 
-  <script>
-    // Data disusun mengikuti istilah dan definisi dalam draf laporan kelompok.
-    const terms = [
-      {term:"IDIOFON", bt:"", definition:"Kategori alat musik yang bunyinya terutama dihasilkan oleh getaran badan alat itu sendiri.", rt:[]},
-      {term:"ANGKLUNG", bt:"IDIOFON", definition:"Alat musik dari tabung bambu yang disusun dalam rangka dan menghasilkan bunyi ketika digoyangkan; berasal dari Jawa Barat.", rt:["MENGGOYANG"]},
-      {term:"KOLINTANG", bt:"IDIOFON", definition:"Alat musik berbilah kayu yang disusun di atas resonator dan dimainkan dengan cara dipukul; dikenal dalam tradisi Minahasa.", rt:["MEMUKUL"]},
-      {term:"SARON", bt:"IDIOFON", definition:"Alat musik berbilah logam yang diletakkan di atas resonator dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.", rt:["GAMELAN","MEMUKUL"]},
-      {term:"BONANG", bt:"IDIOFON", definition:"Alat musik berupa deretan gong kecil berpencu yang diletakkan mendatar pada rancak/rak dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.", rt:["GAMELAN","KENONG","MEMUKUL"]},
-      {term:"GONG", bt:"IDIOFON", definition:"Alat musik logam berbentuk bundar, umumnya berpencu, yang menghasilkan bunyi ketika dipukul. Dalam gamelan, gong dapat menandai batas atau akhir bagian musikal.", rt:["GAMELAN","KENONG","MEMUKUL"]},
-      {term:"KENONG", bt:"IDIOFON", definition:"Alat musik berupa gong kecil berpencu yang diletakkan pada tali di atas rak dan dimainkan dengan cara dipukul; merupakan bagian dari gamelan.", rt:["BONANG","GAMELAN","GONG","MEMUKUL"]},
-      {term:"TALEMPONG", bt:"IDIOFON", definition:"Alat musik logam berpencu dari tradisi Minangkabau yang dimainkan dengan cara dipukul.", rt:["MEMUKUL"]},
-      {term:"RINDIK", bt:"IDIOFON", definition:"Alat musik berbilah bambu dari Bali yang dimainkan dengan cara dipukul.", rt:["MEMUKUL"]},
-      {term:"MEMBRANOFON", bt:"", definition:"Kategori alat musik yang bunyinya dihasilkan oleh getaran membran atau selaput yang direntangkan.", rt:[]},
-      {term:"KENDANG", bt:"MEMBRANOFON", definition:"Gendang yang umumnya memiliki dua sisi membran dan dimainkan dengan tangan; berfungsi antara lain mengatur irama dalam gamelan.", rt:["GAMELAN","KETIPUNG","MEMUKUL"]},
-      {term:"KETIPUNG", bt:"MEMBRANOFON", definition:"Gendang berukuran relatif kecil yang dimainkan dengan cara dipukul, umumnya menggunakan tangan.", rt:["KENDANG","MEMUKUL"]},
-      {term:"REBANA", bt:"MEMBRANOFON", definition:"Alat musik berbentuk gendang bingkai dengan satu membran, digunakan dalam berbagai tradisi musik, termasuk musik Islami dan Melayu.", rt:["MEMUKUL","GAMBUS"]},
-      {term:"TIFA", bt:"MEMBRANOFON", definition:"Alat musik pukul berbentuk tabung dari kayu berongga dengan membran pada salah satu ujungnya; dikenal di Maluku dan Papua.", rt:["MEMUKUL"]},
-      {term:"BEDUG", bt:"MEMBRANOFON", definition:"Gendang berukuran besar yang dipukul dan lazim digunakan di masjid untuk menandai waktu salat atau mengumumkan kegiatan keagamaan.", rt:["MEMUKUL"]},
-      {term:"TAGANING", bt:"MEMBRANOFON", definition:"Seperangkat gendang bernada dalam tradisi musik Batak Toba; lazim dikenal sebagai rangkaian lima gendang.", rt:["GONDANG SABANGUNAN","MEMUKUL","SARUNE BOLON"]},
-      {term:"KORDOFON", bt:"", definition:"Kategori alat musik yang bunyinya dihasilkan oleh getaran dawai atau senar.", rt:[]},
-      {term:"SASANDO", bt:"KORDOFON", definition:"Alat musik berdawai dari Pulau Rote, Nusa Tenggara Timur, dengan tabung bambu sebagai bagian struktur dan daun lontar sebagai resonator.", rt:["MEMETIK"]},
-      {term:"REBAB", bt:"KORDOFON", definition:"Alat musik berdawai yang dimainkan dengan cara digesek dan digunakan dalam sejumlah tradisi musik, termasuk gamelan.", rt:["GAMELAN","MENGGESEK"]},
-      {term:"KECAPI", bt:"KORDOFON", definition:"Alat musik berdawai yang dipetik, dikenal antara lain dalam tradisi Sunda.", rt:["MEMETIK","SULING"]},
-      {term:"SAMPE", bt:"KORDOFON", definition:"Alat musik berdawai petik yang dikenal dalam tradisi sejumlah masyarakat Dayak di Kalimantan.", rt:["MEMETIK"]},
-      {term:"GAMBUS", bt:"KORDOFON", definition:"Alat musik berdawai yang dimainkan dengan cara dipetik dan berkembang dalam berbagai tradisi musik Melayu serta musik yang mendapat pengaruh Timur Tengah.", rt:["MEMETIK","REBANA"]},
-      {term:"HASAPI", bt:"KORDOFON", definition:"Alat musik berdawai petik, umumnya berdawai dua, dalam tradisi Batak Toba.", rt:["MEMETIK"]},
-      {term:"AEROFON", bt:"", definition:"Kategori alat musik yang bunyinya dihasilkan oleh getaran udara di dalam atau di sekitar alat.", rt:[]},
-      {term:"SULING", bt:"AEROFON", definition:"Alat musik tiup berbentuk tabung dengan lubang-lubang nada; banyak dibuat dari bambu dan digunakan dalam berbagai tradisi musik.", rt:["GAMELAN","KECAPI","MENIUP"]},
-      {term:"SALUANG", bt:"AEROFON", definition:"Alat musik tiup dari bambu dalam tradisi Minangkabau.", rt:["MENIUP"]},
-      {term:"SERUNAI", bt:"AEROFON", definition:"Alat musik tiup berlidah (reed), dikenal dalam sejumlah tradisi musik Melayu dan daerah lain.", rt:["MENIUP"]},
-      {term:"SARUNE BOLON", bt:"AEROFON", definition:"Alat musik tiup berukuran besar dalam tradisi Batak Toba, digunakan dalam ansambel Gondang Sabangunan.", rt:["GONDANG SABANGUNAN","MENIUP","TAGANING"]},
-      {term:"TAROMPET", bt:"AEROFON", definition:"Alat musik tiup berlidah ganda yang dikenal dalam tradisi Sunda.", rt:["MENIUP"]},
-      {term:"ANSAMBEL MUSIK", bt:"", definition:"Kategori istilah untuk kelompok alat musik yang dimainkan bersama sebagai satu kesatuan musikal.", rt:[]},
-      {term:"GAMELAN", bt:"ANSAMBEL MUSIK", definition:"Ansambel musik tradisional yang berkembang terutama di Jawa dan Bali, terdiri atas berbagai instrumen seperti gong, kendang, bonang, kenong, saron, dan instrumen lainnya.", rt:["BONANG","GONG","KENDANG","KENONG","REBAB","SARON","SULING"]},
-      {term:"GONDANG SABANGUNAN", bt:"ANSAMBEL MUSIK", definition:"Ansambel musik tradisional Batak Toba yang antara lain melibatkan taganing, sarune bolon, dan instrumen gong.", rt:["SARUNE BOLON","TAGANING"]},
-      {term:"GORDANG SAMBILAN", bt:"ANSAMBEL MUSIK", definition:"Ansambel tradisional Mandailing yang terdiri atas sembilan gendang dengan ukuran berbeda.", rt:[]},
-      {term:"TANJIDOR", bt:"ANSAMBEL MUSIK", definition:"Ansambel musik tradisional Betawi yang menggunakan instrumen tiup dan perkusi.", rt:[]},
-      {term:"TEKNIK MEMAINKAN", bt:"", definition:"Kategori istilah untuk cara atau tindakan yang digunakan untuk menghasilkan bunyi dari alat musik.", rt:[]},
-      {term:"MEMUKUL", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan memukul alat musik menggunakan tangan atau alat pemukul.", rt:["BEDUG","BONANG","KENDANG","KENONG","KETIPUNG","KOLINTANG","REBANA","RINDIK","SARON","TAGANING","TALEMPONG","TIFA"]},
-      {term:"MEMETIK", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan memetik dawai menggunakan jari atau alat pemetik.", rt:["GAMBUS","HASAPI","KECAPI","SAMPE","SASANDO"]},
-      {term:"MENGGESEK", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan menggesek dawai menggunakan alat penggesek.", rt:["REBAB"]},
-      {term:"MENIUP", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan meniupkan udara ke dalam atau melalui alat musik.", rt:["SALUANG","SARUNE BOLON","SERUNAI","SULING","TAROMPET"]},
-      {term:"MENGGOYANG", bt:"TEKNIK MEMAINKAN", definition:"Cara menghasilkan bunyi dengan menggoyangkan atau mengocok alat musik.", rt:["ANGKLUNG"]}
-    ];
+<section id="daftar" class="alt"><div class="wrap">
+<h2>Daftar istilah dan definisi</h2>
+<p class="lead">Seluruh 40 entri: tujuh istilah cabang hukum (top term) dan 33 istilah yang lebih spesifik. Tanda “—” berarti tidak ada relasi pada tingkat tesaurus mini ini.</p>
+<div class="filters" id="filters"></div>
+<div class="tw"><table><thead><tr><th>No.</th><th>Istilah (deskriptor)</th><th>BT</th><th>Definisi / scope note</th><th>RT</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div></section>
 
-    const aliases = [
-      {label:"GENDANG", use:"KENDANG"},
-      {label:"KENDHANG", use:"KENDANG"},
-      {label:"SERULING", use:"SULING"},
-      {label:"KULINTANG", use:"KOLINTANG"},
-      {label:"KACAPI", use:"KECAPI"},
-      {label:"SARUNAI BOLON", use:"SARUNE BOLON"},
-      {label:"MENABUH", use:"MEMUKUL"},
-      {label:"MENGOCOK", use:"MENGGOYANG"}
-    ];
+<section id="relasi"><div class="wrap">
+<h2>Struktur relasi antaristilah</h2>
+<p class="lead">Tiga jenis relasi menghubungkan istilah dalam tesaurus ini.</p>
+<h3>Relasi hierarkis (BT/NT)</h3>
+<p class="sm prose">Menunjukkan istilah yang lebih luas dan lebih khusus. Ketujuh top term tidak memiliki BT dalam cakupan tesaurus ini.</p>
+<div class="tw"><table><thead><tr><th>Top term</th><th>NT (istilah yang lebih khusus)</th></tr></thead><tbody id="nt"></tbody></table></div>
+<h3>Relasi ekuivalensi (USE/UF)</h3>
+<p class="sm prose">USE mengarahkan dari istilah yang tidak dipilih ke deskriptor; UF dicatat pada deskriptor pilihan. Hanya singkatan yang lazim dan jelas yang dijadikan titik akses. Istilah yang sekadar mirip atau berbeda cakupan tidak diperlakukan sebagai sinonim.</p>
+<div class="tw"><table><thead><tr><th>Istilah tidak dipilih</th><th>USE (istilah pilihan)</th><th>UF pada istilah pilihan</th><th>Catatan</th></tr></thead><tbody id="eq"></tbody></table></div>
+<h3>Relasi asosiatif (RT)</h3>
+<p class="sm prose">Menghubungkan istilah yang berkaitan dalam makna atau praktik, bukan hubungan hierarkis. RT bersifat timbal balik: jika A memiliki RT B, maka B juga memiliki RT A. RT bukan sinonim.</p>
+<p><b id="rtn"></b> <span class="sm">pasangan RT dalam tesaurus ini.</span></p>
+<details class="pairs"><summary>Lihat seluruh pasangan RT</summary><div class="tw" style="margin-top:8px"><table><thead><tr><th>Istilah A</th><th>RT (istilah B)</th></tr></thead><tbody id="rt"></tbody></table></div></details>
+<p class="note">Keterkaitan RT disusun berdasarkan definisi kedua istilah dan perlu dikonfirmasi pada sumber bidang terkait sebelum dipakai untuk pengindeksan final.</p>
+<h3>Aturan konsistensi relasi</h3>
+<div class="card"><ul>
+<li>Setiap istilah spesifik memiliki satu BT utama agar struktur mudah ditelusuri.</li>
+<li>Daftar NT pada top term sama dengan daftar istilah yang mencantumkan top term itu sebagai BT.</li>
+<li>RT harus relevan dan timbal balik, dan tidak dipakai untuk menandai sinonim.</li>
+<li>USE/UF hanya dipakai bila istilah berbeda benar-benar merujuk pada konsep yang sama; singkatan yang berpotensi ambigu diverifikasi dari konteks sumber.</li>
+<li>Sebelum dipakai untuk temu kembali informasi, semua relasi dan definisi diperiksa kembali oleh kelompok bersama narasumber atau ahli hukum.</li></ul></div>
+</div></section>
 
-    const tree = document.getElementById("termTree");
-    const detail = document.getElementById("termDetail");
-    const status = document.getElementById("detailStatus");
-    const searchInput = document.getElementById("searchInput");
-    let activeTerm = "";
+<section id="metode" class="alt"><div class="wrap">
+<h2>Bagaimana tesaurus ini dibuat</h2>
+<p class="lead">Dari pendahuluan hingga pemeriksaan akhir, berikut cakupan, sumber, dan tahapan penyusunannya.</p>
+<div class="cols">
+<div class="card"><h3>Latar belakang dan tujuan</h3><p>Istilah hukum Indonesia sangat beragam dan maknanya berbeda menurut bidangnya. Tesaurus mini menata istilah itu secara terstruktur dengan definisi dan hubungan antaristilah. Tujuannya:</p><ul><li>Menata kosakata hukum secara terkendali dan konsisten.</li><li>Memberi definisi ringkas (scope note) untuk makna dan batas istilah.</li><li>Membangun relasi BT/NT, USE/UF, dan RT.</li><li>Mendukung konsistensi pengindeksan dan penelusuran informasi hukum.</li></ul></div>
+<div class="card"><h3>Cakupan dan batas</h3><p>Tepat 40 entri: tujuh istilah cabang hukum sebagai top term dan 33 istilah yang lebih spesifik. Cakupan dibatasi pada Hukum Pidana, Perdata, Tata Negara, Internasional, Adat, Lingkungan, dan Hak Asasi Manusia. Hukum Umum tidak dimasukkan.</p><p>Entri lintas cabang hanya dimasukkan bila dapat ditempatkan pada cabang yang paling relevan untuk pengindeksan.</p></div>
+<div class="card"><h3>Literature warrant</h3><p>Definisi disusun dari buku <i>Pengantar Hukum Indonesia</i> (Queen Pustaka Nusantara, Februari 2026), yang membahas Hukum Tata Negara dan Administrasi Negara (Bab 5), Perdata (Bab 6), Pidana (Bab 7), Adat (Bab 9), dan Internasional (Bab 10), serta situs Hukumonline untuk melengkapi istilah, pengertian, dan perkembangan pembahasan.</p></div>
+<div class="card"><h3>User warrant</h3><p>Kebutuhan pengguna dikumpulkan lewat wawancara dengan seorang pengacara lulusan hukum, untuk mengetahui istilah yang sering dipakai, maknanya, dan hubungan antaristilah dalam praktik. Hasilnya menjadi bahan pertimbangan memilih dan menyusun istilah.</p></div>
+</div>
+<h3>Tahapan penyusunan</h3>
+<ol class="steps">
+<li><b>Menentukan cakupan</b>Menetapkan tujuh cabang hukum yang dibahas.</li>
+<li><b>Mengumpulkan istilah</b>Mengumpulkan calon istilah dari buku Pengantar Hukum Indonesia dan Hukumonline, dengan mempertimbangkan hasil wawancara pengacara.</li>
+<li><b>Memilih istilah</b>Menyeleksi 40 istilah yang sesuai cakupan: tujuh istilah utama dan 33 istilah yang lebih khusus.</li>
+<li><b>Menentukan istilah pilihan</b>Memilih istilah yang paling tepat mewakili suatu konsep agar penggunaannya konsisten.</li>
+<li><b>Menyusun definisi</b>Menjelaskan makna tiap istilah dengan kalimat singkat, jelas, dan mudah dipahami berdasarkan sumber yang relevan.</li>
+<li><b>Menentukan hubungan antaristilah</b>Menyusun BT/NT untuk hierarki, USE/UF untuk kesetaraan, dan RT untuk keterkaitan.</li>
+<li><b>Memeriksa kembali</b>Memeriksa ketepatan istilah, kejelasan definisi, kesesuaian relasi, dan kecocokan sumber.</li>
+</ol>
+</div></section>
 
-    const groups = [
-      {name:"IDIOFON", terms:["ANGKLUNG","KOLINTANG","SARON","BONANG","GONG","KENONG","TALEMPONG","RINDIK"]},
-      {name:"MEMBRANOFON", terms:["KENDANG","KETIPUNG","REBANA","TIFA","BEDUG","TAGANING"]},
-      {name:"KORDOFON", terms:["SASANDO","REBAB","KECAPI","SAMPE","GAMBUS","HASAPI"]},
-      {name:"AEROFON", terms:["SULING","SALUANG","SERUNAI","SARUNE BOLON","TAROMPET"]},
-      {name:"ANSAMBEL MUSIK", terms:["GAMELAN","GONDANG SABANGUNAN","GORDANG SAMBILAN","TANJIDOR"]},
-      {name:"TEKNIK MEMAINKAN", terms:["MEMUKUL","MEMETIK","MENGGESEK","MENIUP","MENGGOYANG"]}
-    ];
+<section id="tentang"><div class="wrap">
+<div class="cols">
+<div class="card"><h3>Kendala dan pembelajaran</h3><p>Kendala utama kelompok adalah memilih istilah yang tepat untuk tiap cabang, menyusun definisi yang mudah dipahami, dan menentukan relasi dengan benar, terutama karena beberapa istilah hukum bermakna saling berkaitan.</p><p>Dari proses ini kelompok memahami bahwa tesaurus bukan sekadar daftar istilah dan definisi, melainkan juga hubungan antaristilah yang disusun teratur, sehingga ketepatan memilih istilah, menyusun definisi, dan menentukan relasi sangat penting.</p></div>
+<div class="card"><h3>Kesimpulan</h3><p>Tesaurus Mini Hukum Indonesia mengatur istilah hukum agar lebih mudah dipahami dan dipakai dalam pencarian informasi. Ia memuat 40 entri dari tujuh cabang hukum, masing-masing dengan definisi dan relasi BT/NT, USE/UF, dan RT.</p></div>
+<div class="card"><h3>Daftar pustaka</h3><p>Murtadho, A., Ilyas, Abbas, Saidah, L., Seriyanti, Kholidazia El HF., Pratama, D., Iryanti, R. M., &amp; Djahri, M. b. M. (2026). <i>Pengantar Hukum Indonesia</i>. Queen Pustaka Nusantara.</p><p>Hukumonline. (t.t.). <i>Hukumonline</i>. <a href="https://www.hukumonline.com/" target="_blank" rel="noopener">https://www.hukumonline.com/</a></p></div>
+</div></div></section>
 
-    function findTerm(name) { return terms.find(t => t.term === name.toUpperCase()); }
-    function makeRelation(name) {
-      const span = document.createElement("span");
-      span.className = "relation";
-      span.textContent = name;
-      span.tabIndex = 0;
-      span.setAttribute("role", "button");
-      span.setAttribute("aria-label", "Buka istilah " + name);
-      span.addEventListener("click", () => selectTerm(name));
-      span.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") selectTerm(name); });
-      return span;
-    }
-    function addField(parent, label, value, relationNames = false) {
-      const field = document.createElement("div");
-      field.className = "field";
-      const lab = document.createElement("div");
-      lab.className = "field-label";
-      lab.textContent = label;
-      const val = document.createElement("div");
-      val.className = "field-value";
-      if (relationNames && value.length) value.forEach((name, i) => {
-        if (i) val.appendChild(document.createTextNode("; "));
-        val.appendChild(makeRelation(name));
-      });
-      else val.innerHTML = value ? escapeHTML(value) : '<span class="empty">—</span>';
-      field.append(lab, val);
-      parent.appendChild(field);
-    }
-    function escapeHTML(s) {
-      return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-    }
-    function selectTerm(name) {
-      const term = findTerm(name);
-      if (!term) return;
-      activeTerm = term.term;
-      renderTree(searchInput.value.trim());
-      detail.replaceChildren();
-      const title = document.createElement("h3");
-      title.className = "term-title";
-      title.textContent = term.term;
-      detail.appendChild(title);
-      addField(detail, "Definisi / Scope Note", term.definition);
-      addField(detail, "BT (Broader Term)", term.bt, false);
-      const nt = terms.filter(t => t.bt === term.term).map(t => t.term);
-      addField(detail, "NT (Narrower Term)", nt, true);
-      addField(detail, "RT (Related Term)", term.rt, true);
-      const aliasList = aliases.filter(a => a.use === term.term).map(a => a.label);
-      addField(detail, "UF (Used For)", aliasList, true);
-      status.textContent = "Detail istilah terpilih ditampilkan di bawah.";
-    }
-    function renderTree(filter = "") {
-      tree.replaceChildren();
-      const q = filter.toLocaleUpperCase("id-ID");
-      groups.forEach(group => {
-        const matching = group.terms.filter(n => {
-          const t = findTerm(n);
-          return !q || n.includes(q) || (t && t.definition.toLocaleUpperCase("id-ID").includes(q));
-        });
-        const categoryMatches = group.name.includes(q);
-        if (q && !matching.length && !categoryMatches) return;
-        const d = document.createElement("details");
-        d.open = !q || categoryMatches || matching.length > 0;
-        const s = document.createElement("summary");
-        s.textContent = group.name;
-        d.appendChild(s);
-        const list = document.createElement("div");
-        list.className = "term-list";
-        const categoryButton = document.createElement("button");
-        categoryButton.className = "term-button" + (activeTerm === group.name ? " active" : "");
-        categoryButton.textContent = group.name + " (kategori)";
-        categoryButton.addEventListener("click", () => selectTerm(group.name));
-        if (!q || categoryMatches) list.appendChild(categoryButton);
-        matching.forEach(n => {
-          const b = document.createElement("button");
-          b.className = "term-button" + (activeTerm === n ? " active" : "");
-          b.textContent = titleCase(n);
-          b.addEventListener("click", () => selectTerm(n));
-          list.appendChild(b);
-        });
-        d.appendChild(list);
-        tree.appendChild(d);
-      });
-    }
-    function titleCase(s) { return s.toLowerCase().replace(/\b\p{L}/gu, c => c.toLocaleUpperCase("id-ID")); }
-    function doSearch() {
-      const q = searchInput.value.trim().toLocaleUpperCase("id-ID");
-      const exact = findTerm(q);
-      if (exact) selectTerm(exact.term);
-      else {
-        renderTree(searchInput.value.trim());
-        const alias = aliases.find(a => a.label === q);
-        if (alias) selectTerm(alias.use);
-        else {
-          const match = terms.find(t => t.term.includes(q) || t.definition.toLocaleUpperCase("id-ID").includes(q));
-          if (match) selectTerm(match.term);
-          else {
-            status.textContent = q ? "Istilah tidak ditemukan. Coba kata kunci lain." : "Pilih istilah untuk melihat detailnya.";
-            detail.innerHTML = '<p class="empty">Tidak ada istilah yang cocok dengan pencarian.</p>';
-          }
-        }
-      }
-    }
-    document.getElementById("searchButton").addEventListener("click", doSearch);
-    searchInput.addEventListener("keydown", e => { if (e.key === "Enter") doSearch(); });
-    document.getElementById("clearButton").addEventListener("click", () => {
-      searchInput.value = "";
-      activeTerm = "";
-      renderTree();
-      detail.innerHTML = '<p class="empty">Belum ada istilah yang dipilih.</p>';
-      status.textContent = "Pilih istilah untuk melihat detailnya.";
+<footer><div class="wrap">
+<b>Tesaurus Mini Hukum Indonesia</b>
+</div></footer>
+
+<script>
+const raw=[
+["HUKUM PIDANA","","Cabang hukum yang mengatur tindak pidana, pertanggungjawaban pidana, serta jenis pidana dan tindakan berdasarkan ketentuan yang berlaku.",""],
+["TINDAK PIDANA","HUKUM PIDANA","Perbuatan yang dilarang oleh ketentuan pidana dan terhadapnya ditetapkan ancaman pidana.","DELIK ADUAN;PERTANGGUNGJAWABAN PIDANA"],
+["DELIK ADUAN","HUKUM PIDANA","Tindak pidana yang penuntutannya mensyaratkan adanya pengaduan dari pihak yang berhak menurut undang-undang.","TINDAK PIDANA"],
+["KESENGAJAAN","HUKUM PIDANA","Bentuk sikap batin pelaku yang mencakup kehendak atau pengetahuan yang relevan terhadap perbuatan atau akibatnya menurut ketentuan pidana.","KEALPAAN;PERTANGGUNGJAWABAN PIDANA"],
+["KEALPAAN","HUKUM PIDANA","Bentuk kesalahan yang berkaitan dengan kurang hati-hati atau kelalaian sebagaimana dirumuskan dalam ketentuan pidana.","KESENGAJAAN;PERTANGGUNGJAWABAN PIDANA"],
+["PERTANGGUNGJAWABAN PIDANA","HUKUM PIDANA","Penilaian hukum mengenai dapat tidaknya seseorang dimintai pertanggungjawaban atas tindak pidana yang dilakukannya.","KEALPAAN;KESENGAJAAN;TINDAK PIDANA"],
+["HUKUM PERDATA","","Cabang hukum yang mengatur hubungan hukum antarorang atau badan hukum dalam kepentingan privat, termasuk keluarga, harta kekayaan, perjanjian, dan ganti rugi.",""],
+["PERJANJIAN","HUKUM PERDATA","Kesepakatan para pihak yang menimbulkan hubungan hukum dan akibat hukum sesuai syarat serta ketentuan yang berlaku.","PERIKATAN;WANPRESTASI"],
+["WANPRESTASI","HUKUM PERDATA","Keadaan ketika pihak dalam perikatan tidak memenuhi prestasi, terlambat memenuhinya, atau memenuhinya tidak sebagaimana diperjanjikan.","GANTI RUGI;PERIKATAN;PERJANJIAN"],
+["PERIKATAN","HUKUM PERDATA","Hubungan hukum yang menimbulkan hak bagi satu pihak untuk menuntut prestasi dan kewajiban bagi pihak lain untuk memenuhinya.","PERJANJIAN;WANPRESTASI"],
+["PERBUATAN MELAWAN HUKUM","HUKUM PERDATA","Perbuatan yang memenuhi unsur melawan hukum dan menimbulkan kewajiban mengganti kerugian menurut hukum perdata.","GANTI RUGI"],
+["GANTI RUGI","HUKUM PERDATA","Pemulihan atau kompensasi atas kerugian yang dapat dituntut berdasarkan dasar hukum yang relevan.","PERBUATAN MELAWAN HUKUM;SENGKETA LINGKUNGAN;WANPRESTASI"],
+["HUKUM TATA NEGARA","","Cabang hukum yang mengatur organisasi negara, lembaga-lembaga negara, pembagian kewenangan, serta hubungan konstitusional dalam penyelenggaraan negara.",""],
+["KONSTITUSI","HUKUM TATA NEGARA","Hukum dasar yang mengatur prinsip pokok penyelenggaraan negara, lembaga negara, dan hak-hak konstitusional.","HAK KONSTITUSIONAL;LEMBAGA NEGARA;PEMISAHAN KEKUASAAN;PENGUJIAN UNDANG-UNDANG"],
+["LEMBAGA NEGARA","HUKUM TATA NEGARA","Organ atau institusi yang dibentuk atau diakui oleh konstitusi atau peraturan untuk menjalankan fungsi kenegaraan.","KONSTITUSI;PEMISAHAN KEKUASAAN"],
+["PEMISAHAN KEKUASAAN","HUKUM TATA NEGARA","Prinsip pengaturan kewenangan negara pada cabang atau lembaga yang berbeda untuk mencegah pemusatan kekuasaan.","KONSTITUSI;LEMBAGA NEGARA"],
+["HAK KONSTITUSIONAL","HUKUM TATA NEGARA","Hak yang dijamin atau diakui oleh konstitusi dan menjadi dasar perlindungan bagi pemegang hak.","KONSTITUSI;PENGUJIAN UNDANG-UNDANG"],
+["PENGUJIAN UNDANG-UNDANG","HUKUM TATA NEGARA","Proses pengujian kesesuaian undang-undang terhadap Undang-Undang Dasar oleh Mahkamah Konstitusi sesuai kewenangannya.","HAK KONSTITUSIONAL;KONSTITUSI"],
+["HUKUM INTERNASIONAL","","Cabang hukum yang mengatur hak dan kewajiban subjek hukum internasional serta hubungan lintas negara berdasarkan perjanjian, kebiasaan, dan sumber hukum internasional lainnya.",""],
+["PERJANJIAN INTERNASIONAL","HUKUM INTERNASIONAL","Kesepakatan tertulis yang diatur oleh hukum internasional dan dibuat oleh subjek yang berwenang sesuai ketentuan yang berlaku.","HUBUNGAN DIPLOMATIK;KEKEBALAN DIPLOMATIK;RATIFIKASI;SENGKETA INTERNASIONAL"],
+["RATIFIKASI","HUKUM INTERNASIONAL","Tindakan hukum untuk menyatakan persetujuan terikat pada perjanjian internasional melalui prosedur yang berlaku.","HUBUNGAN DIPLOMATIK;PERJANJIAN INTERNASIONAL"],
+["HUBUNGAN DIPLOMATIK","HUKUM INTERNASIONAL","Hubungan resmi antarnegara yang dijalankan melalui perwakilan diplomatik dan aturan hukum internasional.","KEKEBALAN DIPLOMATIK;PERJANJIAN INTERNASIONAL;RATIFIKASI"],
+["KEKEBALAN DIPLOMATIK","HUKUM INTERNASIONAL","Perlindungan dan kekebalan tertentu yang diberikan kepada agen diplomatik serta misi diplomatik menurut hukum internasional.","HUBUNGAN DIPLOMATIK;PERJANJIAN INTERNASIONAL"],
+["SENGKETA INTERNASIONAL","HUKUM INTERNASIONAL","Perselisihan antara subjek hukum internasional mengenai fakta, hukum, kepentingan, atau penafsiran kewajiban internasional.","PERJANJIAN INTERNASIONAL"],
+["HUKUM ADAT","","Cabang hukum yang berkenaan dengan norma dan praktik hukum yang hidup dalam masyarakat adat serta pengakuan terhadap masyarakat hukum adat dan hak tradisionalnya sesuai ketentuan hukum.",""],
+["MASYARAKAT HUKUM ADAT","HUKUM ADAT","Kelompok masyarakat yang memiliki identitas, pranata, wilayah atau unsur keterikatan adat, serta norma yang hidup dan diakui sesuai ketentuan hukum.","HAK ULAYAT;HUKUM YANG HIDUP DALAM MASYARAKAT;TANAH ADAT"],
+["HAK ULAYAT","HUKUM ADAT","Kewenangan masyarakat hukum adat atas wilayah atau sumber daya tertentu berdasarkan hukum adat dan dengan memperhatikan ketentuan peraturan perundang-undangan.","MASYARAKAT HUKUM ADAT;TANAH ADAT"],
+["TANAH ADAT","HUKUM ADAT","Tanah yang memiliki hubungan penguasaan atau pemanfaatan berdasarkan sistem adat suatu masyarakat, dengan status yang harus ditentukan menurut ketentuan yang berlaku.","HAK ULAYAT;MASYARAKAT HUKUM ADAT"],
+["HUKUM YANG HIDUP DALAM MASYARAKAT","HUKUM ADAT","Norma hukum yang benar-benar hidup dan dipatuhi dalam masyarakat setempat, dengan penerapan yang tunduk pada kriteria dan batasan peraturan perundang-undangan.","MASYARAKAT HUKUM ADAT"],
+["HUKUM LINGKUNGAN","","Cabang hukum yang mengatur perlindungan dan pengelolaan lingkungan hidup, pencegahan pencemaran atau kerusakan, serta pemulihan dan penegakan hukum lingkungan.",""],
+["PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP","HUKUM LINGKUNGAN","Upaya sistematis dan terpadu untuk melestarikan fungsi lingkungan hidup serta mencegah pencemaran dan/atau kerusakan.","ANALISIS MENGENAI DAMPAK LINGKUNGAN;PENCEMARAN LINGKUNGAN;PERSETUJUAN LINGKUNGAN"],
+["PENCEMARAN LINGKUNGAN","HUKUM LINGKUNGAN","Masuknya atau dimasukkannya makhluk hidup, zat, energi, atau komponen lain ke lingkungan sehingga melampaui baku mutu yang ditetapkan.","PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP;SENGKETA LINGKUNGAN"],
+["ANALISIS MENGENAI DAMPAK LINGKUNGAN","HUKUM LINGKUNGAN","Kajian mengenai dampak penting suatu usaha atau kegiatan yang direncanakan terhadap lingkungan hidup sebagai bagian dari proses persetujuan lingkungan sesuai ketentuan berlaku.","PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP;PERSETUJUAN LINGKUNGAN"],
+["PERSETUJUAN LINGKUNGAN","HUKUM LINGKUNGAN","Keputusan kelayakan lingkungan hidup atau pernyataan kesanggupan pengelolaan lingkungan hidup sesuai instrumen dan prosedur yang ditentukan peraturan.","ANALISIS MENGENAI DAMPAK LINGKUNGAN;PERLINDUNGAN DAN PENGELOLAAN LINGKUNGAN HIDUP"],
+["SENGKETA LINGKUNGAN","HUKUM LINGKUNGAN","Perselisihan yang timbul akibat dugaan pencemaran atau kerusakan lingkungan atau pelaksanaan hak dan kewajiban terkait lingkungan hidup.","GANTI RUGI;PENCEMARAN LINGKUNGAN"],
+["HUKUM HAK ASASI MANUSIA","","Cabang hukum yang mengatur pengakuan, penghormatan, perlindungan, pemajuan, penegakan, dan pemenuhan hak asasi manusia.",""],
+["HAK ASASI MANUSIA","HUKUM HAK ASASI MANUSIA","Seperangkat hak yang melekat pada hakikat dan keberadaan manusia sebagai makhluk Tuhan Yang Maha Esa dan merupakan anugerah-Nya yang wajib dihormati, dijunjung tinggi, dan dilindungi.","DISKRIMINASI;KESETARAAN DI HADAPAN HUKUM;PENGADILAN HAM"],
+["DISKRIMINASI","HUKUM HAK ASASI MANUSIA","Pembedaan, pengecualian, pembatasan, atau pemilihan yang berdampak pada pengurangan atau penghapusan pengakuan atau pelaksanaan hak secara setara, sesuai ketentuan hukum.","HAK ASASI MANUSIA;KESETARAAN DI HADAPAN HUKUM"],
+["KESETARAAN DI HADAPAN HUKUM","HUKUM HAK ASASI MANUSIA","Prinsip bahwa setiap orang berhak mendapat perlakuan dan perlindungan hukum tanpa pembedaan yang dilarang.","DISKRIMINASI;HAK ASASI MANUSIA"],
+["PENGADILAN HAM","HUKUM HAK ASASI MANUSIA","Pengadilan khusus yang berwenang memeriksa dan memutus pelanggaran hak asasi manusia yang berat sesuai undang-undang.","HAK ASASI MANUSIA"]
+];
+const terms=raw.map(([term,bt,definition,rt],i)=>({no:i+1,term,bt,definition,rt:rt?rt.split(";"):[]}));
+const aliases=[
+{label:"HAM",use:"HAK ASASI MANUSIA",note:"Singkatan baku yang merujuk pada konsep hak asasi manusia."},
+{label:"AMDAL",use:"ANALISIS MENGENAI DAMPAK LINGKUNGAN",note:"Singkatan yang lazim digunakan dalam peraturan dan literatur lingkungan."}
+];
+const tops=terms.filter(t=>!t.bt).map(t=>t.term);
+const $=id=>document.getElementById(id);
+const U=s=>s.toLocaleUpperCase("id-ID");
+const KEEP=new Set(["HAM","AMDAL"]),SMALL=new Set(["yang","dalam","dan","di","atas"]);
+const tc=s=>s.split(" ").map((w,i)=>{if(KEEP.has(w))return w;const l=w.toLowerCase();if(i&&SMALL.has(l))return l;return l.replace(/(^|-)(\p{L})/gu,(m,a,b)=>a+b.toUpperCase())}).join(" ");
+const find=n=>terms.find(t=>t.term===U(n));
+const kids=n=>terms.filter(t=>t.bt===n).map(t=>t.term);
+const opened=new Set();let active="";
+
+function chip(name,sc){const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=tc(name);b.setAttribute("aria-label","Buka istilah "+tc(name));b.onclick=()=>selectTerm(name,!!sc);return b}
+function field(parent,label,val){
+  const f=document.createElement("div");f.className="field";
+  const l=document.createElement("div");l.className="fl";l.textContent=label;
+  const v=document.createElement("div");v.className="fv";
+  if(Array.isArray(val)){val.length?val.forEach(n=>v.appendChild(chip(n))):v.innerHTML='<span class="empty">—</span>'}
+  else if(val)v.textContent=val;else v.innerHTML='<span class="empty">—</span>';
+  f.append(l,v);parent.appendChild(f);
+}
+function matches(t,Q){return !Q||t.term.includes(Q)||U(t.definition).includes(Q)||aliases.some(a=>a.use===t.term&&a.label.includes(Q))}
+
+function renderTree(q=""){
+  const Q=U(q),tree=$("tree");tree.replaceChildren();let n=0;
+  tops.forEach(top=>{
+    const list=kids(top).filter(k=>matches(find(k),Q)),topHit=matches(find(top),Q);
+    if(Q&&!list.length&&!topHit)return;
+    n+=list.length+(topHit&&Q?1:0);
+    const d=document.createElement("details");d.open=!!Q||opened.has(top);
+    d.addEventListener("toggle",()=>{if(Q)return;d.open?opened.add(top):opened.delete(top)});
+    const s=document.createElement("summary");s.append(tc(top));
+    const c=document.createElement("i");c.textContent=kids(top).length+" istilah";s.appendChild(c);d.appendChild(s);
+    const box=document.createElement("div");box.className="tl";
+    [top,...list].forEach((name,i)=>{
+      if(i===0&&Q&&!topHit)return;
+      const b=document.createElement("button");b.type="button";
+      b.className="tb"+(i===0?" top":"")+(active===name?" on":"");
+      b.textContent=i===0?tc(name)+" (cabang)":tc(name);
+      b.onclick=()=>selectTerm(name);box.appendChild(b);
     });
-    renderTree();
-    selectTerm("GONDANG SABANGUNAN");
-  </script>
+    d.appendChild(box);tree.appendChild(d);
+  });
+  if(Q&&!tree.children.length)tree.innerHTML='<p class="empty" style="padding:12px">Tidak ada istilah yang cocok.</p>';
+  return n;
+}
+function selectTerm(name,scroll){
+  const t=find(name);if(!t)return;
+  active=t.term;opened.add(t.bt||t.term);
+  renderTree($("q").value.trim());
+  const d=$("detail");d.replaceChildren();
+  const h=document.createElement("h3");h.className="ttl";h.textContent=tc(t.term);d.appendChild(h);
+  const cab=document.createElement("p");cab.className="cab";
+  cab.textContent=t.bt?"Cabang hukum: "+tc(t.bt):"Istilah cabang hukum (top term)";d.appendChild(cab);
+  field(d,"Definisi / scope note",t.definition);
+  field(d,"BT (Broader Term)",t.bt?[t.bt]:[]);
+  field(d,"NT (Narrower Term)",kids(t.term));
+  field(d,"RT (Related Term)",t.rt);
+  field(d,"UF (Used For)",aliases.filter(a=>a.use===t.term).map(a=>a.label));
+  $("status").textContent="Menampilkan detail istilah terpilih.";
+  if(scroll)$("jelajah").scrollIntoView();
+  const act=document.querySelector(".tb.on");if(act&&act.scrollIntoView)act.scrollIntoView({block:"nearest"});
+}
+function doSearch(){
+  const raw=$("q").value.trim(),Q=U(raw);
+  if(!Q){reset();return}
+  const n=renderTree(raw);
+  const ex=find(Q),al=aliases.find(a=>a.label===Q);
+  if(al){selectTerm(al.use);$("status").textContent="“"+al.label+"” adalah istilah yang tidak dipilih. USE: "+tc(al.use)+"."}
+  else if(ex)selectTerm(ex.term);
+  else{const m=terms.find(t=>matches(t,Q));
+    if(m){selectTerm(m.term);$("status").textContent=n+" istilah cocok dengan “"+raw+"”. Menampilkan hasil pertama."}
+    else{$("status").textContent="Istilah tidak ditemukan. Coba kata kunci lain.";$("detail").innerHTML='<p class="empty">Tidak ada istilah yang cocok dengan pencarian.</p>'}}
+  $("jelajah").scrollIntoView();
+}
+function reset(){$("q").value="";active="";renderTree();$("detail").innerHTML='<p class="empty">Belum ada istilah yang dipilih.</p>';$("status").textContent="Pilih istilah untuk melihat detailnya."}
+$("go").onclick=doSearch;
+$("q").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
+$("q").addEventListener("input",()=>renderTree($("q").value.trim()));
+$("reset").onclick=reset;
+
+// Cabang di hero
+tops.forEach(t=>{const b=document.createElement("button");b.type="button";b.append(tc(t));const s=document.createElement("span");s.textContent=kids(t).length;b.appendChild(s);
+  b.onclick=()=>{$("q").value="";selectTerm(t,true)};$("branches").appendChild(b)});
+
+// Tabel daftar istilah dengan filter cabang
+let filt="";
+function renderRows(){
+  const body=$("rows");body.replaceChildren();
+  terms.filter(t=>!filt||t.term===filt||t.bt===filt).forEach(t=>{
+    const tr=document.createElement("tr");if(!t.bt)tr.className="top";
+    const cell=(x)=>{const td=document.createElement("td");if(x!=null)td.textContent=x;tr.appendChild(td);return td};
+    cell(t.no).className="n";
+    const b=document.createElement("button");b.textContent=tc(t.term);b.onclick=()=>selectTerm(t.term,true);cell().appendChild(b);
+    cell(t.bt?tc(t.bt):"—");cell(t.definition);cell(t.rt.length?t.rt.map(tc).join("; "):"—");
+    body.appendChild(tr);
+  });
+  [...$("filters").children].forEach(b=>b.classList.toggle("on",b.dataset.v===filt));
+}
+[["", "Semua (40)"],...tops.map(t=>[t,tc(t)])].forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.dataset.v=v;b.textContent=l;b.onclick=()=>{filt=v;renderRows()};$("filters").appendChild(b)});
+renderRows();
+
+// Tabel relasi
+tops.forEach(t=>{const tr=document.createElement("tr");const a=document.createElement("td");a.innerHTML="<b></b>";a.firstChild.textContent=tc(t);const b=document.createElement("td");kids(t).forEach(k=>b.appendChild(chip(k,1)));tr.append(a,b);$("nt").appendChild(tr)});
+aliases.forEach(a=>{const tr=document.createElement("tr");const c=[a.label,null,tc(a.use),a.note];
+  const t0=document.createElement("td");t0.textContent=a.label;const t1=document.createElement("td");t1.appendChild(chip(a.use,1));
+  const t2=document.createElement("td");t2.textContent=a.label+" (pada "+tc(a.use)+")";const t3=document.createElement("td");t3.textContent=a.note;
+  tr.append(t0,t1,t2,t3);$("eq").appendChild(tr)});
+const pairs=[];terms.forEach(t=>t.rt.forEach(r=>{if(t.term<r)pairs.push([t.term,r])}));
+$("rtn").textContent=pairs.length;
+pairs.forEach(([a,b])=>{const tr=document.createElement("tr");const x=document.createElement("td"),y=document.createElement("td");x.appendChild(chip(a,1));y.appendChild(chip(b,1));tr.append(x,y);$("rt").appendChild(tr)});
+
+reset();selectTerm("HAK ASASI MANUSIA");
+</script>
 </body>
 </html>
